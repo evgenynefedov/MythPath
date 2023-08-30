@@ -1,0 +1,134 @@
+{
+    "characters": [
+        {
+            "id": 1,
+            "name": "Dobby",
+            "universe": "Harry Potter series by J.K. Rowling",
+            "traits": [
+                "Loyal",
+                "Courageous",
+                "Selfless"
+            ],
+            "description": "A kind-hearted house-elf known for his loyalty and willingness to help others, often in unconventional ways.",
+            "catchphrase": "Dobby is a free elf!",
+            "img": "1.png"
+        },
+        {
+            "id": 2,
+            "name": "Grogu",
+            "universe": "Star Wars universe (The Mandalorian)",
+            "traits": [
+                "Curious",
+                "Adorable",
+                "Force-sensitive"
+            ],
+            "description": "A young and enigmatic Force-sensitive alien of Yoda's species, known for his cuteness and strong connection to the Force.",
+            "catchphrase": "Cooing sounds",
+            "img": "2.png"
+        },
+        {
+            "id": 3,
+            "name": "Lara Croft",
+            "universe": "Tomb Raider video game series",
+            "traits": [
+                "Adventurous",
+                "Skilled",
+                "Independent"
+            ],
+            "description": "An archaeologist and adventurer, known for her daring exploits and skills.",
+            "catchphrase": "Adventure is worthwhile in itself.",
+            "img": "3.png"
+        },
+        {
+            "id": 4,
+            "name": "Spock",
+            "universe": "Star Trek franchise",
+            "traits": [
+                "Logical",
+                "Rational",
+                "Dedicated"
+            ],
+            "description": "A Vulcan officer with exceptional logic and dedication aboard the USS Enterprise.",
+            "catchphrase": "Live long and prosper.",
+            "img": "4.png"
+        },
+        {
+            "id": 5,
+            "name": "The Cheshire Cat",
+            "universe": "Lewis Carroll's Alice's Adventures in Wonderland",
+            "traits": [
+                "Mysterious",
+                "Enigmatic",
+                "Playful"
+            ],
+            "description": "A mysterious and enigmatic cat with the ability to appear and disappear at will, known for its wide grin and cryptic advice.",
+            "catchphrase": "We're all mad here.",
+            "img": "5.png"
+        },
+        {
+            "id": 6,
+            "name": "Thor",
+            "universe": "Marvel Comics",
+            "traits": [
+                "Mighty",
+                "Honorable",
+                "Protective"
+            ],
+            "description": "A powerful Asgardian god of thunder, defender of realms and wielder of Mjolnir.",
+            "catchphrase": "I am Thor, the God of Thunder!",
+            "img": "6.png"
+        },
+        {
+            "id": 7,
+            "name": "Tin Woodman",
+            "universe": "L. Frank Baum's The Wizard of Oz",
+            "traits": [
+                "Kind-hearted",
+                "Loyal",
+                "Empathetic"
+            ],
+            "description": "A gentle and compassionate woodsman who was transformed into a tin man, seeking a heart and searching for a way to feel emotions again.",
+            "catchphrase": "Hearts will never be practical until they are made unbreakable.",
+            "img": "7.png"
+        },
+        {
+            "id": 8,
+            "name": "Baymax",
+            "universe": "Big Hero 6",
+            "traits": [
+                "Caring",
+                "Loyal",
+                "Compassionate"
+            ],
+            "description": "An inflatable healthcare companion turned hero, dedicated to helping others.",
+            "catchphrase": "Hello, I am Baymax, your personal healthcare companion.",
+            "img": "8.png"
+        },
+        {
+            "id": 9,
+            "name": "Aslan",
+            "universe": "The Chronicles of Narnia by C.S. Lewis",
+            "traits": [
+                "Wise",
+                "Noble",
+                "Courageous"
+            ],
+            "description": "A majestic lion who guides and supports the children in the magical world of Narnia.",
+            "catchphrase": "Courage, dear heart.",
+            "img": "9.png"
+        },
+        {
+            "id": 10,
+            "name": "Twilight Sparkle",
+            "universe": "My Little Pony: Friendship is Magic",
+            "traits": [
+                "Intelligent",
+                "Loyal",
+                "Curious"
+            ],
+            "description": "A diligent unicorn with a love for learning and friendship, who becomes a princess and helps maintain harmony in Equestria.",
+            "catchphrase": "Friendship is magic!",
+            "img": "10.png"
+        }
+    ]
+}
