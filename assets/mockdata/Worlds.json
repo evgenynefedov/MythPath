@@ -1,0 +1,32 @@
+[        
+    {
+        "name": "Real World",
+        "creator": "The God",
+        "description": "The story takes place in the real world",
+        "picture": null
+    },
+    {
+        "name": "Wonderland",
+        "creator": "Alice's Adventures in Wonderland by Lewis Carroll",
+        "description": "Wonderland is a whimsical and fantastical world Alice enters through a rabbit hole. It's filled with talking animals, eccentric characters, and illogical situations.",
+        "picture": null
+    },
+    {
+        "name": "Neverland",
+        "creator": "Peter Pan by J.M. Barrie",
+        "description": "Neverland is a magical island where children never grow up. It's home to Peter Pan, Tinker Bell, pirates, and various other fantastical creatures.",
+        "picture": null
+    },
+    {
+        "name": "Oz",
+        "creator": "The Wizard of Oz by L. Frank Baum",
+        "description": "The Land of Oz is a colorful and vibrant realm with diverse regions like the Emerald City, Munchkinland, and the Winkie Country. Each area has its own unique inhabitants and challenges.",
+        "picture": null
+    },
+    {
+        "name": "Narnia",
+        "creator": "The Chronicles of Narnia by C.S. Lewis",
+        "description": "Narnia is a mythical world accessed through a wardrobe or magical portals. It's a land of talking animals, mythical creatures, and epic battles between good and evil.",
+        "picture": null
+    }
+]

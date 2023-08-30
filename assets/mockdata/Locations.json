@@ -1,0 +1,104 @@
+[
+    {
+        "name": "The Mad Hatter's Tea Party",
+        "description": "A peculiar tea party where time is perpetually stuck at 6 o'clock, and the Mad Hatter, March Hare, and Dormouse engage in nonsensical conversations.",
+        "picture": null, 
+        "worlds": ["Wonderland"]
+    },
+    {
+        "name": "The Queen of Hearts' Garden",
+        "description": "A beautifully manicured garden belonging to the temperamental Queen of Hearts, known for its playing card soldiers and the constant threat of execution.",
+        "picture": null,
+        "worlds": ["Wonderland"]
+    },
+    {
+        "name": "The Cheshire Cat's Forest",
+        "description": "A mysterious forest inhabited by the enigmatic Cheshire Cat, who can appear and disappear at will and offers cryptic advice to Alice.",
+        "picture": null,
+        "worlds": ["Wonderland"]
+    },
+    {
+        "name": "The Lost Boys' Hideout",
+        "description": "A secret home for Peter Pan and his band of lost boys.",
+        "picture": null,
+        "worlds": ["Neverland"]
+    },
+    {
+        "name": "Pirate Ship",
+        "description": "The menacing ship of Captain Hook and his crew.",
+        "picture": null,
+        "worlds": ["Neverland"]
+    },
+    {
+        "name": "Mermaid Lagoon",
+        "description": "A beautiful lagoon inhabited by playful but mischievous mermaids.",
+        "picture": null,
+        "worlds": ["Neverland"]
+    },
+    {
+        "name": "Emerald City",
+        "description": "The gleaming, green city ruled by the Wizard of Oz.",
+        "picture": null,
+        "worlds": ["Oz"]
+    },
+    {
+        "name": "Munchkinland",
+        "description": "The colorful and cheerful home of the Munchkins.",
+        "picture": null,
+        "worlds": ["Oz"]
+    },
+    {
+        "name": "Yellow Brick Road",
+        "description": "The famous road that leads to the Emerald City.",
+        "picture": null,
+        "worlds": ["Oz"]
+    },
+    {
+        "name": "Cair Paravel",
+        "description": "The majestic castle of the Kings and Queens of Narnia.",
+        "picture": null,
+        "worlds": ["Narnia"]
+    },
+    {
+        "name": "The Wardrobe",
+        "description": "A portal between our world and Narnia.",
+        "picture": null,
+        "worlds": ["Narnia"]
+    },
+    {
+        "name": "The Lamppost",
+        "description": "A guiding light in the heart of Narnia's forest.",
+        "picture": null,
+        "worlds": ["Narnia"]
+    },
+    {
+        "name": "Amusement Park",
+        "description": "A place filled with thrilling rides, games, and delicious treats.",
+        "picture": null,
+        "worlds": ["Real World"]
+    },
+    {
+        "name": "Zoo",
+        "description": "An exciting place to see and learn about animals from around the world.",
+        "picture": null,
+        "worlds": ["Real World"]
+    },
+    {
+        "name": "Aquarium",
+        "description": "A magical underwater world featuring colorful fish, sharks, and marine life.",
+        "picture": null,
+        "worlds": ["Real World"]
+    },
+    {
+        "name": "Children's Museum",
+        "description": "An interactive space where kids can explore and discover through play.",
+        "picture": null,
+        "worlds": ["Real World"]
+    },
+    {
+        "name": "Movie Theater",
+        "description": "A place to watch the latest movies on the big screen with popcorn in hand.",
+        "picture": null,
+        "worlds": ["Real World"]
+    }
+]

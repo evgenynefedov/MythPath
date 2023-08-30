@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Adventure story",
+        "description": "Spur curiosity with narratives brimming with exploration and awe",
+        "picture": null
+    },
+    {
+        "name": "Bedtime story",
+        "description": "Drift into slumber with calming chronicles crafted for pleasant dreams",
+        "picture": null
+    },
+    {
+        "name": "Educational Story",
+        "description": "Infuse learning with delight through tales that complement the curriculum",
+        "picture": null
+    },
+    {
+        "name": "Birthday story",
+        "description": "Mark another year with a narrative of birthday enchantment and happiness",
+        "picture": null
+    }
+]
