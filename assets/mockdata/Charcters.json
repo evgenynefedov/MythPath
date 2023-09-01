@@ -1,0 +1,54 @@
+{
+    "characters": [
+        {
+            "id": 1,
+            "universe_id": 1,
+            "img": "1.png"
+        },
+        {
+            "id": 2,
+            "universe_id": 2,
+            "img": "2.png"
+        },
+        {
+            "id": 3,
+            "universe_id": 3,
+            "img": "3.png"
+        },
+        {
+            "id": 4,
+            "universe_id": 4,
+            "img": "4.png"
+        },
+        {
+            "id": 5,
+            "universe_id": 5,
+            "img": "5.png"
+        },
+        {
+            "id": 6,
+            "universe_id": 6,
+            "img": "6.png"
+        },
+        {
+            "id": 7,
+            "universe_id": 7,
+            "img": "7.png"
+        },
+        {
+            "id": 8,
+            "universe_id": 8,
+            "img": "8.png"
+        },
+        {
+            "id": 9,
+            "universe_id": 9,
+            "img": "9.png"
+        },
+        {
+            "id": 10,
+            "universe_id": 10,
+            "img": "10.png"
+        }
+    ]
+}
