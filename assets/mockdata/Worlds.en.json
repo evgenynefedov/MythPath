@@ -1,56 +1,52 @@
-{
-    "universes": [
-      {
-        "id": 1,
-        "name": "Harry Potter",
-        "description": "The magical world where wizards and witches study at Hogwarts School of Witchcraft and Wizardry, battling dark forces led by Lord Voldemort."
-      },
-      {
-        "id": 2,
-        "name": "Star Wars",
-        "description": "A galaxy far, far away where the Jedi and Sith, as well as various species and planets, are central to a conflict between the light and dark sides of the Force."
-      },
-      {
-        "id": 3,
-        "name": "Tomb Raider",
-        "description": "An adventurous world where Lara Croft explores ancient tombs and archaeological sites, often uncovering mysteries and treasures."
-      },
-      {
-        "id": 4,
-        "name": "Star Trek",
-        "description": "A futuristic vision of space exploration, where starships like the USS Enterprise journey through the cosmos and encounter various alien species and civilizations."
-      },
-      {
-        "id": 5,
-        "name": "Alice's Adventures in Wonderland",
-        "description": "A whimsical and fantastical world where Alice encounters bizarre and surreal creatures, puzzles, and adventures."
-      },
-      {
-        "id": 6,
-        "name": "Marvel Comics",
-        "description": "A vast comic book universe filled with superheroes and supervillains, featuring iconic characters like Thor, Iron Man, and Spider-Man."
-      },
-      {
-        "id": 7,
-        "name": "Oz",
-        "description": "A magical land created by L. Frank Baum, where characters like Dorothy and the Scarecrow embark on whimsical adventures."
-      },
-      {
-        "id": 8,
-        "name": "Big Hero 6",
-        "description": "A futuristic city where a team of young heroes, along with their inflatable healthcare companion Baymax, fight against supervillains."
-      },
-      {
-        "id": 9,
-        "name": "The Chronicles of Narnia",
-        "description": "A magical realm created by C.S. Lewis, where children journey through a wardrobe to discover a world filled with talking animals, mythical creatures, and epic adventures."
-      },
-      {
-        "id": 10,
-        "world_name": "Equestria",
-        "description": "Equestria is a magical and colorful world inhabited by adorable ponies, each with their own unique abilities and personalities. It's a land filled with friendship, adventures, and enchanting wonders."
-      }
-    ]
-  }
-  
-    
+[
+	{
+		"id": 1,
+		"name": "Harry Potter",
+		"description": "The magical world where wizards and witches study at Hogwarts School of Witchcraft and Wizardry, battling dark forces led by Lord Voldemort."
+	},
+	{
+		"id": 2,
+		"name": "Star Wars",
+		"description": "A galaxy far, far away where the Jedi and Sith, as well as various species and planets, are central to a conflict between the light and dark sides of the Force."
+	},
+	{
+		"id": 3,
+		"name": "Tomb Raider",
+		"description": "An adventurous world where Lara Croft explores ancient tombs and archaeological sites, often uncovering mysteries and treasures."
+	},
+	{
+		"id": 4,
+		"name": "Star Trek",
+		"description": "A futuristic vision of space exploration, where starships like the USS Enterprise journey through the cosmos and encounter various alien species and civilizations."
+	},
+	{
+		"id": 5,
+		"name": "Alice's Adventures in Wonderland",
+		"description": "A whimsical and fantastical world where Alice encounters bizarre and surreal creatures, puzzles, and adventures."
+	},
+	{
+		"id": 6,
+		"name": "Marvel Comics",
+		"description": "A vast comic book universe filled with superheroes and supervillains, featuring iconic characters like Thor, Iron Man, and Spider-Man."
+	},
+	{
+		"id": 7,
+		"name": "Oz",
+		"description": "A magical land created by L. Frank Baum, where characters like Dorothy and the Scarecrow embark on whimsical adventures."
+	},
+	{
+		"id": 8,
+		"name": "Big Hero 6",
+		"description": "A futuristic city where a team of young heroes, along with their inflatable healthcare companion Baymax, fight against supervillains."
+	},
+	{
+		"id": 9,
+		"name": "The Chronicles of Narnia",
+		"description": "A magical realm created by C.S. Lewis, where children journey through a wardrobe to discover a world filled with talking animals, mythical creatures, and epic adventures."
+	},
+	{
+		"id": 10,
+		"world_name": "Equestria",
+		"description": "Equestria is a magical and colorful world inhabited by adorable ponies, each with their own unique abilities and personalities. It's a land filled with friendship, adventures, and enchanting wonders."
+	}
+]
