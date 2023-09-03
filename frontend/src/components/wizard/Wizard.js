@@ -1,4 +1,4 @@
-export default Wizard = () => {
+export default function Wizard() {
     return (
         <></>
     );

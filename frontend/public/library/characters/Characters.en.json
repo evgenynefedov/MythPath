@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "name": "Dobby",
+        "traits": [
+            "Loyal",
+            "Courageous",
+            "Selfless"
+        ],
+        "description": "A kind-hearted house-elf known for his loyalty and willingness to help others, often in unconventional ways.",
+        "catchphrase": "Dobby is a free elf!"
+    },
+    {
+        "id": 2,
+        "name": "Grogu",
+        "traits": [
+            "Curious",
+            "Adorable",
+            "Force-sensitive"
+        ],
+        "description": "A young and enigmatic Force-sensitive alien of Yoda's species, known for his cuteness and strong connection to the Force.",
+        "catchphrase": "Cooing sounds"
+    },
+    {
+        "id": 3,
+        "name": "Lara Croft",
+        "traits": [
+            "Adventurous",
+            "Skilled",
+            "Independent"
+        ],
+        "description": "An archaeologist and adventurer, known for her daring exploits and skills.",
+        "catchphrase": "Adventure is worthwhile in itself."
+    },
+    {
+        "id": 4,
+        "name": "Spock",
+        "traits": [
+            "Logical",
+            "Rational",
+            "Dedicated"
+        ],
+        "description": "A Vulcan officer with exceptional logic and dedication aboard the USS Enterprise.",
+        "catchphrase": "Live long and prosper."
+    },
+    {
+        "id": 5,
+        "name": "The Cheshire Cat",
+        "traits": [
+            "Mysterious",
+            "Enigmatic",
+            "Playful"
+        ],
+        "description": "A mysterious and enigmatic cat with the ability to appear and disappear at will, known for its wide grin and cryptic advice.",
+        "catchphrase": "We're all mad here."
+    },
+    {
+        "id": 6,
+        "name": "Thor",
+        "traits": [
+            "Mighty",
+            "Honorable",
+            "Protective"
+        ],
+        "description": "A powerful Asgardian god of thunder, defender of realms and wielder of Mjolnir.",
+        "catchphrase": "I am Thor, the God of Thunder!"
+    },
+    {
+        "id": 7,
+        "name": "Tin Woodman",
+        "traits": [
+            "Kind-hearted",
+            "Loyal",
+            "Empathetic"
+        ],
+        "description": "A gentle and compassionate woodsman who was transformed into a tin man, seeking a heart and searching for a way to feel emotions again.",
+        "catchphrase": "Hearts will never be practical until they are made unbreakable."
+    },
+    {
+        "id": 8,
+        "name": "Baymax",
+        "traits": [
+            "Caring",
+            "Loyal",
+            "Compassionate"
+        ],
+        "description": "An inflatable healthcare companion turned hero, dedicated to helping others.",
+        "catchphrase": "Hello, I am Baymax, your personal healthcare companion."
+    },
+    {
+        "id": 9,
+        "name": "Aslan",
+        "traits": [
+            "Wise",
+            "Noble",
+            "Courageous"
+        ],
+        "description": "A majestic lion who guides and supports the children in the magical world of Narnia.",
+        "catchphrase": "Courage, dear heart."
+    },
+    {
+        "id": 10,
+        "name": "Twilight Sparkle",
+        "traits": [
+            "Intelligent",
+            "Loyal",
+            "Curious"
+        ],
+        "description": "A diligent unicorn with a love for learning and friendship, who becomes a princess and helps maintain harmony in Equestria.",
+        "catchphrase": "Friendship is magic!"
+    }
+]

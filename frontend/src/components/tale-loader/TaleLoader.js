@@ -1,4 +1,4 @@
-export default TaleLoader = () => {
+export default function TaleLoader() {
     return (
         <></>
     );

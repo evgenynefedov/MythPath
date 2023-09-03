@@ -1,4 +1,4 @@
-export default SpellSelector = () => {
+export default function SpellSelector() {
     return (
         <></>
     );

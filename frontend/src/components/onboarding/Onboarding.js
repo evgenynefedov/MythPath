@@ -1,4 +1,4 @@
-export default Onboarding = () => {
+export default function Onboarding() {
     return (
         <></>
     );
