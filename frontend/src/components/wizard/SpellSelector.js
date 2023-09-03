@@ -1,5 +1,9 @@
+import SpellItem from "./SpellItem";
 export default function SpellSelector() {
-    return (
-        <></>
-    );
+  return (
+    <>
+      [SpellSelector]
+      <SpellItem />
+    </>
+  );
 }

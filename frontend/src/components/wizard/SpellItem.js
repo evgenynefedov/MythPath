@@ -1,5 +1,3 @@
 export default function SpellItem() {
-    return(
-        <></>
-    )
+  return <>[SpellItem]</>;
 }
