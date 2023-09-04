@@ -1,0 +1,64 @@
+{
+    "genre": "Fantasy",
+    "world": "Magical Forest",
+    "real_world_locations": [
+      {
+        "name": "The Old Bridge",
+        "tag": "obstacle",
+        "description": "A bridge as old as time itself, guarded by ancient spirits.",
+        "google_places_data": {
+          "rating": 4.5,
+          "types": ["bridge", "historic_site"],
+          "address": "123 Forest Lane",
+          "short_description": "A rickety wooden bridge crossing a deep chasm."
+        }
+      },
+      {
+        "name": "Sunny Meadow",
+        "tag": "power_place",
+        "description": "A field filled with radiant flowers that amplify magic.",
+        "google_places_data": {
+          "rating": 4.8,
+          "types": ["park", "natural_feature"],
+          "address": "789 Sunshine Road",
+          "short_description": "A picturesque field bathed in sunlight."
+        }
+      }
+    ],
+    "main_character": {
+      "name": "Ella",
+      "trait": "Brave",
+      "special_ability": "Flying",
+      "weakness": "Fear of darkness",
+      "background": "Raised by wolves, Ella has always had an adventurous spirit.",
+      "appearance": "Bright eyes, short curly hair, and always wears a red cape."
+    },
+    "additional_characters": [
+      {
+        "name": "Frodo",
+        "trait": "Curious",
+        "special_ability": "Invisibility",
+        "weakness": "Easily distracted",
+        "relationship_to_main": "Best friend since childhood",
+        "background": "Grew up next door to Ella, always fascinated by magical artifacts."
+      }
+    ],
+    "main_task": "Find the lost treasure",
+    "sub_tasks": ["Cross the Old Bridge", "Amplify powers at Sunny Meadow", "Solve the riddle of the Treasure Map"],
+    "items": [
+      {
+        "name": "Magic Wand",
+        "property": "Can turn things into gold",
+        "origin": "Gifted by a mysterious sorcerer."
+      },
+      {
+        "name": "Flashlight",
+        "property": "Never runs out of battery",
+        "origin": "Found in an abandoned cabin."
+      }
+    ],
+    "moral": "The value of friendship",
+    "ending_type": "Happy",
+    "tone": "Adventurous",
+    "custom_prompt": "Based on these details, please generate a story."
+  }
