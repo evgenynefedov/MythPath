@@ -21,4 +21,5 @@ REACT_APP_CLOUDINARY_API_KEY  = hereIsSomeOtherApiKey
      */
     cloudinary: `${process.env.REACT_APP_CLOUDINARY_API_KEY}`,
   },
+  testMode: true,
 };
