@@ -22,9 +22,9 @@ const SYSTEM_MESSAGE =
   "You are a storyteller and you need to create an interesting story based on the following parameters.";
 const BEGIN_USER_MESSAGE = `Based on these details, please generate a story:`;
 
-export async function getGptResponse(storyParameters) {
+export async function textGenerator(storyParameters) {
   if (CONSTANTS.testMode) {
-    return TEST_MODE_STORY;
+    return Promise.resolve(TEST_MODE_STORY);
   }
 
   const userMessage = `${BEGIN_USER_MESSAGE} ${JSON.stringify(
