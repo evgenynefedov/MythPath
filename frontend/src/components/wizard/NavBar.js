@@ -25,32 +25,17 @@ export default function NavBar({
   next,
 }) {
   const theme = useTheme();
-
-  //TODO: remove activeStep state when stepping logic will be handled in parent
-  const [activeStep, setActiveStep] = React.useState(stepIndex);
-
-  const handleNext = () => {
-    next
-      ? next()
-      : activeStep < stepsCount - 1 &&
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    back ? back() : setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
   return (
     <Paper>
       <MobileStepper
         variant="progress"
         steps={stepsCount}
         position="static"
-        activeStep={activeStep}
+        activeStep={stepIndex}
         sx={{ flexGrow: 1 }}
         nextButton={
-          <Button size="medium" onClick={handleNext}>
-            {activeStep === stepsCount - 1
+          <Button size="medium" onClick={next}>
+            {stepIndex === stepsCount - 1
               ? "Create"
               : isSelected
               ? "Next"
@@ -63,11 +48,7 @@ export default function NavBar({
           </Button>
         }
         backButton={
-          <Button
-            size="medium"
-            onClick={handleBack}
-            disabled={activeStep === 0}
-          >
+          <Button size="medium" onClick={back} disabled={stepIndex === 0}>
             {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (
