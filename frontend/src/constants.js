@@ -21,4 +21,5 @@ REACT_APP_CLOUDINARY_API_KEY  = hereIsSomeOtherApiKey
      */
     cloudinary: `${process.env.REACT_APP_CLOUDINARY_API_KEY}`,
   },
+  cloudinaryBaseLink: "https://res.cloudinary.com/dyigwqfyo/image/upload/v1693918007/MythPath/Library",
 };
