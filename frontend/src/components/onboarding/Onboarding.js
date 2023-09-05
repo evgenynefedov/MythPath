@@ -9,7 +9,7 @@ import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 export default function Onboarding() {
   return (
     <Container>
-      <Container textAlign="center">
+      <Container>
         <Typography
           variant="h5"
           component="h1"
