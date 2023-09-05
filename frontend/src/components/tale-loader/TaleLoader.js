@@ -1,5 +1,3 @@
 export default function TaleLoader() {
-    return (
-        <></>
-    );
+  return <>[TaleLoader]</>;
 }
