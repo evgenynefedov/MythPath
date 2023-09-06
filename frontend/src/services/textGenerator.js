@@ -19,7 +19,7 @@ const TEST_MODE_STORY = `
   `;
 
 const SYSTEM_MESSAGE =
-  "You are a storyteller and you need to create an interesting story based on the following parameters.";
+  "Feel free to use the following details as a starting point. You have the creative freedom to create an engaging and imaginative story. Focus on interesting actions and dialogues between characters, rather than extensive descriptions.";
 const BEGIN_USER_MESSAGE = `Based on these details, please generate a story:`;
 
 export async function textGenerator(storyParameters) {
