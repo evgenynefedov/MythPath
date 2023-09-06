@@ -1,11 +1,16 @@
 import { useState } from "react";
 
 import { MobileStepper, Button, Box } from "@mui/material";
-import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { useSwipeable } from "react-swipeable";
 
 import SpellCard from "./SpellCard";
-export default function SpellSelector({ spells, step, updateStep, isMultiselector}) {
+export default function SpellSelector({
+  spells,
+  step,
+  updateStep,
+  isMultiselector,
+}) {
   const maxSteps = spells.length;
   const [activeStep, setActiveStep] = useState(0);
   const handlers = useSwipeable({
@@ -27,15 +32,19 @@ export default function SpellSelector({ spells, step, updateStep, isMultiselecto
     }
   }
   function selectHandler(spell) {
-    updateStep(spell)
+    updateStep(spell);
   }
   function isSelected(id) {
-    let result = false
-    if ((!isMultiselector && step?.value?.id === id)
-        || (isMultiselector && step?.value?.length !== 0 && step?.value?.findIndex(el => el.id === id) >= 0))  {
-      result = true
+    let result = false;
+    if (
+      (!isMultiselector && step?.value?.id === id) ||
+      (isMultiselector &&
+        step?.value?.length !== 0 &&
+        step?.value?.findIndex((el) => el.id === id) >= 0)
+    ) {
+      result = true;
     }
-    return result
+    return result;
   }
   return (
     <>
@@ -50,10 +59,11 @@ export default function SpellSelector({ spells, step, updateStep, isMultiselecto
         }}
       >
         {step.name}
-        <SpellCard 
-          spell={spells[activeStep]} 
-          select={selectHandler} 
-          selected={isSelected(spells[activeStep].id)}/>
+        <SpellCard
+          spell={spells[activeStep]}
+          select={selectHandler}
+          selected={isSelected(spells[activeStep].id)}
+        />
         <MobileStepper
           steps={maxSteps}
           position="static"
