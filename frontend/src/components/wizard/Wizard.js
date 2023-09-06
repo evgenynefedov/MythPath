@@ -7,69 +7,99 @@ import SpellSelector from "./SpellSelector";
 
 export default function Wizard() {
   const STEPS = [
-    "world",
-    "main character",
-    "additional characters",
-    "locations",
-    "generating",
+    {
+      name: "World",
+      value: null,
+      isMultiselector: false,
+    },
+    {
+      name: "Main character",
+      value: null,
+      isMultiselector: false,
+    },
+    {
+      name: "Additional characters",
+      value: null,
+      isMultiselector: true,
+    },
+    {
+      name: "Locations",
+      value: null,
+      isMultiselector: false,
+    },
   ];
-
-  // const STEPS_LIBRARIES_METHODS = {
-  //   world: libraryStorage.getWorlds,
-  //   "main character": libraryStorage.getCharacters,
-  //   "additional characters": libraryStorage.getCharacters,
-  //   locations: libraryStorage.getLocations,
-  // };
 
   const stepsCount = STEPS.length;
 
   const [stepIndex, setStepIndex] = useState(0);
-  const [promptParams, setPromptParams] = useState([]);
-  const [stepLibraries, setStepLibraries] = useState([]);
+  const [steps, setSteps] = useState(STEPS);
+  const [spells, setSpells] = useState(false);
 
   const makeStep = (shift) => {
     const newStepIndex = stepIndex + shift;
-    if (newStepIndex >= 0 && newStepIndex <= stepsCount) {
+
+    if (newStepIndex >= 0 && newStepIndex <= stepsCount - 1) {
       setStepIndex(newStepIndex);
+      setSpells(false);
+    } else if (stepIndex == stepsCount - 1) {
+      console.log("invoke textGenereate service");
     }
   };
 
-  const updatePromptParam = (value) => {
-    setPromptParams((previous) => (previous[stepIndex] = value));
+  const updateStep = (value) => {
+    setSteps((previous) => (previous[stepIndex].value = value));
+  };
+
+  const getSelectedWorldId = () => {
+    return steps[0].value ? steps[0].value.id : null;
+  };
+
+  const getSpells = async function (stepName) {
+    let stepSpells = false;
+    if (stepName == "World") {
+      stepSpells = await libraryStorage.getWorlds();
+    } else if (stepName == "Main character") {
+      stepSpells = await libraryStorage.getCharacters(
+        "en",
+        getSelectedWorldId()
+      );
+    } else if (stepName == "Additional characters") {
+      stepSpells = await libraryStorage.getCharacters(
+        "en",
+        getSelectedWorldId()
+      );
+    } else if (stepName == "Locations") {
+      stepSpells = await libraryStorage.getLocations(
+        "en",
+        getSelectedWorldId()
+      );
+    }
+    setSpells(stepSpells);
   };
 
   useEffect(() => {
-    if (typeof stepLibraries[stepIndex] == "undefined") {
-      if (STEPS[stepIndex] == "world") {
-        libraryStorage.getWorlds().then((libArray) => {
-          setStepLibraries((previous) => (previous[stepIndex] = libArray));
-        });
-      }
-    }
+    getSpells(steps[stepIndex].name);
   }, [stepIndex]);
-
-  useEffect(() => {
-    console.log(stepLibraries);
-  }, [stepLibraries]);
 
   return (
     <Container>
       <Typography variant="h5" component="h1" textAlign="center" mt={2} mb={1}>
-        {STEPS[stepIndex]}
+        {STEPS[stepIndex].name}
       </Typography>
 
-      <SpellSelector
-        stepLibrary={stepLibraries[stepIndex]}
-        promptParam={promptParams[stepIndex]}
-        updatePromptParam={updatePromptParam}
-      />
+      {spells && (
+        <SpellSelector
+          spells={spells}
+          step={steps[stepIndex].value}
+          isMultiselector={steps[stepIndex].isMultiselector}
+          updateStep={updateStep}
+        />
+      )}
 
       <NavBar
         stepsCount={stepsCount}
         stepIndex={stepIndex}
-        isSelected={
-          typeof promptParams[stepIndex] !== "undefined" ? true : false
-        }
+        isSelected={steps[stepIndex].value !== "undefined" ? true : false}
         back={() => {
           makeStep(-1);
         }}
