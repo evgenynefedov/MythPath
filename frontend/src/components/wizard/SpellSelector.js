@@ -1,36 +1,26 @@
-import { useState } from "react";
-
-import { MobileStepper, Button, Box } from "@mui/material";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { useSwipeable } from "react-swipeable";
+import { Box, Typography } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
 import SpellCard from "./SpellCard";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "./SpellSelector.css";
+
+const STEP_NAMES = {
+  world: "Choose world",
+  main_character: "Choose main character",
+  additional_characters: "Choose additional characters",
+  locations: "Choose locations",
+};
+
 export default function SpellSelector({
   spells,
   step,
   updateStep,
   isMultiselector,
 }) {
-  const maxSteps = spells.length;
-  const [activeStep, setActiveStep] = useState(0);
-  const handlers = useSwipeable({
-    onSwipedLeft: () => handleNext(),
-    onSwipedRight: () => handleBack(),
-  });
-  function handleNext() {
-    if (activeStep === maxSteps - 1) {
-      setActiveStep(0);
-    } else {
-      setActiveStep(activeStep + 1);
-    }
-  }
-  function handleBack() {
-    if (activeStep === 0) {
-      setActiveStep(maxSteps - 1);
-    } else {
-      setActiveStep(activeStep - 1);
-    }
-  }
   function selectHandler(spell) {
     updateStep(spell);
   }
@@ -47,41 +37,33 @@ export default function SpellSelector({
     return result;
   }
   return (
-    <>
-      <Box
-        {...handlers}
-        style={{
-          height: "300px",
-          padding: "16px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+    <Box mt={2}>
+      <Typography variant="h4" gutterBottom>
+        {STEP_NAMES[step.code]}
+      </Typography>
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        navigation={true}
+        breakpoints={{
+          320: { slidesPerView: 1 },
+          640: { slidesPerView: 2 },
+          860: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 },
         }}
+        modules={[Navigation]}
+        className="mySwiper"
       >
-        {step.name}
-        <SpellCard
-          spell={spells[activeStep]}
-          select={selectHandler}
-          selected={isSelected(spells[activeStep].id)}
-        />
-        <MobileStepper
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          nextButton={
-            <Button size="small" onClick={handleNext}>
-              Next
-              <KeyboardArrowRight />
-            </Button>
-          }
-          backButton={
-            <Button size="small" onClick={handleBack}>
-              <KeyboardArrowLeft />
-              Back
-            </Button>
-          }
-        />
-      </Box>
-    </>
+        {spells.map((spell) => (
+          <SwiperSlide key={spell.id}>
+            <SpellCard
+              spell={spell}
+              select={() => selectHandler(spell)}
+              selected={isSelected(spell.id)}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Box>
   );
 }
