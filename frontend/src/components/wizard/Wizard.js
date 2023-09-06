@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as libraryStorage from "./../../services/libraryStorage";
 import { textGenerator } from "./../../services/textGenerator";
+import * as taleStorage from "./../../services/taleStorage";
 import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import NavBar from "./NavBar";
@@ -103,16 +104,17 @@ export default function Wizard() {
     let story = false;
     setIsloading(true);
     //TO DO: delete setTimeout (it's only to show loader now)
-    setTimeout(async () => {
-      story = await textGenerator(storyParameters);
-      if (story) {
-        console.log("story was generated with params:");
-        console.log(storyParameters);
+    story = await textGenerator(storyParameters);
+    taleStorage.saveTale(story);
+    if (story) {
+      console.log("story was generated with params:");
+      console.log(storyParameters);
+      setTimeout(() => {
         navigate("/tale-viewer/0");
-      } else {
-        console.log("something wrong in generating of the story");
-      }
-    }, 3000);
+      }, 3000);
+    } else {
+      console.log("something wrong in generating of the story");
+    }
   };
 
   useEffect(() => {
