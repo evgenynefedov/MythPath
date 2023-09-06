@@ -62,7 +62,9 @@ export default function Wizard() {
         ? updatedSteps[stepIndex].value.splice(indexToDelete, 1)
         : updatedSteps[stepIndex].value.push(spell);
     } else {
-      updatedSteps[stepIndex].value = spell;
+      spell.id == steps[stepIndex].value?.id
+        ? (updatedSteps[stepIndex].value = {})
+        : (updatedSteps[stepIndex].value = spell);
     }
     setSteps(updatedSteps);
   };
