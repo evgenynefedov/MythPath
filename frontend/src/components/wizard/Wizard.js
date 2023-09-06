@@ -15,25 +15,21 @@ export default function Wizard() {
     {
       code: "world",
       isMulti: false,
-      isSelected: false,
       value: {},
     },
     {
       code: "main_character",
       isMulti: false,
-      isSelected: false,
       value: {},
     },
     {
       code: "additional_characters",
       isMulti: true,
-      isSelected: false,
       value: [],
     },
     {
       code: "locations",
       isMulti: true,
-      isSelected: false,
       value: [],
     },
   ];
@@ -109,12 +105,12 @@ export default function Wizard() {
   const generateTale = async function (storyParameters) {
     let story = false;
     setIsloading(true);
-    //TO DO: delete setTimeout (it's only to show loader now)
     story = await textGenerator(storyParameters);
     taleStorage.saveTale(story);
     if (story) {
       console.log("story was generated with params:");
       console.log(storyParameters);
+      //TO DO: delete setTimeout (it's only to show loader now)
       //setTimeout(() => {
       navigate("/tale-viewer/0");
       //}, 3000);
