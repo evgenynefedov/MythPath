@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as libraryStorage from "./../../services/libraryStorage";
+import textGenerator from "./../../services/textGenerator";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 
@@ -10,22 +10,18 @@ export default function Wizard() {
     {
       name: "World",
       value: null,
-      isMultiselector: false,
     },
     {
       name: "Main character",
       value: null,
-      isMultiselector: false,
     },
     {
       name: "Additional characters",
       value: null,
-      isMultiselector: true,
     },
     {
       name: "Locations",
       value: null,
-      isMultiselector: false,
     },
   ];
 
@@ -46,8 +42,12 @@ export default function Wizard() {
     }
   };
 
-  const updateStep = (value) => {
-    setSteps((previous) => (previous[stepIndex].value = value));
+  const updateStep = (newValue) => {
+    setSteps((previous) => {
+      previous[stepIndex].value = newValue;
+      console.log(previous);
+      return previous;
+    });
   };
 
   const getSelectedWorldId = () => {
@@ -74,6 +74,7 @@ export default function Wizard() {
         getSelectedWorldId()
       );
     }
+    //console.log(stepSpells);
     setSpells(stepSpells);
   };
 
@@ -81,21 +82,12 @@ export default function Wizard() {
     getSpells(steps[stepIndex].name);
   }, [stepIndex]);
 
+  useEffect(() => {
+    console.log(steps);
+  }, [steps]);
+
   return (
     <Container>
-      <Typography variant="h5" component="h1" textAlign="center" mt={2} mb={1}>
-        {STEPS[stepIndex].name}
-      </Typography>
-
-      {spells && (
-        <SpellSelector
-          spells={spells}
-          step={steps[stepIndex].value}
-          isMultiselector={steps[stepIndex].isMultiselector}
-          updateStep={updateStep}
-        />
-      )}
-
       <NavBar
         stepsCount={stepsCount}
         stepIndex={stepIndex}
@@ -107,6 +99,17 @@ export default function Wizard() {
           makeStep(1);
         }}
       />
+
+      {spells && (
+        <SpellSelector
+          spells={spells}
+          step={steps[stepIndex]}
+          isMultiselector={
+            steps[stepIndex].name == "Additional characters" ? true : false
+          }
+          updateStep={updateStep}
+        />
+      )}
     </Container>
   );
 }
