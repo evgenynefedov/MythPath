@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from "react";
 import * as libraryStorage from "./../../services/libraryStorage";
-import textGenerator from "./../../services/textGenerator";
+import { textGenerator } from "./../../services/textGenerator";
+import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 
 export default function Wizard() {
+  const navigate = useNavigate();
+
   const STEPS = [
     {
       name: "World",
-      value: null,
+      isMulti: false,
+      value: {},
     },
     {
       name: "Main character",
-      value: null,
+      isMulti: false,
+      value: {},
     },
     {
       name: "Additional characters",
-      value: null,
+      isMulti: true,
+      value: [],
     },
     {
       name: "Locations",
-      value: null,
+      isMulti: true,
+      value: [],
     },
   ];
 
@@ -38,16 +45,26 @@ export default function Wizard() {
       setStepIndex(newStepIndex);
       setSpells(false);
     } else if (stepIndex == stepsCount - 1) {
-      console.log("invoke textGenereate service");
+      //TO DO: make preprocessing "steps" before invokation of "generateTale"
+      generateTale(steps);
     }
   };
 
-  const updateStep = (newValue) => {
-    setSteps((previous) => {
-      previous[stepIndex].value = newValue;
-      console.log(previous);
-      return previous;
-    });
+  const updateStep = (spell) => {
+    let updatedSteps = [...steps];
+
+    if (steps[stepIndex].isMulti) {
+      let indexToDelete = updatedSteps[stepIndex].value.findIndex(
+        (e) => e.id == spell.id
+      );
+
+      indexToDelete != -1
+        ? updatedSteps[stepIndex].value.splice(indexToDelete, 1)
+        : updatedSteps[stepIndex].value.push(spell);
+    } else {
+      updatedSteps[stepIndex].value = spell;
+    }
+    setSteps(updatedSteps);
   };
 
   const getSelectedWorldId = () => {
@@ -74,17 +91,24 @@ export default function Wizard() {
         getSelectedWorldId()
       );
     }
-    //console.log(stepSpells);
     setSpells(stepSpells);
+  };
+
+  const generateTale = async function (storyParameters) {
+    let story = false;
+    story = await textGenerator(storyParameters);
+    if (story) {
+      console.log("story was generated with params:");
+      console.log(storyParameters);
+      navigate("/tale-viewer/0");
+    } else {
+      console.log("something wrong in generating of the story");
+    }
   };
 
   useEffect(() => {
     getSpells(steps[stepIndex].name);
   }, [stepIndex]);
-
-  useEffect(() => {
-    console.log(steps);
-  }, [steps]);
 
   return (
     <Container>
@@ -104,9 +128,7 @@ export default function Wizard() {
         <SpellSelector
           spells={spells}
           step={steps[stepIndex]}
-          isMultiselector={
-            steps[stepIndex].name == "Additional characters" ? true : false
-          }
+          isMultiselector={steps[stepIndex].isMulti}
           updateStep={updateStep}
         />
       )}
