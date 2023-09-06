@@ -13,23 +13,27 @@ export default function Wizard() {
 
   const STEPS = [
     {
-      name: "World",
+      code: "world",
       isMulti: false,
+      isSelected: false,
       value: {},
     },
     {
-      name: "Main character",
+      code: "main_character",
       isMulti: false,
+      isSelected: false,
       value: {},
     },
     {
-      name: "Additional characters",
+      code: "additional_characters",
       isMulti: true,
+      isSelected: false,
       value: [],
     },
     {
-      name: "Locations",
+      code: "locations",
       isMulti: true,
+      isSelected: false,
       value: [],
     },
   ];
@@ -77,21 +81,23 @@ export default function Wizard() {
     return steps[0].value ? steps[0].value.id : null;
   };
 
-  const getSpells = async function (stepName) {
+  const getSpells = async function (stepCode) {
     let stepSpells = false;
-    if (stepName == "World") {
+    if (stepCode == "world") {
       stepSpells = await libraryStorage.getWorlds();
-    } else if (stepName == "Main character") {
-      stepSpells = await libraryStorage.getCharacters(
-        "en",
-        getSelectedWorldId()
-      );
-    } else if (stepName == "Additional characters") {
-      stepSpells = await libraryStorage.getCharacters(
-        "en",
-        getSelectedWorldId()
-      );
-    } else if (stepName == "Locations") {
+    } else if (stepCode == "main_character") {
+      stepSpells = await libraryStorage
+        .getCharacters
+        //"en",
+        //getSelectedWorldId()
+        ();
+    } else if (stepCode == "additional_characters") {
+      stepSpells = await libraryStorage
+        .getCharacters
+        //"en",
+        //getSelectedWorldId()
+        ();
+    } else if (stepCode == "locations") {
       stepSpells = await libraryStorage.getLocations(
         "en",
         getSelectedWorldId()
@@ -109,16 +115,16 @@ export default function Wizard() {
     if (story) {
       console.log("story was generated with params:");
       console.log(storyParameters);
-      setTimeout(() => {
-        navigate("/tale-viewer/0");
-      }, 3000);
+      //setTimeout(() => {
+      navigate("/tale-viewer/0");
+      //}, 3000);
     } else {
       console.log("something wrong in generating of the story");
     }
   };
 
   useEffect(() => {
-    getSpells(steps[stepIndex].name);
+    getSpells(steps[stepIndex].code);
   }, [stepIndex]);
 
   return (
@@ -130,7 +136,12 @@ export default function Wizard() {
           <NavBar
             stepsCount={stepsCount}
             stepIndex={stepIndex}
-            isSelected={steps[stepIndex].value !== "undefined" ? true : false}
+            isSelected={
+              !(
+                Object.keys(steps[stepIndex].value).length === 0 ||
+                steps[stepIndex].value.length === 0
+              )
+            }
             back={() => {
               makeStep(-1);
             }}

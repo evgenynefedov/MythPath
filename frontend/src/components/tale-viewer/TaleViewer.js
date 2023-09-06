@@ -4,6 +4,7 @@ import { useSwipeable } from "react-swipeable";
 import { textGenerator } from "../../services/textGenerator";
 import storyTemplate from "../../Data/fantasy_story_template.json";
 import { splitStoryIntoPages } from "../../Utils/splitIntoPages";
+import * as taleStorage from "./../../services/taleStorage";
 import { TaleImage } from "./TaleImage";
 import { TaleText } from "./TaleText";
 import { TaleControls } from "./TaleControls";
@@ -14,7 +15,8 @@ export default function TaleViewer() {
 
   useEffect(() => {
     async function fetchStory() {
-      const story = await textGenerator(storyTemplate);
+      //const story = await textGenerator(storyTemplate);
+      const story = await taleStorage.getTale();
       const newPages = splitStoryIntoPages(story);
       setPages(newPages);
     }

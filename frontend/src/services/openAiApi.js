@@ -1,7 +1,7 @@
 import { CONSTANTS } from "../constants";
 
 export const API_URL = "https://api.openai.com/v1/chat/completions";
-export const MAX_TOKENS = 100;
+export const MAX_TOKENS = 800;
 
 export async function fetchGptResponse(requestOptions) {
   const apiKey = CONSTANTS.apiKeys.openai;
