@@ -1,12 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
+import Carousel from "../ui/Carousel";
 import SpellCard from "./SpellCard";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "./SpellSelector.css";
 
 const STEP_NAMES = {
   world: "Choose world",
@@ -41,29 +35,16 @@ export default function SpellSelector({
       <Typography variant="h4" gutterBottom>
         {STEP_NAMES[step.code]}
       </Typography>
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
-        navigation={true}
-        breakpoints={{
-          320: { slidesPerView: 1 },
-          640: { slidesPerView: 2 },
-          860: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 },
-        }}
-        modules={[Navigation]}
-        className="mySwiper"
-      >
+      <Carousel>
         {spells.map((spell) => (
-          <SwiperSlide key={spell.id}>
-            <SpellCard
-              spell={spell}
-              select={() => selectHandler(spell)}
-              selected={isSelected(spell.id)}
-            />
-          </SwiperSlide>
+          <SpellCard
+            key={spell.id}
+            spell={spell}
+            select={() => selectHandler(spell)}
+            selected={isSelected(spell.id)}
+          />
         ))}
-      </Swiper>
+      </Carousel>
     </Box>
   );
 }
