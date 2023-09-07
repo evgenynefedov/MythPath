@@ -54,7 +54,7 @@ export default function TaleViewer() {
           page={pages[currentPage]}
           isLastPage={currentPage === pages.length - 1}
         />
-        <TaleControls handlePrevious={handlePrevious} handleNext={handleNext} />
+        <TaleControls handlePrevious={handlePrevious} handleNext={handleNext} steps={pages.length} currentPage={currentPage} />
       </Box>
     </Paper>
   );
