@@ -7,6 +7,7 @@ import { Container, Box } from "@mui/material";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 import TaleLoader from "../tale-loader/TaleLoader";
+import generatePromptData from "../../services/generatePromptData";
 
 export default function Wizard() {
   const navigate = useNavigate();
@@ -50,7 +51,8 @@ export default function Wizard() {
       setSpells(false);
     } else if (stepIndex === stepsCount - 1) {
       //TO DO: make preprocessing "steps" before invokation of "generateTale"
-      generateTale(steps);
+      const promptData = generatePromptData(steps);
+      generateTale(promptData);
     }
   };
 
@@ -110,6 +112,9 @@ export default function Wizard() {
     if (story) {
       console.log("story was generated with params:");
       console.log(storyParameters);
+      console.log("story :");
+      console.log(story);
+
       //TO DO: delete setTimeout (it's only to show loader now)
       //setTimeout(() => {
       navigate("/tale-viewer/0");
