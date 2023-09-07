@@ -1,4 +1,7 @@
 import "./App.css";
+import CssBaseline from "@mui/material/CssBaseline";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { themeOptions } from "./Utils/themeOptions";
 import Onboarding from "./components/onboarding/Onboarding";
 import Wizard from "./components/wizard/Wizard";
 import TaleLoader from "./components/tale-loader/TaleLoader";
@@ -9,15 +12,22 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 
 function App() {
+  const theme = createTheme(themeOptions);
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Onboarding />} />
-        <Route path="/wizard" element={<Wizard />} />
-        <Route path="/tale-loader" element={<TaleLoader />} />
-        <Route path="/tale-viewer/:id" element={<TaleViewer />} />
-      </Routes>
-    </Router>
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Onboarding />} />
+            <Route path="/wizard" element={<Wizard />} />
+            <Route path="/tale-loader" element={<TaleLoader />} />
+            <Route path="/tale-viewer/:id" element={<TaleViewer />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </>
   );
 }
 
