@@ -1,6 +1,8 @@
 import getRandomElementFromArray from "../Utils/getRandomElementFromArray";
+import filterImages from "./filterImages";
 
-const transformStoryFormat = (story, filteredImages) => {
+const responseToTale = (steps, story) => {
+  const filteredImages = filterImages(steps);
   return {
     title: story.title,
     cover:
@@ -20,4 +22,4 @@ const transformStoryFormat = (story, filteredImages) => {
   };
 };
 
-export default transformStoryFormat;
+export default responseToTale;
