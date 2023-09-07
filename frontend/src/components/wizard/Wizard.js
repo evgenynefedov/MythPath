@@ -8,6 +8,8 @@ import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 import TaleLoader from "../tale-loader/TaleLoader";
 import generatePromptData from "../../services/generatePromptData";
+import transformStoryFormat from "../../services/transformStoryFormat";
+import filterImages from "../../services/filterImages";
 
 export default function Wizard() {
   const navigate = useNavigate();
@@ -52,7 +54,8 @@ export default function Wizard() {
     } else if (stepIndex === stepsCount - 1) {
       //TO DO: make preprocessing "steps" before invokation of "generateTale"
       const promptData = generatePromptData(steps);
-      generateTale(promptData);
+      const imageTaleData = filterImages(steps);
+      generateTale(promptData, imageTaleData);
     }
   };
 
@@ -104,10 +107,13 @@ export default function Wizard() {
     return stepSpells;
   };
 
-  const generateTale = async function (storyParameters) {
+  const generateTale = async function (storyParameters, imageData) {
     let story = false;
     setIsloading(true);
-    story = await textGenerator(storyParameters);
+    let textAndTitles = await textGenerator(storyParameters);
+    textAndTitles = JSON.parse(textAndTitles);
+    story = transformStoryFormat(textAndTitles, imageData);
+
     taleStorage.saveTale(story);
     if (story) {
       console.log("story was generated with params:");
