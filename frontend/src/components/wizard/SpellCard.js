@@ -10,37 +10,30 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
+/**
+ * Card displayes the spell info with button to select/unselect
+ * @param {*} props
+ * @param {*} props.spell spell data to display
+ * @param {function} props.select callback for toggling selection state of the spell
+ * @param {boolean} props.selected is the spell selected
+ * * @returns
+ */
 export default function SpellCard({ spell, select, selected }) {
-  function selectHandler() {
-    select(spell);
-  }
   return (
     <Card sx={{ maxWidth: 300 }} elevation={3}>
-      {/* TODO: Fix media height */}
+      {/* TODO: Fix media cropping */}
       <CardMedia
-        sx={{ height: 200 }}
+        sx={{ height: 200, position: "relative" }}
         image={`${CONSTANTS.cloudinaryBaseLink}${spell.img}`}
-        title={spell.name}
       >
-        {/* TODO: Align button to the bottom */}
-        <CardActions>
+        <CardActions sx={{ position: "absolute", bottom: 0 }}>
           {selected ? (
-            <Fab
-              color="secondary"
-              aria-label="remove"
-              variant="extended"
-              onClick={selectHandler}
-            >
+            <Fab color="secondary" variant="extended" onClick={select}>
               <RemoveIcon />
               Remove
             </Fab>
           ) : (
-            <Fab
-              color="primary"
-              aria-label="add"
-              variant="extended"
-              onClick={selectHandler}
-            >
+            <Fab color="primary" variant="extended" onClick={select}>
               <AddIcon />
               Add
             </Fab>
