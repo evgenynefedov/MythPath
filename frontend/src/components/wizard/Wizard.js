@@ -99,7 +99,7 @@ export default function Wizard() {
         getSelectedWorldId()
       );
     }
-    setSpells(stepSpells);
+    return stepSpells;
   };
 
   const generateTale = async function (storyParameters) {
@@ -120,7 +120,9 @@ export default function Wizard() {
   };
 
   useEffect(() => {
-    getSpells(steps[stepIndex].code);
+    getSpells(steps[stepIndex].code).then((r) => {
+      setSpells(r);
+    });
   }, [stepIndex]);
 
   return (
