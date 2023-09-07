@@ -3,7 +3,7 @@ import * as libraryStorage from "./../../services/libraryStorage";
 import { textGenerator } from "./../../services/textGenerator";
 import * as taleStorage from "./../../services/taleStorage";
 import { useNavigate } from "react-router-dom";
-import Container from "@mui/material/Container";
+import { Container, Box } from "@mui/material";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 import TaleLoader from "../tale-loader/TaleLoader";
@@ -48,7 +48,7 @@ export default function Wizard() {
     if (newStepIndex >= 0 && newStepIndex <= stepsCount - 1) {
       setStepIndex(newStepIndex);
       setSpells(false);
-    } else if (stepIndex == stepsCount - 1) {
+    } else if (stepIndex === stepsCount - 1) {
       //TO DO: make preprocessing "steps" before invokation of "generateTale"
       generateTale(steps);
     }
@@ -59,14 +59,14 @@ export default function Wizard() {
 
     if (steps[stepIndex].isMulti) {
       let indexToDelete = updatedSteps[stepIndex].value.findIndex(
-        (e) => e.id == spell.id
+        (e) => e.id === spell.id
       );
 
-      indexToDelete != -1
+      indexToDelete !== -1
         ? updatedSteps[stepIndex].value.splice(indexToDelete, 1)
         : updatedSteps[stepIndex].value.push(spell);
     } else {
-      spell.id == steps[stepIndex].value?.id
+      spell.id === steps[stepIndex].value?.id
         ? (updatedSteps[stepIndex].value = {})
         : (updatedSteps[stepIndex].value = spell);
     }
@@ -77,29 +77,29 @@ export default function Wizard() {
     return steps[0].value ? steps[0].value.id : null;
   };
 
-  const getSpells = async function (stepCode) {
+  const fetchSpells = async function (stepCode) {
     let stepSpells = false;
-    if (stepCode == "world") {
+    if (stepCode === "world") {
       stepSpells = await libraryStorage.getWorlds();
-    } else if (stepCode == "main_character") {
+    } else if (stepCode === "main_character") {
       stepSpells = await libraryStorage
         .getCharacters
         //"en",
         //getSelectedWorldId()
         ();
-    } else if (stepCode == "additional_characters") {
+    } else if (stepCode === "additional_characters") {
       stepSpells = await libraryStorage
         .getCharacters
         //"en",
         //getSelectedWorldId()
         ();
-    } else if (stepCode == "locations") {
+    } else if (stepCode === "locations") {
       stepSpells = await libraryStorage.getLocations(
         "en",
         getSelectedWorldId()
       );
     }
-    setSpells(stepSpells);
+    return stepSpells;
   };
 
   const generateTale = async function (storyParameters) {
@@ -120,7 +120,9 @@ export default function Wizard() {
   };
 
   useEffect(() => {
-    getSpells(steps[stepIndex].code);
+    fetchSpells(steps[stepIndex].code).then((r) => {
+      setSpells(r);
+    });
   }, [stepIndex]);
 
   return (
@@ -128,33 +130,43 @@ export default function Wizard() {
       {isLoading ? (
         <TaleLoader />
       ) : (
-        <Container>
-          <NavBar
-            stepsCount={stepsCount}
-            stepIndex={stepIndex}
-            isSelected={
-              !(
-                Object.keys(steps[stepIndex].value).length === 0 ||
-                steps[stepIndex].value.length === 0
-              )
-            }
-            back={() => {
-              makeStep(-1);
-            }}
-            next={() => {
-              makeStep(1);
-            }}
-          />
-
-          {spells && (
-            <SpellSelector
-              spells={spells}
-              step={steps[stepIndex]}
-              isMultiselector={steps[stepIndex].isMulti}
-              updateStep={updateStep}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+            bgcolor: "#eeeeee",
+          }}
+        >
+          <Container maxWidth="lg">
+            {spells && (
+              <SpellSelector
+                spells={spells}
+                step={steps[stepIndex]}
+                isMultiselector={steps[stepIndex].isMulti}
+                updateStep={updateStep}
+              />
+            )}
+          </Container>
+          <Box sx={{ pt: 3, mt: "auto" }}>
+            <NavBar
+              stepsCount={stepsCount}
+              stepIndex={stepIndex}
+              isSelected={
+                !(
+                  Object.keys(steps[stepIndex].value).length === 0 ||
+                  steps[stepIndex].value.length === 0
+                )
+              }
+              back={() => {
+                makeStep(-1);
+              }}
+              next={() => {
+                makeStep(1);
+              }}
             />
-          )}
-        </Container>
+          </Box>
+        </Box>
       )}
     </>
   );
