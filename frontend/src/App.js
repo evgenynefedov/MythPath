@@ -6,6 +6,8 @@ import TaleViewer from "./components/tale-viewer/TaleViewer";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import { withAuthenticator } from "@aws-amplify/ui-react";
+
 function App() {
   return (
     <Router>
@@ -19,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
