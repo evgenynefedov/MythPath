@@ -48,7 +48,7 @@ export default function Wizard() {
     if (newStepIndex >= 0 && newStepIndex <= stepsCount - 1) {
       setStepIndex(newStepIndex);
       setSpells(false);
-    } else if (stepIndex == stepsCount - 1) {
+    } else if (stepIndex === stepsCount - 1) {
       //TO DO: make preprocessing "steps" before invokation of "generateTale"
       generateTale(steps);
     }
@@ -59,14 +59,14 @@ export default function Wizard() {
 
     if (steps[stepIndex].isMulti) {
       let indexToDelete = updatedSteps[stepIndex].value.findIndex(
-        (e) => e.id == spell.id
+        (e) => e.id === spell.id
       );
 
-      indexToDelete != -1
+      indexToDelete !== -1
         ? updatedSteps[stepIndex].value.splice(indexToDelete, 1)
         : updatedSteps[stepIndex].value.push(spell);
     } else {
-      spell.id == steps[stepIndex].value?.id
+      spell.id === steps[stepIndex].value?.id
         ? (updatedSteps[stepIndex].value = {})
         : (updatedSteps[stepIndex].value = spell);
     }
@@ -77,23 +77,23 @@ export default function Wizard() {
     return steps[0].value ? steps[0].value.id : null;
   };
 
-  const getSpells = async function (stepCode) {
+  const fetchSpells = async function (stepCode) {
     let stepSpells = false;
-    if (stepCode == "world") {
+    if (stepCode === "world") {
       stepSpells = await libraryStorage.getWorlds();
-    } else if (stepCode == "main_character") {
+    } else if (stepCode === "main_character") {
       stepSpells = await libraryStorage
         .getCharacters
         //"en",
         //getSelectedWorldId()
         ();
-    } else if (stepCode == "additional_characters") {
+    } else if (stepCode === "additional_characters") {
       stepSpells = await libraryStorage
         .getCharacters
         //"en",
         //getSelectedWorldId()
         ();
-    } else if (stepCode == "locations") {
+    } else if (stepCode === "locations") {
       stepSpells = await libraryStorage.getLocations(
         "en",
         getSelectedWorldId()
@@ -120,7 +120,7 @@ export default function Wizard() {
   };
 
   useEffect(() => {
-    getSpells(steps[stepIndex].code).then((r) => {
+    fetchSpells(steps[stepIndex].code).then((r) => {
       setSpells(r);
     });
   }, [stepIndex]);
