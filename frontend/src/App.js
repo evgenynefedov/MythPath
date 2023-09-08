@@ -10,13 +10,19 @@ import TaleViewer from "./components/tale-viewer/TaleViewer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Box } from "@mui/material";
 
-function App() {
+function App({ signOut, user }) {
   const theme = createTheme(themeOptions);
 
   return (
     <>
       <ThemeProvider theme={theme}>
+        <Box textAlign="center" sx={{ m: 2 }}>
+          {user.attributes.email}
+          <button onClick={signOut}>Sign Out</button>
+        </Box>
+
         <CssBaseline />
         <Router>
           <Routes>
