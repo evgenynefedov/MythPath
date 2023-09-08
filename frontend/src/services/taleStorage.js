@@ -10,7 +10,7 @@ const TALE_STORAGE_KEY = "tale";
  * @param {*} tale Tale object to save
  */
 export async function saveTale(tale) {
-  localStorage.setItem(TALE_STORAGE_KEY, tale);
+  localStorage.setItem(TALE_STORAGE_KEY, JSON.stringify(tale));
 }
 
 /**
@@ -18,5 +18,5 @@ export async function saveTale(tale) {
  * @returns {*} Tale object
  */
 export async function getTale() {
-  return localStorage.getItem(TALE_STORAGE_KEY);
+  return JSON.parse(localStorage.getItem(TALE_STORAGE_KEY));
 }
