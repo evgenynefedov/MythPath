@@ -37,7 +37,7 @@ export default function NavBar({
           <Button
             size="large"
             onClick={next}
-            variant={isSelected ? "contained" : null}
+            variant={isSelected ? "outlined" : null}
           >
             {stepIndex === stepsCount - 1
               ? "Create"

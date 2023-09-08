@@ -144,7 +144,6 @@ export default function Wizard() {
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
-            bgcolor: "#eeeeee",
           }}
         >
           <Container maxWidth="lg">

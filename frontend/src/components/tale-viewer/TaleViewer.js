@@ -6,11 +6,8 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useSwipeable } from "react-swipeable";
 // import { textGenerator } from "../../services/textGenerator";
 // import storyTemplate from "../../Data/fantasy_story_template.json";
-// import { splitStoryIntoPages } from "../../Utils/splitIntoPages";
 import * as taleStorage from "./../../services/taleStorage";
 import TalePage from "./TalePage";
-// import { TaleImage } from "./TaleImage";
-// import { TaleText } from "./TaleText";
 import { TaleControls } from "./TaleControls";
 
 export default function TaleViewer() {
@@ -22,7 +19,6 @@ export default function TaleViewer() {
       //const newStory = await textGenerator(storyTemplate);
       const newStory = await taleStorage.getTale();
       setStory(newStory);
-      console.log(newStory)
     }
     fetchStory();
   }, []);

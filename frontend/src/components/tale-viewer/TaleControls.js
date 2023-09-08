@@ -16,7 +16,11 @@ export const TaleControls = ({ handlePrevious, handleNext, steps, currentPage })
         </Button>
       }
       backButton={
-        <Button size="small" onClick={handlePrevious} disabled={currentPage === 0 ? true : false}>
+        <Button 
+          size="small" 
+          variant="text"
+          onClick={handlePrevious} 
+          disabled={currentPage === 0 ? true : false}>
           <KeyboardArrowLeft />
           Back
         </Button>

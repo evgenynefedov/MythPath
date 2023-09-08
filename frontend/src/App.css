@@ -3,3 +3,9 @@
 	font-family: 'Flower';
 	src: url('./../public/fonts/FlowerDisplayDemoRegular-BWvql.otf');
 }
+body {
+    background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('./pinkBack.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}

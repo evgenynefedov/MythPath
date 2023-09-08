@@ -1,12 +1,17 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Button, Container, Typography, Box, Select, MenuItem } from "@mui/material";
+// import Container from "@mui/material/Container";
+// import Typography from "@mui/material/Typography";
+// import Box from "@mui/material/Box";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
+// import Select from '@mui/material/Select';
+// import MenuItem from '@mui/material/MenuItem';
 
-export default function Onboarding() {
+export default function Onboarding({themes, changeTheme, selected}) {
+  function handleChange(event) {
+    changeTheme(event.target.value)
+  }
   return (
     <Container>
       <Container>
@@ -35,7 +40,7 @@ export default function Onboarding() {
           life, blending entertainment and education like never before!
         </Typography>
 
-        <Typography variant="subtitle1" mt={2}>
+        {/* <Typography variant="subtitle1" mt={2}>
           📚 Personalized Stories
         </Typography>
         <Typography variant="body2">
@@ -50,7 +55,16 @@ export default function Onboarding() {
         <Typography variant="body2">
           Your child's adventure begins here, and with MythPath, the
           possibilities are endless. Let the magic of storytelling lead the way!
-        </Typography>
+        </Typography> */}
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={selected}
+          label="Age"
+          onChange={handleChange}
+        >
+          {themes.map((theme) => <MenuItem key={theme} value={theme}>{theme}</MenuItem>)}
+        </Select>
       </Container>
       <Box textAlign="center" mt={4}>
         <Link to="/wizard">

@@ -73,3 +73,14 @@
         height: 0;
     }
 }
+@media only screen and (min-width: 670px) {
+    p.tale_page__text {
+        font-size: 1.5em;
+    }  
+}
+
+@media only screen and (min-width: 1000px) {
+    p.tale_page__text {
+        font-size: 2em;
+    }  
+}
