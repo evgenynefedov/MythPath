@@ -34,7 +34,11 @@ export default function NavBar({
         activeStep={stepIndex}
         sx={{ flexGrow: 1 }}
         nextButton={
-          <Button size="medium" onClick={next}>
+          <Button
+            size="large"
+            onClick={next}
+            variant={isSelected ? "contained" : null}
+          >
             {stepIndex === stepsCount - 1
               ? "Create"
               : isSelected
@@ -48,7 +52,7 @@ export default function NavBar({
           </Button>
         }
         backButton={
-          <Button size="medium" onClick={back} disabled={stepIndex === 0}>
+          <Button size="large" onClick={back} disabled={stepIndex === 0}>
             {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (

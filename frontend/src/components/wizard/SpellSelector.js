@@ -1,77 +1,55 @@
-import { useState } from "react";
-
-import { MobileStepper, Button, Box } from "@mui/material";
-import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
-import { useSwipeable } from "react-swipeable";
-
+import { Box, Chip, Stack, Typography } from "@mui/material";
+import Carousel from "../ui/Carousel";
 import SpellCard from "./SpellCard";
-export default function SpellSelector({ spells, step, updateStep, isMultiselector}) {
-  const maxSteps = spells.length;
-  const [activeStep, setActiveStep] = useState(0);
-  const handlers = useSwipeable({
-    onSwipedLeft: () => handleNext(),
-    onSwipedRight: () => handleBack(),
-  });
-  function handleNext() {
-    if (activeStep === maxSteps - 1) {
-      setActiveStep(0);
-    } else {
-      setActiveStep(activeStep + 1);
-    }
-  }
-  function handleBack() {
-    if (activeStep === 0) {
-      setActiveStep(maxSteps - 1);
-    } else {
-      setActiveStep(activeStep - 1);
-    }
-  }
+
+const STEP_NAMES = {
+  world: "Choose world",
+  main_character: "Choose main character",
+  additional_characters: "Choose additional characters",
+  locations: "Choose locations",
+};
+
+export default function SpellSelector({
+  spells,
+  step,
+  updateStep,
+  isMultiselector,
+}) {
   function selectHandler(spell) {
-    updateStep(spell)
+    updateStep(spell);
   }
-  function isSelected(id) {
-    let result = false
-    if ((!isMultiselector && step?.value?.id === id)
-        || (isMultiselector && step?.value?.length !== 0 && step?.value?.findIndex(el => el.id === id) >= 0))  {
-      result = true
-    }
-    return result
-  }
+
+  const isSelected = (id) =>
+    isMultiselector && Array.isArray(step?.value)
+      ? step.value.some((el) => el.id === id)
+      : step?.value?.id === id;
+
   return (
-    <>
-      <Box
-        {...handlers}
-        style={{
-          height: "300px",
-          padding: "16px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {step.name}
-        <SpellCard 
-          spell={spells[activeStep]} 
-          select={selectHandler} 
-          selected={isSelected(spells[activeStep].id)}/>
-        <MobileStepper
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          nextButton={
-            <Button size="small" onClick={handleNext}>
-              Next
-              <KeyboardArrowRight />
-            </Button>
-          }
-          backButton={
-            <Button size="small" onClick={handleBack}>
-              <KeyboardArrowLeft />
-              Back
-            </Button>
-          }
-        />
-      </Box>
-    </>
+    <Box mt={2}>
+      <Typography variant="h4" gutterBottom>
+        {STEP_NAMES[step.code]}
+        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+          {spells
+            .filter((spell) => isSelected(spell.id))
+            .map((spell) => (
+              <Chip
+                label={spell.name}
+                key={spell.id}
+                onDelete={() => selectHandler(spell)}
+              />
+            ))}
+        </Stack>
+      </Typography>
+      <Carousel>
+        {spells.map((spell) => (
+          <SpellCard
+            key={spell.id}
+            spell={spell}
+            select={() => selectHandler(spell)}
+            selected={isSelected(spell.id)}
+          />
+        ))}
+      </Carousel>
+    </Box>
   );
 }
