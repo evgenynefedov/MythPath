@@ -1,12 +1,5 @@
 import { CONSTANTS } from "../../constants";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Fab,
-  Typography,
-} from "@mui/material";
+import { Card, CardActions, CardContent, Fab, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CloudinaryImage } from "@cloudinary/url-gen";
