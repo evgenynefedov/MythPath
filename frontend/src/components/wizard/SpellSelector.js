@@ -26,7 +26,7 @@ export default function SpellSelector({
 
   return (
     <Box mt={2}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h1" gutterBottom>
         {STEP_NAMES[step.code]}
         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
           {spells

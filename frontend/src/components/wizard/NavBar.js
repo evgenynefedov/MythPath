@@ -53,11 +53,15 @@ export default function NavBar({
         }
         backButton={
           <Button size="large" onClick={back} disabled={stepIndex === 0}>
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
+            {stepIndex !== 0 &&
+              <>
+                {theme.direction === "rtl" ? (
+                  <KeyboardArrowRight />
+                ) : (
+                  <KeyboardArrowLeft />
+                )}
+              </>
+            }
             Back
           </Button>
         }

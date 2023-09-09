@@ -8,11 +8,11 @@ export default function TalePage({ page, tittle }) {
         <Box elevation={3} className="tale_page">
         <>
             <Box className="tale_page__img" style={{backgroundImage: `url("${CONSTANTS.cloudinaryBaseLink}${page.img}")`}}>
-            <Typography variant="h5" className="tale__tittle">
+            <Typography variant="h2" className="tale__tittle">
                 {tittle}
             </Typography>
             </Box>
-            <Typography variant="body1" className="tale_page__text">
+            <Typography variant="body2" className="tale_page__text">
                 {page.text}
             </Typography>
         </>

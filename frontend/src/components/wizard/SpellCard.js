@@ -41,10 +41,10 @@ export default function SpellCard({ spell, select, selected }) {
         </CardActions>
       </CardMedia>
       <CardContent>
-        <Typography variant="h5" component="div">
+        <Typography variant="h2">
           {spell.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body1">
           {spell.description}
         </Typography>
       </CardContent>

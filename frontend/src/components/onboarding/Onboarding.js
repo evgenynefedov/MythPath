@@ -16,8 +16,7 @@ export default function Onboarding({themes, changeTheme, selected}) {
     <Container>
       <Container>
         <Typography
-          variant="h5"
-          component="h1"
+          variant="h1"
           textAlign="center"
           mt={2}
           mb={1}
@@ -71,7 +70,7 @@ export default function Onboarding({themes, changeTheme, selected}) {
           <Button
             variant="contained"
             size="medium"
-            endIcon={<AutoFixHighIcon />}
+            endIcon={<AutoFixHighIcon color="primary"/>}
           >
             Create Fairytale!
           </Button>

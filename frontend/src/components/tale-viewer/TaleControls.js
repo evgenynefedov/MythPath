@@ -12,7 +12,9 @@ export const TaleControls = ({ handlePrevious, handleNext, steps, currentPage })
       nextButton={
         <Button size="small" onClick={handleNext} disabled={(currentPage === steps - 1) ? true : false}>
           Next
-          <KeyboardArrowRight />
+          {(currentPage !== steps - 1) &&
+            <KeyboardArrowRight />
+          }
         </Button>
       }
       backButton={
@@ -21,7 +23,9 @@ export const TaleControls = ({ handlePrevious, handleNext, steps, currentPage })
           variant="text"
           onClick={handlePrevious} 
           disabled={currentPage === 0 ? true : false}>
-          <KeyboardArrowLeft />
+          {currentPage !== 0 &&
+            <KeyboardArrowLeft />
+          }
           Back
         </Button>
       }

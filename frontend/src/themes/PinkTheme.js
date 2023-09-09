@@ -1,10 +1,14 @@
 import { createTheme } from "@mui/material/styles";
+const COLORS = {
+  gold: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
+  goldText: 'radial-gradient(ellipse farthest-corner at right bottom, #e1c63c 0%, #bca26d 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)'
+}
 
 export default createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#ac66ef',
+      main: '#F187D2',
       contrastText: '#fff8e1',
     },
     secondary: {
@@ -24,8 +28,18 @@ export default createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
+        root: {
+          background: COLORS.goldText,
+          backgroundClip: 'text',
+          color: 'transparent',
+        },
+        text: {
+          background: COLORS.goldText,
+          backgroundClip: 'text',
+          color: 'transparent',
+        },
         contained: {
-          background: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
+          background: COLORS.gold,
           borderRadius: '10px',
           boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
           height: 48,
@@ -35,7 +49,7 @@ export default createTheme({
         outlined: {
           border: '1px solid',
           borderImageSlice: 1,
-          borderImageSource: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
+          borderImageSource: COLORS.gold,
           height: 48,
           padding: '0 10px',
           margin: '0 10px',
@@ -47,8 +61,45 @@ export default createTheme({
       styleOverrides: {
         root: {
           backgroundColor: 'transparent',
+        },
+        '& .tale_page__img' : {
+          border: '10px solid',
+          borderImageSource: COLORS.gold,
+          borderImageSlice: 1,
+          borderImageRepeat: 'round',
+        },
+      }
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          fill: '#cfb681',
+        },
+        colorPrimary: {
+          fill: '#614d0c',
         }
       }
     },
+  },
+  typography: {
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 400,
+      background: COLORS.goldText, 
+      backgroundClip: 'text',
+      color: 'transparent',
+    },
+    h2: {
+      fontSize: '1.5rem',
+      fontWeight: 400,
+      background: COLORS.goldText, 
+      backgroundClip: 'text',
+      color: 'transparent',
+    },
+    body2: {
+      '::first-letter': {
+        color: '#cfb681',
+      }
+    }
   },
 });
