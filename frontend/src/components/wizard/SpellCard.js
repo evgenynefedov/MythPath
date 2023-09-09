@@ -1,5 +1,12 @@
 import { CONSTANTS } from "../../constants";
-import { Card, CardActions, CardContent, Fab, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  Fab,
+  Typography,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CloudinaryImage } from "@cloudinary/url-gen";
@@ -22,7 +29,7 @@ export default function SpellCard({ spell, select, selected }) {
   }).resize(fill().width(300).height(200).gravity(autoGravity()));
   return (
     <Card sx={{ maxWidth: 300, overflow: "hidden" }} elevation={3}>
-      <div style={{ position: "relative", height: 200 }}>
+      <Box sx={{ position: "relative", height: 200 }}>
         <AdvancedImage cldImg={myImage} />
         <CardActions sx={{ position: "absolute", bottom: 0 }}>
           {selected ? (
@@ -37,7 +44,7 @@ export default function SpellCard({ spell, select, selected }) {
             </Fab>
           )}
         </CardActions>
-      </div>
+      </Box>
       <CardContent>
         <Typography variant="h5" component="div">
           {spell.name}
