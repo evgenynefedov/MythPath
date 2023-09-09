@@ -23,17 +23,13 @@ import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
  * * @returns
  */
 export default function SpellCard({ spell, select, selected }) {
-  const basePath = "MythPath/Library";
-  const relativePath = `${basePath}${
-    spell.img.startsWith("/") ? spell.img : "/" + spell.img
-  }`;
-
+  const relativePath = `${CONSTANTS.cloudinaryBasePath}${spell.img}`;
   const myImage = new CloudinaryImage(relativePath, {
-    cloudName: "dyigwqfyo",
+    cloudName: CONSTANTS.cloudName,
   }).resize(fill().width(300).height(200).gravity(autoGravity()));
   return (
-    <Card sx={{ maxWidth: 300 }} elevation={3}>
-      <div sx={{ height: 200, position: "relative" }}>
+    <Card sx={{ maxWidth: 300, overflow: "hidden" }} elevation={3}>
+      <div style={{ position: "relative", height: 200 }}>
         <AdvancedImage cldImg={myImage} />
         <CardActions sx={{ position: "absolute", bottom: 0 }}>
           {selected ? (
