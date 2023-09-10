@@ -156,7 +156,15 @@ export default function Wizard() {
               />
             )}
           </Container>
-          <Box sx={{ pt: 3, mt: "auto" }}>
+          <Box
+            sx={{
+              position: "fixed",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              zIndex: 999,
+            }}
+          >
             <NavBar
               stepsCount={stepsCount}
               stepIndex={stepIndex}

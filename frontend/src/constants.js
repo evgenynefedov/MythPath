@@ -26,4 +26,6 @@ REACT_APP_CLOUDINARY_API_KEY  = hereIsSomeOtherApiKey
   cloudinaryBackgroundLink:
     "https://res.cloudinary.com/dyigwqfyo/image/upload/v1693918007/MythPath/backgrounds",
   testMode: true,
+  cloudinaryBasePath: "MythPath/Library",
+  cloudName: "dyigwqfyo",
 };
