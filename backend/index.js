@@ -13,6 +13,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //Routes
-app.use("/api/", require("."));
+app.use("/api/", require("./routes"));
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
