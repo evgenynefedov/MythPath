@@ -1,0 +1,14 @@
+{
+  "model": "gpt-3.5-turbo",
+  "max_tokens": 800,
+  "messages": [
+    {
+      "role": "system",
+      "content": "Feel free to use the following details as a starting point. You have the creative freedom to create an engaging and imaginative story. Focus on interesting actions and dialogues between characters, rather than extensive descriptions."
+    },
+    {
+      "role": "user",
+      "content": "Based on these details, please generate a story: [{\"prompt\":\"Create a fairy tale with the following elements and output it in a JSON format. The fields in the JSON should be 'title' and 'pages'. The 'pages' should be an array of strings, each containing approximately 60-80 words\"},{\"world\":{\"name\":\"Tomb Raider\",\"description\":\"An adventurous world where Lara Croft explores ancient tombs and archaeological sites, often uncovering mysteries and treasures.\"}},{\"main_character\":{\"name\":\"Spock\",\"traits\":[\"Logical\",\"Rational\",\"Dedicated\"],\"description\":\"A Vulcan officer with exceptional logic and dedication aboard the USS Enterprise.\"}},{\"additional_characters\":[{\"name\":\"Spock\",\"description\":\"A Vulcan officer with exceptional logic and dedication aboard the USS Enterprise.\"}]},{\"locations\":[]}]"
+    }
+  ]
+}
