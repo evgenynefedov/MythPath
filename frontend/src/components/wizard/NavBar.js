@@ -1,4 +1,5 @@
 import * as React from "react";
+import { forwardRef } from "react";
 import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
@@ -17,51 +18,49 @@ import { Paper } from "@mui/material";
  * @param {function} props.next Callback for Next/Skip/Create button handler
  * @returns
  */
-export default function NavBar({
-  stepsCount,
-  stepIndex,
-  isSelected,
-  back,
-  next,
-}) {
-  const theme = useTheme();
-  return (
-    <Paper>
-      <MobileStepper
-        variant="progress"
-        steps={stepsCount}
-        position="static"
-        activeStep={stepIndex}
-        sx={{ flexGrow: 1 }}
-        nextButton={
-          <Button
-            size="large"
-            onClick={next}
-            variant={isSelected ? "contained" : null}
-          >
-            {stepIndex === stepsCount - 1
-              ? "Create"
-              : isSelected
-              ? "Next"
-              : "Skip"}
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="large" onClick={back} disabled={stepIndex === 0}>
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-    </Paper>
-  );
-}
+const NavBar = forwardRef(
+  ({ stepsCount, stepIndex, isSelected, back, next }, ref) => {
+    const theme = useTheme();
+    return (
+      <Paper ref={ref}>
+        <MobileStepper
+          variant="progress"
+          steps={stepsCount}
+          position="static"
+          activeStep={stepIndex}
+          sx={{ flexGrow: 1 }}
+          nextButton={
+            <Button
+              size="large"
+              onClick={next}
+              variant={isSelected ? "contained" : null}
+            >
+              {stepIndex === stepsCount - 1
+                ? "Create"
+                : isSelected
+                ? "Next"
+                : "Skip"}
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button size="large" onClick={back} disabled={stepIndex === 0}>
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
+              Back
+            </Button>
+          }
+        />
+      </Paper>
+    );
+  }
+);
+
+export default NavBar;
