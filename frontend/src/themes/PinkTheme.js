@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { CONSTANTS } from "./../constants"
 const COLORS = {
   gold: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
   goldText: 'radial-gradient(ellipse farthest-corner at right bottom, #e1c63c 0%, #bca26d 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)'
@@ -26,6 +27,16 @@ export default createTheme({
     divider: 'rgba(140,95,177,0.12)',
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(${CONSTANTS.cloudinaryBackgroundLink}/pink)`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "100vh",
+        }
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {

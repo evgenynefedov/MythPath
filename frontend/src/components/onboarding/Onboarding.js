@@ -34,7 +34,7 @@ export default function Onboarding({themes, changeTheme, selected}) {
         <Typography variant="subtitle1" mt={2}>
           🧚‍♀️ AI Magic
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body1">
           MythPath uses advanced AI to craft unique fairytales that come to
           life, blending entertainment and education like never before!
         </Typography>

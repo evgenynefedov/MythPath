@@ -16,8 +16,8 @@ import GreenTheme from "./themes/GreenTheme"
 function App() {
 	const themes = {"Little princess": PinkTheme, "Summer garden": GreenTheme}
 	const themeNames = Object.keys(themes)
-	let [theme, setTheme] = useState(PinkTheme)
-	let [themeName, setThemeName] = useState("Little princess")
+	let [theme, setTheme] = useState(GreenTheme)
+	let [themeName, setThemeName] = useState("Summer garden")
 	function changeTheme(themeId) {
 		setTheme(themes[themeId])
 		setThemeName(themeId)

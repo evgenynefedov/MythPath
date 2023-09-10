@@ -1,24 +1,32 @@
 import { createTheme } from "@mui/material/styles";
 
 export default createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#ba55d8',
-      contrastText: '#500050',
+    palette: {
+        mode: 'light',
+        primary: {
+          main: '#4db53f',
+        },
+        secondary: {
+          main: '#309214',
+        },
+        background: {
+          default: '#d1f7c2',
+          paper: '#b5f39f',
+        },
     },
-    secondary: {
-      main: '#f9a8e8',
-      contrastText: '#855685',
-    },
-    background: {
-      default: '#f934f8',
-      paper: '#f76ef4',
-    },
-    text: {
-      primary: 'rgba(133,65,133,0.87)',
-      secondary: 'rgba(133,65,133,0.5)',
-    },
-    divider: 'rgba(140,95,177,0.12)',
-  },
+    typography: {
+        h1: {
+          fontSize: '2rem',
+          fontWeight: 400,
+        },
+        h2: {
+          fontSize: '1.5rem',
+          fontWeight: 400,
+        },
+        body2: {
+          '::first-letter': {
+            color: '#cfb681',
+          }
+        }
+      },
 });
