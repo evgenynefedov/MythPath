@@ -5,27 +5,39 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
+import Library from "./library/Library";
 
 export default function Onboarding() {
   return (
-    <Container>
-      <Container>
-        <Typography
-          variant="h5"
-          component="h1"
-          textAlign="center"
-          mt={2}
-          mb={1}
-        >
+    <>
+      <Container maxWidth="md">
+        <Typography variant="h5" component="h2" textAlign="center" mt={2}>
           Step into a world of wonder and magic with <b>MythPath!</b>
         </Typography>
-        <Typography variant="body1" textAlign="center">
+      </Container>
+
+      <Library />
+
+      <Container maxWidth="md">
+        <Typography variant="body1" textAlign="center" mt={2}>
           Is there anything more enchanting than a captivating fairytale? We
           believe that every child deserves a story tailored just for them, and
           that's exactly what MythPath is here to provide. Our app is not just a
           storytelling platform; it's a portal to an enchanting world where
           imagination meets reality.
         </Typography>
+
+        <Box textAlign="center" mt={2}>
+          <Link to="/wizard">
+            <Button
+              variant="contained"
+              size="large"
+              endIcon={<AutoFixHighIcon />}
+            >
+              Create Fairytale!
+            </Button>
+          </Link>
+        </Box>
 
         <Typography variant="subtitle1" mt={2}>
           🧚‍♀️ AI Magic
@@ -52,17 +64,6 @@ export default function Onboarding() {
           possibilities are endless. Let the magic of storytelling lead the way!
         </Typography>
       </Container>
-      <Box textAlign="center" mt={4}>
-        <Link to="/wizard">
-          <Button
-            variant="contained"
-            size="medium"
-            endIcon={<AutoFixHighIcon />}
-          >
-            Create Fairytale!
-          </Button>
-        </Link>
-      </Box>
-    </Container>
+    </>
   );
 }
