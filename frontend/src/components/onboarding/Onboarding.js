@@ -1,12 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Typography, Box, Select, MenuItem } from "@mui/material";
-// import Container from "@mui/material/Container";
-// import Typography from "@mui/material/Typography";
-// import Box from "@mui/material/Box";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
-// import Select from '@mui/material/Select';
-// import MenuItem from '@mui/material/MenuItem';
 
 export default function Onboarding({themes, changeTheme, selected}) {
   function handleChange(event) {
@@ -71,7 +66,7 @@ export default function Onboarding({themes, changeTheme, selected}) {
             variant="contained"
             size="medium"
             endIcon={<AutoFixHighIcon color="primary"/>}
-          >
+          > 
             Create Fairytale!
           </Button>
         </Link>

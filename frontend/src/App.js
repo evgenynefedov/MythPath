@@ -14,10 +14,10 @@ import PinkTheme from "./themes/PinkTheme"
 import GreenTheme from "./themes/GreenTheme"
 
 function App() {
-	const themes = {"Little princess": PinkTheme, "Summer garden": GreenTheme}
+	const themes = {"Little princess": PinkTheme, "Summer forest": GreenTheme}
 	const themeNames = Object.keys(themes)
-	let [theme, setTheme] = useState(GreenTheme)
-	let [themeName, setThemeName] = useState("Summer garden")
+	let [theme, setTheme] = useState(PinkTheme)
+	let [themeName, setThemeName] = useState("Little princess")
 	function changeTheme(themeId) {
 		setTheme(themes[themeId])
 		setThemeName(themeId)

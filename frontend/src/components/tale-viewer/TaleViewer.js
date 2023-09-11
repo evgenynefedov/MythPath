@@ -2,8 +2,8 @@ import "./TaleViewer.css"
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useSwipeable } from "react-swipeable";
+import Icons from './../../themes/sprite.svg'
 // import { textGenerator } from "../../services/textGenerator";
 // import storyTemplate from "../../Data/fantasy_story_template.json";
 import * as taleStorage from "./../../services/taleStorage";
@@ -49,9 +49,11 @@ export default function TaleViewer() {
         <Link to="/" style={{
               position: "absolute",
               top: "20px",
-              left: "20px",
+              right: "20px",
             }} >
-          <HighlightOffIcon />
+              <svg className="close">
+                <use href={`${Icons}#feathersCross`}/>
+              </svg>
         </Link>
       </Box>
     </Paper>

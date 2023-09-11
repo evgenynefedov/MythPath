@@ -1,4 +1,4 @@
-import { Box, Chip, Stack, Typography } from "@mui/material";
+import { Box, Chip, Stack, Typography, Container } from "@mui/material";
 import Carousel from "../ui/Carousel";
 import SpellCard from "./SpellCard";
 
@@ -26,19 +26,8 @@ export default function SpellSelector({
 
   return (
     <Box mt={2}>
-      <Typography variant="h1" gutterBottom>
+      <Typography variant="h1" gutterBottom style={{textAlign: "center"}}>
         {STEP_NAMES[step.code]}
-        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-          {spells
-            .filter((spell) => isSelected(spell.id))
-            .map((spell) => (
-              <Chip
-                label={spell.name}
-                key={spell.id}
-                onDelete={() => selectHandler(spell)}
-              />
-            ))}
-        </Stack>
       </Typography>
       <Carousel>
         {spells.map((spell) => (
@@ -50,6 +39,19 @@ export default function SpellSelector({
           />
         ))}
       </Carousel>
+      <Container>
+        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            {spells
+              .filter((spell) => isSelected(spell.id))
+              .map((spell) => (
+                <Chip
+                  label={spell.name}
+                  key={spell.id}
+                  onDelete={() => selectHandler(spell)}
+                />
+              ))}
+          </Stack>
+      </Container>
     </Box>
   );
 }

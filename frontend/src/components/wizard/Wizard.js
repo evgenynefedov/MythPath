@@ -146,7 +146,7 @@ export default function Wizard() {
             minHeight: "100vh",
           }}
         >
-          <Container maxWidth="lg">
+          <Container maxWidth="lg" style={{padding: 0}}>
             {spells && (
               <SpellSelector
                 spells={spells}

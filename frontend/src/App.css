@@ -3,3 +3,6 @@
 	font-family: 'Flower';
 	src: url('./../public/fonts/FlowerDisplayDemoRegular-BWvql.otf');
 }
+body {
+	position: relative;
+}
