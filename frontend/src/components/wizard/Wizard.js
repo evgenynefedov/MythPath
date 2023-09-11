@@ -154,6 +154,8 @@ export default function Wizard() {
             display: "flex",
             flexDirection: "column",
             height: `calc(100vh - ${navBarHeight}px)`,
+            paddingLeft: "10%",
+            paddingRight: "10%",
             bgcolor: "#eeeeee",
           }}
         >

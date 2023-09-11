@@ -29,11 +29,6 @@ export default function SpellSelector({
   return (
     <>
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <Box mt={2}>
-          <Typography variant="h4" gutterBottom>
-            {STEP_NAMES[step.code]}
-          </Typography>
-        </Box>
         <Box
           sx={{
             flexGrow: 1,
@@ -42,8 +37,17 @@ export default function SpellSelector({
             justifyContent: "center",
           }}
         >
-          <Box sx={{ position: "relative", minHeight: "300px" }}>
-            {" "}
+          <Box
+            sx={{
+              position: "relative",
+              minHeight: "300px",
+            }}
+          >
+            <Box mt={2}>
+              <Typography variant="h4" gutterBottom>
+                {STEP_NAMES[step.code]}
+              </Typography>
+            </Box>
             <Carousel>
               {spells.map((spell) => (
                 <SpellCard
@@ -57,8 +61,7 @@ export default function SpellSelector({
             <Box
               sx={{
                 position: "absolute",
-                left: 0,
-                right: 0,
+
                 top: "calc(100% + 1em)",
               }}
             >
@@ -67,7 +70,6 @@ export default function SpellSelector({
                 spacing={1}
                 flexWrap="wrap"
                 alignItems="flex-start"
-                justifyContent={center}
                 rowGap={1}
               >
                 {spells
