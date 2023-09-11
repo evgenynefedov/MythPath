@@ -1,4 +1,4 @@
-import { Box, Chip, Stack, Typography } from "@mui/material";
+import { Box, Chip, Stack, Typography, Container } from "@mui/material";
 import Carousel from "../ui/Carousel";
 import SpellCard from "./SpellCard";
 
@@ -25,22 +25,22 @@ export default function SpellSelector({
       : step?.value?.id === id;
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh",
-      }}
-    >
-      <Box
-        mt={2}
-        sx={{
-          flex: "0 1 20%",
-        }}
-      >
-        <Typography variant="h4" gutterBottom>
-          {STEP_NAMES[step.code]}
-          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+    <Box mt={2}>
+      <Typography variant="h1" gutterBottom style={{textAlign: "center"}}>
+        {STEP_NAMES[step.code]}
+      </Typography>
+      <Carousel>
+        {spells.map((spell) => (
+          <SpellCard
+            key={spell.id}
+            spell={spell}
+            select={() => selectHandler(spell)}
+            selected={isSelected(spell.id)}
+          />
+        ))}
+      </Carousel>
+      <Container>
+        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
             {spells
               .filter((spell) => isSelected(spell.id))
               .map((spell) => (
@@ -50,28 +50,8 @@ export default function SpellSelector({
                   onDelete={() => selectHandler(spell)}
                 />
               ))}
-          </Stack>
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          flex: "0 1 60%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Carousel>
-          {spells.map((spell) => (
-            <SpellCard
-              key={spell.id}
-              spell={spell}
-              select={() => selectHandler(spell)}
-              selected={isSelected(spell.id)}
-            />
-          ))}
-        </Carousel>
-      </Box>
+        </Stack>
+      </Container>
     </Box>
   );
 }

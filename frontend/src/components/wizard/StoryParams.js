@@ -26,7 +26,7 @@ export default function StoryParams({ steps, createHandler }) {
   return (
     <>
       <Typography variant="h4">Elements of your fairytail:</Typography>
-      <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+      <List sx={{ width: "100%" }}>
         {steps.map((step) => (
           <>
             <ListSubheader key={step.code} component="div">

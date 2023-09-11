@@ -154,10 +154,9 @@ export default function Wizard() {
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
-            bgcolor: "#eeeeee",
           }}
         >
-          <Container maxWidth="lg">
+          <Container maxWidth="lg" style={{padding: 0}}>
             {steps[stepIndex].isSpellSelector ? (
               spells?.length ? (
                 <SpellSelector

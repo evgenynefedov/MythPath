@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import * as taleStorage from "../../../services/taleStorage";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -24,25 +24,18 @@ export default function Library() {
           mt: 2,
           pt: 1,
           pb: 5,
-          backgroundColor: "#2970ff",
         }}
       >
         <Container maxWidth="md">
           <Typography
-            variant="h5"
-            component="h2"
+            variant="h2"
             my={1}
-            color={(theme) => theme.palette.common.white}
           >
             Your library
           </Typography>
           <Box
             sx={{
-              p: 2,
-              borderRadius: 5,
-              border: "1px solid #84adff",
-
-              backgroundColor: "#528bff",
+              p: 2
             }}
           >
             <Grid container spacing={2}>
