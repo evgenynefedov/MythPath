@@ -8,6 +8,7 @@ import {
   ListItemText,
   ListSubheader,
   Typography,
+  Container
 } from "@mui/material";
 import { CONSTANTS } from "../../constants";
 import CasinoIcon from "@mui/icons-material/Casino";
@@ -24,9 +25,9 @@ const STEP_NAMES = {
  */
 export default function StoryParams({ steps, createHandler }) {
   return (
-    <>
-      <Typography variant="h4">Elements of your fairytail:</Typography>
-      <List sx={{ width: "100%" }}>
+    <Container sx={{ paddingBottom: '60px'}}>
+      <Typography variant="h2">Elements of your fairytail:</Typography>
+      <List sx={{ width: "100%"}}>
         {steps.map((step) => (
           <>
             <ListSubheader key={step.code} component="div">
@@ -59,7 +60,7 @@ export default function StoryParams({ steps, createHandler }) {
           Create Fairytale
         </Button>
       </Box>
-    </>
+    </Container>
   );
 }
 

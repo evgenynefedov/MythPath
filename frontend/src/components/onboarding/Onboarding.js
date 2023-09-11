@@ -13,7 +13,6 @@ export default function Onboarding({themes, changeTheme, selected}) {
       <Container>
         <Typography
           variant="h1"
-          textAlign="center"
           mt={2}
           mb={1}
         >

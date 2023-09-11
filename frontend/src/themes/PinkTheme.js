@@ -31,7 +31,7 @@ const COLORS = {
   textSecondary: 'rgba(133,65,133,0.5)',
   divider: 'rgba(140,95,177,0.12)',
   buttonColor: 'white',
-  buttonBorder: '#ba6'
+  buttonBorder: '#ba6',
 }
 
 export default createTheme({
@@ -67,21 +67,17 @@ export default createTheme({
             backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${CONSTANTS.cloudinaryBackgroundLink}/pinkDesktop)`,
           },
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundSize: "100%",
           height: "100vh",
+        },
+        'body a': {
+          textDecoration: 'none'
         },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
           background: COLORS.goldButton,
           padding: "10px",
           borderRadius: "10px",
           color: COLORS.primaryText,
-        },
-        'div.tale_page__img h2': {
-          color: 'white',
-          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          borderRadius: '5px',
-          background: COLORS.goldTransparent,
-          padding: '5px',
         },
         '.spell_wand': {
           color: COLORS.icon,
@@ -182,12 +178,33 @@ export default createTheme({
         },
       }
     },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          paddingTop: 0,
+          paddingBottom: 0,
+        }
+      }
+    },
     MuiCard: {
       styleOverrides: {
         root: {
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
           boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
           border: `3px solid ${COLORS.buttonBorder}`, 
+        }
+      }
+    },
+    MuiCardMedia: {
+      styleOverrides: {
+        root: {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '16px',
+          position: 'relative',
+          border: `3px solid ${COLORS.buttonBorder}`,
+          borderRadius: '5px',
         }
       }
     },
@@ -218,11 +235,24 @@ export default createTheme({
       backgroundClip: 'text',
       color: 'transparent',
     },
+    h3: {
+      fontSize: '1.5rem',
+      fontWeight: 400,
+      background: COLORS.goldTransparent, 
+      color: COLORS.buttonColor,
+      textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
+      borderRadius: '5px',
+      padding: '5px',
+      textAlign: 'center',
+    },
     body2: {
       '::first-letter': {
         color: COLORS.icon,
         // fontFamily: 'Flower',
       }
+    },
+    body3: {
+      color: COLORS.secondaryText,
     }
   },
 });

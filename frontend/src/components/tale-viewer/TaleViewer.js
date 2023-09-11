@@ -52,8 +52,8 @@ export default function TaleViewer() {
         }
         <Link to="/" style={{
               position: "absolute",
-              top: "20px",
-              right: "20px",
+              top: "10px",
+              right: "10px",
             }} >
               <svg className="close">
                 <use href={`${Icons}#feathersCross`}/>
