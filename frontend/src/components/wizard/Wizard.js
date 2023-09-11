@@ -120,12 +120,18 @@ export default function Wizard() {
     // TODO: move deserialization to textGenerator()
     const textAndTitles = JSON.parse(textAndTitlesJson);
     let story = responseToTale(storySteps, textAndTitles);
-    taleStorage.saveTale(story);
-    console.log("story was generated with params:");
-    console.log(storyParameters);
-    console.log("story :");
-    console.log(story);
-    navigate("/tale-viewer/0");
+    if (story) {
+      console.log("story was generated with params:");
+      console.log(storyParameters);
+      console.log("story :");
+      console.log(story);
+
+      taleStorage.saveTale(story).then((taleId) => {
+        navigate(`/tale-viewer/${taleId}`);
+      });
+    } else {
+      console.log("something wrong in generating of the story");
+    }
   };
 
   useEffect(() => {
