@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Typography, Box, Select, MenuItem } from "@mui/material";
-import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
+import Icons from './../../themes/sprite.svg'
 
 export default function Onboarding({themes, changeTheme, selected}) {
   function handleChange(event) {
@@ -65,7 +65,11 @@ export default function Onboarding({themes, changeTheme, selected}) {
           <Button
             variant="contained"
             size="medium"
-            endIcon={<AutoFixHighIcon color="primary"/>}
+            endIcon={
+              <svg>
+                <use href={`${Icons}#sparkles`}/>
+              </svg>
+            }
           > 
             Create Fairytale!
           </Button>

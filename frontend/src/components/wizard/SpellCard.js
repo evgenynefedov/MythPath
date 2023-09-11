@@ -37,7 +37,7 @@ export default function SpellCard({ spell, select, selected }) {
         {selected &&
           <Box className="selected_spell"> 
             <svg className="spell_wand">
-              <use href={`${Icons}#sparkles`}/>
+              <use href={`${Icons}#stars`}/>
             </svg>
           </Box>
         }
