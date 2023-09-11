@@ -9,9 +9,12 @@ import {
   ListSubheader,
   Typography,
 } from "@mui/material";
-import { CONSTANTS } from "../../constants";
 import CasinoIcon from "@mui/icons-material/Casino";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import { getCloudinaryImage } from "../../services/cloudinary";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage, lazyload, responsive } from "@cloudinary/react";
 
 const STEP_NAMES = {
   world: "World",
@@ -64,14 +67,20 @@ export default function StoryParams({ steps, createHandler }) {
 }
 
 function StoryParamCard({ spell }) {
+  const spellImage = getCloudinaryImage(spell.img).resize(
+    fill().aspectRatio(1).gravity(autoGravity())
+  );
+
   return (
     <>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar
-            src={`${CONSTANTS.cloudinaryBaseLink}${spell.img}`}
-            alt={spell.name}
-          />
+          <Avatar>
+            <AdvancedImage
+              cldImg={spellImage}
+              plugins={[responsive(), lazyload()]}
+            />
+          </Avatar>
         </ListItemAvatar>
         <ListItemText
           primary={spell.name}
