@@ -7,10 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import Icons from "./../../themes/sprite.svg";
-import { AdvancedImage, lazyload, responsive } from "@cloudinary/react";
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
-import { getCloudinaryImage } from "../../services/cloudinary";
+import ResponsiveImage from "../ui/ResponsiveImage";
 
 /**
  * Card displayes the spell info with button to select/unselect
@@ -21,19 +18,11 @@ import { getCloudinaryImage } from "../../services/cloudinary";
  * * @returns
  */
 export default function SpellCard({ spell, select, selected }) {
-  const spellImage = getCloudinaryImage(spell.img).resize(
-    fill()
-      .aspectRatio(300 / 200)
-      .gravity(autoGravity())
-  );
   return (
     <Card sx={{ maxWidth: 300, overflow: "hidden" }} elevation={3}>
       <Box sx={{ position: "relative", height: 200 }} onClick={select}>
         <CardMedia>
-          <AdvancedImage
-            cldImg={spellImage}
-            plugins={[responsive(), lazyload()]}
-          />
+          <ResponsiveImage imgPath={spell.img} aspectRatio={300 / 200} />
         </CardMedia>
         <CardActions
           sx={{ position: "absolute", top: 0, right: 0, padding: 0 }}
