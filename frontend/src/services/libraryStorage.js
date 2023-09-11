@@ -16,7 +16,7 @@ const LIBRARY_PATHS = {
  * Get Character data from library
  * @param {string} languageCode Language code ("en", "ru")
  * @param {number?} worldId for filtering by world_id
- * @returns {[{id:number, name:string, img:string, description:string, world_id:string, ...}]}
+ * @returns {Promise<[{id:number, name:string, img:string, description:string, world_id:string, ...}]>}
  */
 export async function getCharacters(languageCode, worldId) {
   return getLibraryItems(LIBRARY_PATHS.characters, languageCode, worldId);
@@ -26,7 +26,7 @@ export async function getCharacters(languageCode, worldId) {
  * Get Location data from library
  * @param {string} languageCode Language code ("en", "ru")
  * @param {number?} worldId for filtering by world_id
- * @returns {[{id:number, name:string, img:string, description:string, world_id:string, ...}]}
+ * @returns {Promise<[{id:number, name:string, img:string, description:string, world_id:string, ...}]>}
  */
 export async function getLocations(languageCode, worldId) {
   return getLibraryItems(LIBRARY_PATHS.locations, languageCode, worldId);
@@ -35,7 +35,7 @@ export async function getLocations(languageCode, worldId) {
 /**
  * Get World data from library
  * @param {string} languageCode Language code ("en", "ru")
- * @returns {[{id:number, name:string, img:string, description:string, ...}]}
+ * @returns {Promise<[{id:number, name:string, img:string, description:string, ...}]>}
  */
 export async function getWorlds(languageCode) {
   return getLibraryItems(LIBRARY_PATHS.worlds, languageCode);
@@ -46,7 +46,7 @@ export async function getWorlds(languageCode) {
  * @param {string} path URL path to library files, excluding /library/ and .json
  * @param {string?} languageCode Language code ("en", "ru")
  * @param {number?} worldId for filtering by world_id
- * @returns {[{id:number, name:string, img:string, description:string, ...}]}
+ * @returns {Promise<[{id:number, name:string, img:string, description:string, ...}]>}
  */
 async function getLibraryItems(path, languageCode = "en", worldId = null) {
   async function fetchJson(url) {
