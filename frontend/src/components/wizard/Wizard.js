@@ -112,17 +112,15 @@ export default function Wizard() {
     textAndTitles = JSON.parse(textAndTitles);
     story = responseToTale(steps, textAndTitles);
 
-    taleStorage.saveTale(story);
     if (story) {
       console.log("story was generated with params:");
       console.log(storyParameters);
       console.log("story :");
       console.log(story);
 
-      //TO DO: delete setTimeout (it's only to show loader now)
-      //setTimeout(() => {
-      navigate("/tale-viewer/0");
-      //}, 3000);
+      taleStorage.saveTale(story).then((taleId) => {
+        navigate(`/tale-viewer/${taleId}`);
+      });
     } else {
       console.log("something wrong in generating of the story");
     }
