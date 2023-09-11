@@ -168,6 +168,20 @@ export default createTheme({
         },
       }
     },
+    MuiList: {
+      styleOverrides: {
+        padding: {
+          backgroundColor: 'transparent',
+        },
+      }
+    },
+    MuiListSubheader: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'transparent',
+        },
+      }
+    },
     MuiCard: {
       styleOverrides: {
         root: {

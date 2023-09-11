@@ -10,7 +10,7 @@ const BEGIN_USER_MESSAGE = `Based on these details, please generate a story:`;
 
 export async function textGenerator(storyParameters) {
   if (CONSTANTS.testMode) {
-    return Promise.resolve(TEST_MODE_STORY);
+    return new Promise((resolve) => setTimeout(resolve, 500, TEST_MODE_STORY));
   }
 
   const userMessage = `${BEGIN_USER_MESSAGE} ${JSON.stringify(

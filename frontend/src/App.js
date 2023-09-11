@@ -31,12 +31,12 @@ function App() {
             <Route path="/" element={<Onboarding changeTheme={changeTheme} themes={themeNames} selected={themeName}/>} />
             <Route path="/wizard" element={<Wizard />} />
             <Route path="/tale-loader" element={<TaleLoader />} />
-            <Route path="/tale-viewer/:id" element={<TaleViewer />} />
+            <Route path="/tale-viewer/:taleId" element={<TaleViewer />} />
           </Routes>
         </Router>
       </ThemeProvider>
     </>
   );
-} 
+}
 
 export default App;

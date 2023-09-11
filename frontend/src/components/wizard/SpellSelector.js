@@ -50,7 +50,7 @@ export default function SpellSelector({
                   onDelete={() => selectHandler(spell)}
                 />
               ))}
-          </Stack>
+        </Stack>
       </Container>
     </Box>
   );
