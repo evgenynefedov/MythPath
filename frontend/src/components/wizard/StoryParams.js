@@ -9,9 +9,9 @@ import {
   ListSubheader,
   Typography,
 } from "@mui/material";
-import { CONSTANTS } from "../../constants";
 import CasinoIcon from "@mui/icons-material/Casino";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import ResponsiveImage from "../ui/ResponsiveImage";
 
 const STEP_NAMES = {
   world: "World",
@@ -68,10 +68,9 @@ function StoryParamCard({ spell }) {
     <>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar
-            src={`${CONSTANTS.cloudinaryBaseLink}${spell.img}`}
-            alt={spell.name}
-          />
+          <Avatar>
+            <ResponsiveImage imgPath={spell.img} aspectRatio={1} />
+          </Avatar>
         </ListItemAvatar>
         <ListItemText
           primary={spell.name}
