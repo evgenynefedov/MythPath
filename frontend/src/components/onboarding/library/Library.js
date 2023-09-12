@@ -10,7 +10,7 @@ export default function Library() {
   const [tales, setTales] = React.useState([]);
 
   useEffect(() => {
-    taleStorage.getTales().then((t) => setTales(t));
+    taleStorage.getListTales().then((t) => setTales(t));
   }, []);
 
   useEffect(() => {
@@ -27,15 +27,12 @@ export default function Library() {
         }}
       >
         <Container maxWidth="md">
-          <Typography
-            variant="h2"
-            my={1}
-          >
+          <Typography variant="h2" my={1}>
             Your library
           </Typography>
           <Box
             sx={{
-              p: 2
+              p: 2,
             }}
           >
             <Grid container spacing={2}>
