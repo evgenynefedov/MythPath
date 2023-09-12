@@ -10,28 +10,10 @@ import TaleLoader from "../tale-loader/TaleLoader";
 import generatePromptData from "../../services/generatePromptData";
 import responseToTale from "../../services/responseToTale";
 import StoryParams from "./StoryParams";
-
-const SPELL_STEPS = [
-  {
-    code: "world",
-    isMulti: false,
-  },
-  {
-    code: "main_character",
-    isMulti: false,
-  },
-  {
-    code: "additional_characters",
-    isMulti: true,
-  },
-  {
-    code: "locations",
-    isMulti: true,
-  },
-];
+import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 
 const STEPS = [
-  ...SPELL_STEPS.map((step) => ({
+  ...StoryParamsConfig.steps.map((step) => ({
     ...step,
     value: step.isMulti ? [] : {},
     isSpellSelector: true,
@@ -156,7 +138,7 @@ export default function Wizard() {
             minHeight: "100vh",
           }}
         >
-          <Container maxWidth="lg" style={{padding: 0}}>
+          <Container maxWidth="lg" style={{ padding: 0 }}>
             {steps[stepIndex].isSpellSelector ? (
               spells?.length ? (
                 <SpellSelector

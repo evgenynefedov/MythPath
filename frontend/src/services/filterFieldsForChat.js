@@ -1,8 +1,9 @@
 import filterFields from "../Utils/filterFields";
-import chatConfig from "./chatConfig";
+import StoryParamsConfig from "../Data/storyParamsConfig.json";
 
 const filterFieldsForChat = (objType, obj) => {
-  const fieldsToInclude = chatConfig[objType] || [];
+  const step = StoryParamsConfig.steps.find((step) => step.code === objType);
+  const fieldsToInclude = step ? step.fieldsToGPT : [];
   return filterFields(obj, fieldsToInclude);
 };
 
