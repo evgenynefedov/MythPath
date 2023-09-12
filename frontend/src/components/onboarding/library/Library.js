@@ -10,7 +10,7 @@ export default function Library() {
   const [tales, setTales] = React.useState([]);
 
   useEffect(() => {
-    taleStorage.getListTales().then((t) => setTales(t));
+    taleStorage.getListTales(null).then((t) => setTales(t));
   }, []);
 
   useEffect(() => {
