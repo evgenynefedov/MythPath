@@ -35,6 +35,7 @@ const COLORS = {
   buttonColor: 'white',
   buttonBorder: '#ba6',
 }
+const desktopWidth = '800px'
 
 export default createTheme({
   palette: {
@@ -76,18 +77,47 @@ export default createTheme({
         'body a': {
           textDecoration: 'none'
         },
+        '.menu': {
+          display: 'flex',
+          padding: '8px 16px',
+          justifyContent: 'space-between',
+        },
+        '.menu_main': {
+          display: 'flex',
+          justifyContent: 'space-between',
+          width: 'calc((100% - 30px)/3)',
+          [`@media (min-width:${desktopWidth})`]: {
+            width: 250, 
+          }
+        },
+        '.menu span': {
+          display: 'none',
+          [`@media (min-width:${desktopWidth})`]: {
+            display: 'inline',
+          }
+        },
+        '.menu svg': {
+          width: 40,
+          height: 40,
+          background: COLORS.backgroundGradientTransparent,
+          color: COLORS.buttonColor,
+          borderRadius: 5,
+          padding: 5,
+          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
+          border: `1px solid ${COLORS.buttonBorder}`,
+        },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
           background: COLORS.buttonGradient,
-          padding: "10px",
-          borderRadius: "10px",
+          padding: 10,
+          borderRadius: 10,
           color: COLORS.secondaryText,
         },
         '.spell_wand': {
           color: COLORS.icon,
-          width: '30px',
-          height: '30px',
-          padding: '9px',
-          borderBottomLeftRadius: '30px',
+          width: 30,
+          height: 30,
+          padding: 9,
+          borderBottomLeftRadius: 30,
           backgroundColor: 'rgba(255,255,255,0.8)',
         },
         '.selected_spell': {
@@ -102,28 +132,28 @@ export default createTheme({
           top: 0,
         },
         '.selected_spell svg': {
-          width: '150px',
-          height: '150px',
-          color: 'white',
+          width: 150,
+          height: 150,
+          color: COLORS.buttonColor,
           background: COLORS.backgroundGradientTransparent,
-          borderRadius: '5px',
+          borderRadius: 5,
         },
         '.close' : {
-          color: 'white',
-          width: '30px',
-          height: '30px',
+          color: COLORS.buttonColor,
+          width: 30,
+          height: 30,
           background: COLORS.backgroundGradientTransparent,
-          borderRadius: '5px',
-          padding: '3px', 
+          borderRadius: 5,
+          padding: 3, 
         },
         '.inner_list': {
-          '@media (min-width:800px)': {
+          [`@media (min-width:${desktopWidth})`]: {
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'flex-start',
             'li.MuiListItem-root': {
               width: 'calc((100% - 20px)/3)',
-              marginRight: '6px',
+              marginRight: 6,
             }
           }, 
         }
@@ -143,7 +173,7 @@ export default createTheme({
         },
         contained: {
           color: COLORS.buttonColor,
-          borderRadius: '5px',
+          borderRadius: 5,
           padding: '10px 25px',
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
           boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
@@ -152,7 +182,7 @@ export default createTheme({
         },
         outlined: {
           border: `1px solid ${COLORS.buttonBorder}`,
-          borderRadius: '5px',
+          borderRadius: 5,
           padding: '0 10px',
           margin: '0 10px',
           color: COLORS.outlinedText,
@@ -160,8 +190,8 @@ export default createTheme({
           boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
         },
         endIcon: {
-          width: '25px',
-          height: '25px',
+          width: 25,
+          height: 25,
         }
       },
     },
@@ -190,8 +220,8 @@ export default createTheme({
         root: {
           background: COLORS.backgroundSecondaryGradient,
           margin: '5px 0',
-          borderRadius: '10px',
-          maxWidth: '350px',
+          borderRadius: 10,
+          maxWidth: 350,
           color: COLORS.primaryText,
           fontSize: '1.5rem',
           fontWeight: 400,
@@ -201,11 +231,11 @@ export default createTheme({
     MuiListItem: {
       styleOverrides: {
         root: {
-          paddingTop: '8px',
-          paddingBottom: '8px',
+          paddingTop: 8,
+          paddingBottom: 8,
           border: `1px solid ${COLORS.buttonBorder}`,
-          borderRadius: '5px',
-          marginBottom: '4px',
+          borderRadius: 5,
+          marginBottom: 4,
           backgroundColor: COLORS.backgroundDefault,
         }
       }
@@ -225,10 +255,10 @@ export default createTheme({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          padding: '16px',
+          padding: 16,
           position: 'relative',
           border: `3px solid ${COLORS.buttonBorder}`,
-          borderRadius: '5px',
+          borderRadius: 5,
           backgroundColor: COLORS.backgroundDefault,
         }
       }
@@ -251,7 +281,7 @@ export default createTheme({
       background: COLORS.headerText, 
       backgroundClip: 'text',
       color: 'transparent',
-      marginTop: '10px',
+      marginTop: 10,
       fontFamily: 'Fairytale',
       lineHeight: 1,
     },
@@ -268,8 +298,8 @@ export default createTheme({
       background: COLORS.backgroundGradientTransparent, 
       color: COLORS.buttonColor,
       textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-      borderRadius: '5px',
-      padding: '5px',
+      borderRadius: 5,
+      padding: 5,
       textAlign: 'center',
     },
     body2: {
