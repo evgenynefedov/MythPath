@@ -13,17 +13,17 @@ import {
 import CasinoIcon from "@mui/icons-material/Casino";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import ResponsiveImage from "../ui/ResponsiveImage";
+import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 
-const STEP_NAMES = {
-  world: "World",
-  main_character: "Main character",
-  additional_characters: "Additional characters",
-  locations: "Locations",
-};
 /**
  * Component to show entered story steps
  */
-export default function StoryParams({ steps, createHandler }) {
+export default function StoryParams({ steps, createHandler, language = "en" }) {
+  const stepConfig = StoryParamsConfig.steps.reduce((acc, step) => {
+    acc[step.code] = step.text.title[language];
+    console.log(acc);
+    return acc;
+  }, {});
   return (
     <Container sx={{ paddingBottom: '60px'}}>
       <Typography variant="h1">Elements of your fairytail</Typography>
@@ -31,7 +31,7 @@ export default function StoryParams({ steps, createHandler }) {
         {steps.map((step) => (
           <Box key={step.code}>
             <ListSubheader component="h2">
-              {STEP_NAMES[step.code]}:
+              {stepConfig[step.code]}:
             </ListSubheader>
             {step.isMulti ? (
               step.value.length > 0 ? 

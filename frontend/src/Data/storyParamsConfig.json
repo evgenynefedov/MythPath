@@ -1,0 +1,48 @@
+{
+  "steps": [
+    {
+      "code": "world",
+      "isMulti": false,
+      "fieldsToGPT": ["name", "description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "World"
+        }
+      }
+    },
+    {
+      "code": "main_character",
+      "isMulti": false,
+      "fieldsToGPT": ["name", "description", "traits"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Main character"
+        }
+      }
+    },
+    {
+      "code": "additional_characters",
+      "isMulti": true,
+      "fieldsToGPT": ["name", "description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Additional characters"
+        }
+      }
+    },
+    {
+      "code": "locations",
+      "isMulti": true,
+      "fieldsToGPT": ["name", "description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Locations"
+        }
+      }
+    }
+  ]
+}
