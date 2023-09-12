@@ -10,6 +10,7 @@ import TaleLoader from "../tale-loader/TaleLoader";
 import generatePromptData from "../../services/generatePromptData";
 import responseToTale from "../../services/responseToTale";
 import StoryParams from "./StoryParams";
+import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 
 const SPELL_STEPS = [
   {
@@ -156,7 +157,7 @@ export default function Wizard() {
             minHeight: "100vh",
           }}
         >
-          <Container maxWidth="lg" style={{padding: 0}}>
+          <Container maxWidth="lg" style={{ padding: 0 }}>
             {steps[stepIndex].isSpellSelector ? (
               spells?.length ? (
                 <SpellSelector

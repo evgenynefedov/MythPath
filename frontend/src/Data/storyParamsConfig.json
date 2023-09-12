@@ -1,0 +1,40 @@
+{
+  "steps": [
+    {
+      "code": "world",
+      "isMulti": false,
+      "text": {
+        "title": {
+          "en": "World"
+        }
+      }
+    },
+    {
+      "code": "main_character",
+      "isMulti": false,
+      "text": {
+        "title": {
+          "en": "Main character"
+        }
+      }
+    },
+    {
+      "code": "additional_characters",
+      "isMulti": true,
+      "text": {
+        "title": {
+          "en": "Additional characters"
+        }
+      }
+    },
+    {
+      "code": "locations",
+      "isMulti": true,
+      "text": {
+        "title": {
+          "en": "Locations"
+        }
+      }
+    }
+  ]
+}
