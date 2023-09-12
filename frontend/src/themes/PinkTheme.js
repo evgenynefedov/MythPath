@@ -1,18 +1,18 @@
 import { createTheme } from "@mui/material/styles";
 import { CONSTANTS } from "./../constants"
-// import FlowerTtf from './../fonts/FlowerDisplayDemoRegular-8MnRB.ttf'
-import RoyalTtf from './../fonts/RoyalJelly.ttf'
+// import FlowerTtf from './../fonts/Flower.ttf'
+// import RoyalTtf from './../fonts/RoyalJelly.ttf'
 
 // const flower = {
 //   fontFamily: 'Flower',
 //   fontStyle: 'normal',
 //   src: `url(${FlowerTtf})`
 // }
-const royal = {
-  fontFamily: 'Royal',
-  fontStyle: 'normal',
-  src: `url(${RoyalTtf})`
-}
+// const royal = {
+//   fontFamily: 'Royal',
+//   fontStyle: 'normal',
+//   src: `url(${RoyalTtf})`
+// }
 
 const COLORS = {
   borderGradient: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
@@ -61,7 +61,7 @@ export default createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         '@global': {
-          '@font-face': [royal],
+          '@font-face': ['Flower', 'Royal'],
         },
         body: {
           backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/pinkMobile)`,
@@ -246,13 +246,14 @@ export default createTheme({
   },
   typography: {
     h1: {
-      fontSize: '2rem',
+      fontSize: '3rem',
       fontWeight: 400,
       background: COLORS.headerText, 
       backgroundClip: 'text',
       color: 'transparent',
       marginTop: '10px',
-      fontFamily: 'Royal'
+      fontFamily: 'Fairytale',
+      lineHeight: 1,
     },
     h2: {
       fontSize: '1.5rem',
@@ -274,11 +275,11 @@ export default createTheme({
     body2: {
       '::first-letter': {
         color: COLORS.icon,
-        // fontFamily: 'Flower',
+        fontFamily: 'Flower',
       }
     },
     body3: {
-      color: COLORS.secondaryText,
+      color: COLORS.primaryText,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       display: 'block',
