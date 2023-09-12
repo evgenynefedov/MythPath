@@ -15,16 +15,18 @@ const royal = {
 }
 
 const COLORS = {
-  gold: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
-  goldText: 'radial-gradient(ellipse farthest-corner at right bottom, #e1c63c 0%, #bca26d 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
-  goldButton: 'linear-gradient(to bottom, #a95, #fea)',
-  goldTransparent: 'linear-gradient(to bottom, rgb(170 153 85 / 90%), rgb(255 238 170 / 90%))',
+  borderGradient: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
+  headerText: 'radial-gradient(ellipse farthest-corner at right bottom, #e1c63c 0%, #bca26d 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
+  buttonGradient: 'linear-gradient(to bottom, #a95, #fea)',
+  backgroundGradientTransparent: 'linear-gradient(to bottom, rgb(170 153 85 / 90%), rgb(255 238 170 / 90%))',
+  backgroundSecondaryGradient: 'linear-gradient(to right, #fee0ec 50%, transparent)',
+  backgroundPrimaryGradient: 'linear-gradient(to bottom, rgba(254, 224, 236, 0.8), rgba(253, 231, 239, 0.6))',
   icon: '#cfb681',
   outlinedText: '#614d0c',
   primaryMain: '#F187D2',
-  primaryText: '#fff8e1',
+  primaryText: '#964c96',
+  secondaryText: '#fff8e1',
   secondaryMain: '#fdd835',
-  secondaryText: '#964c96',
   backgroundDefault: '#fee0ec',
   backgroundPaper: '#fde7ef',
   textPrimary: '#5e0724',
@@ -62,10 +64,11 @@ export default createTheme({
           '@font-face': [royal],
         },
         body: {
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${CONSTANTS.cloudinaryBackgroundLink}/pinkMobile)`,
+          backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/pinkMobile)`,
           '@media (orientation: landscape)': {
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${CONSTANTS.cloudinaryBackgroundLink}/pinkDesktop)`,
+            backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/pinkDesktop)`,
           },
+          backgroundAttachment: 'fixed',
           backgroundRepeat: "no-repeat",
           backgroundSize: "100%",
           height: "100vh",
@@ -74,10 +77,10 @@ export default createTheme({
           textDecoration: 'none'
         },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
-          background: COLORS.goldButton,
+          background: COLORS.buttonGradient,
           padding: "10px",
           borderRadius: "10px",
-          color: COLORS.primaryText,
+          color: COLORS.secondaryText,
         },
         '.spell_wand': {
           color: COLORS.icon,
@@ -102,28 +105,39 @@ export default createTheme({
           width: '150px',
           height: '150px',
           color: 'white',
-          background: COLORS.goldTransparent,
+          background: COLORS.backgroundGradientTransparent,
           borderRadius: '5px',
         },
         '.close' : {
           color: 'white',
           width: '30px',
           height: '30px',
-          background: COLORS.goldTransparent,
+          background: COLORS.backgroundGradientTransparent,
           borderRadius: '5px',
           padding: '3px', 
+        },
+        '.inner_list': {
+          '@media (min-width:800px)': {
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'flex-start',
+            'li.MuiListItem-root': {
+              width: 'calc((100% - 20px)/3)',
+              marginRight: '6px',
+            }
+          }, 
         }
       }
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          background: COLORS.goldText,
+          background: COLORS.headerText,
           backgroundClip: 'text',
           color: 'transparent',
         },
         text: {
-          background: COLORS.goldText,
+          background: COLORS.headerText,
           backgroundClip: 'text',
           color: 'transparent',
         },
@@ -134,7 +148,7 @@ export default createTheme({
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
           boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
           border: `1px solid ${COLORS.buttonBorder}`,
-          background: COLORS.goldButton,
+          background: COLORS.buttonGradient,
         },
         outlined: {
           border: `1px solid ${COLORS.buttonBorder}`,
@@ -158,7 +172,7 @@ export default createTheme({
         },
         '& .tale_page__img' : {
           border: '10px solid',
-          borderImageSource: COLORS.gold,
+          borderImageSource: COLORS.borderGradient,
           borderImageSlice: 1,
           borderImageRepeat: 'round',
         },
@@ -174,15 +188,25 @@ export default createTheme({
     MuiListSubheader: {
       styleOverrides: {
         root: {
-          backgroundColor: 'transparent',
+          background: COLORS.backgroundSecondaryGradient,
+          margin: '5px 0',
+          borderRadius: '10px',
+          maxWidth: '350px',
+          color: COLORS.primaryText,
+          fontSize: '1.5rem',
+          fontWeight: 400,
         },
       }
     },
     MuiListItem: {
       styleOverrides: {
         root: {
-          paddingTop: 0,
-          paddingBottom: 0,
+          paddingTop: '8px',
+          paddingBottom: '8px',
+          border: `1px solid ${COLORS.buttonBorder}`,
+          borderRadius: '5px',
+          marginBottom: '4px',
+          backgroundColor: COLORS.backgroundDefault,
         }
       }
     },
@@ -205,6 +229,7 @@ export default createTheme({
           position: 'relative',
           border: `3px solid ${COLORS.buttonBorder}`,
           borderRadius: '5px',
+          backgroundColor: COLORS.backgroundDefault,
         }
       }
     },
@@ -223,22 +248,23 @@ export default createTheme({
     h1: {
       fontSize: '2rem',
       fontWeight: 400,
-      background: COLORS.goldText, 
+      background: COLORS.headerText, 
       backgroundClip: 'text',
       color: 'transparent',
+      marginTop: '10px',
       fontFamily: 'Royal'
     },
     h2: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      background: COLORS.goldText, 
+      background: COLORS.headerText, 
       backgroundClip: 'text',
       color: 'transparent',
     },
     h3: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      background: COLORS.goldTransparent, 
+      background: COLORS.backgroundGradientTransparent, 
       color: COLORS.buttonColor,
       textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
       borderRadius: '5px',
@@ -253,6 +279,9 @@ export default createTheme({
     },
     body3: {
       color: COLORS.secondaryText,
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      display: 'block',
     }
   },
 });
