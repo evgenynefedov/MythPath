@@ -8,7 +8,7 @@ export default function TalePage({ page, tittle }) {
         <Box elevation={3} className="tale_page">
         <>
             <CardMedia image={CONSTANTS.cloudinaryBaseLink + page.img} className="tale_page__img">
-                <Typography variant="h2" className="tale__tittle">
+                <Typography variant="h3">
                     {tittle}
                 </Typography>
             </CardMedia>

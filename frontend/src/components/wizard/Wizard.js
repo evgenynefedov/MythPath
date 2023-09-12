@@ -138,7 +138,7 @@ export default function Wizard() {
             minHeight: "100vh",
           }}
         >
-          <Container maxWidth="lg" style={{ padding: 0 }}>
+          <Container maxWidth="lg" style={{paddingLeft: 0, paddingRight: 0, paddingBottom: '60px'}}>
             {steps[stepIndex].isSpellSelector ? (
               spells?.length ? (
                 <SpellSelector
