@@ -43,7 +43,6 @@ export default function Wizard() {
 
   const getStep = () => steps[stepIndex];
   const setStep = (step) => setSteps(steps.with(stepIndex, step));
-  const setStepValue = (val) => setStep({ ...getStep(), value: val });
 
   const makeStep = (shift) => {
     const newStepIndex = stepIndex + shift;
@@ -78,9 +77,12 @@ export default function Wizard() {
     }
   }
 
+  function isEmpty(value) {
+    return Object.keys(value ?? {}).length === 0;
+  }
+
   const next = () => {
-    const stepValue = getStep().value;
-    if (Object.keys(stepValue ?? {}).length === 0) {
+    if (isEmpty(getStep().value)) {
       setRandomValues();
     }
     makeStep(1);
@@ -106,7 +108,11 @@ export default function Wizard() {
     } else {
       value = spell.id === getStep().value?.id ? {} : spell;
     }
-    setStepValue(value);
+    setStep({
+      ...getStep(),
+      value: value,
+      isRandom: isEmpty(value),
+    });
   };
 
   const fetchSpells = async function (stepCode) {
