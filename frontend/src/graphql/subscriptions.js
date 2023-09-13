@@ -7,6 +7,7 @@ export const onCreateTales = /* GraphQL */ `
       id
       userUUID
       tale
+      isPublic
       createdAt
       updatedAt
       __typename
@@ -19,6 +20,7 @@ export const onUpdateTales = /* GraphQL */ `
       id
       userUUID
       tale
+      isPublic
       createdAt
       updatedAt
       __typename
@@ -31,6 +33,7 @@ export const onDeleteTales = /* GraphQL */ `
       id
       userUUID
       tale
+      isPublic
       createdAt
       updatedAt
       __typename

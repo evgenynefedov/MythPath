@@ -4,7 +4,7 @@
  */
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import awsconfig from "../aws-exports";
-import { createTales } from "../graphql/mutations";
+import { createTales, deleteTales, updateTales } from "../graphql/mutations";
 import { getTales, listTales } from "../graphql/queries";
 import { getUserUUID } from "../Utils/getUserUUID";
 
@@ -13,7 +13,7 @@ Amplify.configure(awsconfig);
 /**
  * Save tales object to storage
  * @param {Object} tale Tale to save
- * @param {string} userUUID, quaels getUserUUID() by default
+ * @param {string} userUUID, equals getUserUUID() by default
  * @returns {Number} Tale id
  */
 export async function saveTale(tale, userUUID = getUserUUID()) {
@@ -49,12 +49,11 @@ export async function getTaleById(taleId) {
 
 /**
  * Get tales array with tale objects from storage
- * @param {string} userUUID, quaels getUserUUID() by default
+ * @param {string} queryVariables, example: { filter: { isPublic: { eq: true } } }
  * @returns {*} array with tale objects
  */
-export async function getListTales(userUUID = getUserUUID()) {
-  const filter = userUUID ? { filter: { userUUID: { eq: userUUID } } } : {};
-  const result = await API.graphql(graphqlOperation(listTales, filter));
+export async function getListTales(queryVariables) {
+  const result = await API.graphql(graphqlOperation(listTales, queryVariables));
 
   let list = result?.data.listTales.items;
   if (list) {
@@ -62,4 +61,32 @@ export async function getListTales(userUUID = getUserUUID()) {
   }
 
   return list;
+}
+
+/**
+ * Delete tale object from storage
+ * @param {string} TaleId
+ * @returns {array} array with deleted tales
+ */
+export async function deleteTaleById(taleId) {
+  if (!taleId) return;
+
+  const input = { input: { id: taleId } };
+  const result = await API.graphql(graphqlOperation(deleteTales, input));
+
+  return result?.data.deleteTales;
+}
+
+/**
+ * Update Tale by input
+ * @param {Object} input which contain id: taleID and updated attributes. Example: {id: 206aabe8-51dd-499e-a981-12f568fb3dc0, isPublic: true}
+ * @returns {array} array with updated tales
+ */
+export async function updateTale(input) {
+  if (!input) return;
+  const result = await API.graphql(
+    graphqlOperation(updateTales, { input: input })
+  );
+
+  return result?.data.updateTales;
 }
