@@ -1,20 +1,19 @@
 import { Box, Chip, Stack, Typography, Container } from "@mui/material";
 import Carousel from "../ui/Carousel";
 import SpellCard from "./SpellCard";
-
-const STEP_NAMES = {
-  world: "Choose world",
-  main_character: "Choose main character",
-  additional_characters: "Choose additional characters",
-  locations: "Choose locations",
-};
+import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 
 export default function SpellSelector({
   spells,
   step,
   updateStep,
   isMultiselector,
+  language = "en",
 }) {
+  const currentStepConfig = StoryParamsConfig.steps.find(
+    (s) => s.code === step.code
+  );
+
   function selectHandler(spell) {
     updateStep(spell);
   }
@@ -26,8 +25,8 @@ export default function SpellSelector({
 
   return (
     <Box mt={2}>
-      <Typography variant="h1" gutterBottom style={{textAlign: "center"}}>
-        {STEP_NAMES[step.code]}
+      <Typography variant="h1" gutterBottom style={{ textAlign: "center" }}>
+        {currentStepConfig?.text?.description[language]}
       </Typography>
       <Carousel>
         {spells.map((spell) => (
@@ -41,15 +40,15 @@ export default function SpellSelector({
       </Carousel>
       <Container>
         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-            {spells
-              .filter((spell) => isSelected(spell.id))
-              .map((spell) => (
-                <Chip
-                  label={spell.name}
-                  key={spell.id}
-                  onDelete={() => selectHandler(spell)}
-                />
-              ))}
+          {spells
+            .filter((spell) => isSelected(spell.id))
+            .map((spell) => (
+              <Chip
+                label={spell.name}
+                key={spell.id}
+                onDelete={() => selectHandler(spell)}
+              />
+            ))}
         </Stack>
       </Container>
     </Box>
