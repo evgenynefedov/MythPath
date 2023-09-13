@@ -1,13 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Container,
-  Typography,
-  Box,
-  Select,
-  MenuItem,
-} from "@mui/material";
+import { Button, Container, Typography, Box } from "@mui/material";
 import Icons from "./../../themes/sprite.svg";
 import Library from "./library/Library";
 import * as taleStorage from "../../services/taleStorage";
@@ -70,19 +63,6 @@ export default function Onboarding({ themes, changeTheme, selected }) {
           MythPath uses advanced AI to craft unique fairytales that come to
           life, blending entertainment and education like never before!
         </Typography>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={selected}
-          label="Age"
-          onChange={handleChange}
-        >
-          {themes.map((theme) => (
-            <MenuItem key={theme} value={theme}>
-              {theme}
-            </MenuItem>
-          ))}
-        </Select>
       </Container>
       <Box textAlign="center" mt={4}>
         <Link to="/wizard">
