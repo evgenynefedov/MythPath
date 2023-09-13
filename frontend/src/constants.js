@@ -16,9 +16,9 @@ REACT_APP_CLOUDINARY_API_KEY  = hereIsSomeOtherApiKey
      * openai.com
      */
     openai: `${process.env.REACT_APP_OPENAI_API_KEY}`,
-    /**
-     * cloudinary.com
-     */
+    // /**
+    //  * cloudinary.com
+    //  */
     cloudinary: `${process.env.REACT_APP_CLOUDINARY_API_KEY}`,
   },
   cloudinaryBaseLink:
@@ -27,5 +27,5 @@ REACT_APP_CLOUDINARY_API_KEY  = hereIsSomeOtherApiKey
     "https://res.cloudinary.com/dyigwqfyo/image/upload/v1693918007/MythPath/backgrounds",
   testMode: true,
   cloudinaryBasePath: "MythPath/Library",
-  cloudName: "dyigwqfyo",
+  cloudinaryCloudName: "dyigwqfyo",
 };

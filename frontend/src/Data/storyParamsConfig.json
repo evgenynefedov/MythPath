@@ -1,0 +1,68 @@
+{
+  "steps": [
+    {
+      "code": "world",
+      "isMulti": false,
+      "fieldsToGPT": ["name", "description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "World",
+          "ru": "Мир"
+        },
+        "description": {
+          "en": "Choose the world for your story",
+          "ru": "Выберите мир для вашей истории"
+        }
+      }
+    },
+    {
+      "code": "main_character",
+      "isMulti": false,
+      "fieldsToGPT": ["name", "description", "traits"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Main Character",
+          "ru": "Главный персонаж"
+        },
+        "description": {
+          "en": "Choose the main character of your story",
+          "ru": "Выберите главного персонажа вашей истории"
+        }
+      }
+    },
+    {
+      "code": "additional_characters",
+      "isMulti": true,
+      "fieldsToGPT": ["name", "description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Additional Characters",
+          "ru": "Дополнительные персонажи"
+        },
+        "description": {
+          "en": "Choose additional characters for your story",
+          "ru": "Выберите дополнительных персонажей для вашей истории"
+        }
+      }
+    },
+    {
+      "code": "locations",
+      "isMulti": true,
+      "fieldsToGPT": ["name", "description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Locations",
+          "ru": "Локации"
+        },
+        "description": {
+          "en": "Choose locations for your story",
+          "ru": "Выберите локации для вашей истории"
+        }
+      }
+    }
+  ]
+}
