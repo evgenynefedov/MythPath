@@ -9,20 +9,20 @@ export default function MainMenu() {
     <>
         <Paper className="menu">
             <div className="menu_main">
-                <Link to="/">
+                <Link to="/" className="menu_item">
                     <svg>
                         <use href={`${Icons}#castle`}/>
                     </svg>
                     <span>Home</span>
                 </Link>
-                <Link to="/wizard">
+                <Link to="/wizard" className="menu_item">
                     <svg>
                         <use href={`${Icons}#feather`}/>
                     </svg>
                     <span>Create new tale</span>
                 </Link>
             </div>
-            <Link to="/settings">
+            <Link to="/settings" className="menu_item">
                 <svg>
                     <use href={`${Icons}#settings`}/>
                 </svg>

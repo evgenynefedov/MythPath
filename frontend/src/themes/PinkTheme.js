@@ -62,7 +62,7 @@ export default createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         '@global': {
-          '@font-face': ['Flower', 'Royal'],
+          '@fontFace': ['Flower', 'Royal'],
         },
         body: {
           backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/pinkMobile)`,
@@ -85,9 +85,9 @@ export default createTheme({
         '.menu_main': {
           display: 'flex',
           justifyContent: 'space-between',
-          width: 'calc((100% - 30px)/3)',
+          width: 120,
           [`@media (min-width:${desktopWidth})`]: {
-            width: 250, 
+            width: 370, 
           }
         },
         '.menu span': {
@@ -99,12 +99,21 @@ export default createTheme({
         '.menu svg': {
           width: 40,
           height: 40,
+          [`@media (min-width:${desktopWidth})`]: {
+            marginRight: 10,
+          }
+        },
+        '.menu .menu_item': {
+          display: 'flex',
+          alignItems: 'center',
           background: COLORS.backgroundGradientTransparent,
           color: COLORS.buttonColor,
           borderRadius: 5,
           padding: 5,
           boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
+          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
           border: `1px solid ${COLORS.buttonBorder}`,
+          fontSize: '1.5em',
         },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
           background: COLORS.buttonGradient,
@@ -156,7 +165,18 @@ export default createTheme({
               marginRight: 6,
             }
           }, 
-        }
+        },
+        '.settings_control': {
+          padding: 10,
+          marginTop: 10,
+          [`@media (min-width:${desktopWidth})`]: {
+            background: COLORS.backgroundSecondaryGradient, 
+            backgroundColor: 'transparent',
+          },
+        },
+        '.theme_select': {
+          marginLeft: 16,
+        },
       }
     },
     MuiButton: {

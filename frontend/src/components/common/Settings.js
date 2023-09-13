@@ -1,8 +1,8 @@
 import ThemeSelector from "./ThemeSelector"
-export default function Settings() {
+export default function Settings({selectedThemeName, changeTheme}) {
     return (
         <>
-            <ThemeSelector />
+            <ThemeSelector changeTheme={changeTheme} selectedThemeName={selectedThemeName} />
         </>
     )
 }
