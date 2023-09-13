@@ -11,6 +11,7 @@ import generatePromptData from "../../services/generatePromptData";
 import responseToTale from "../../services/responseToTale";
 import StoryParams from "./StoryParams";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
+import getRandomElementFromArray from "../../Utils/getRandomElementFromArray";
 
 const STEPS = [
   ...StoryParamsConfig.steps.map((step) => ({
@@ -24,17 +25,24 @@ const STEPS = [
   },
 ];
 
+/**
+ * number of randomly selected items on skipped steps
+ * (can be lower if random values intersect)
+ */
+const RANDOM_MULTI_ITEMS_COUNT = 2;
+
 export default function Wizard() {
   const navigate = useNavigate();
-
   const stepsCount = STEPS.length;
 
   const [steps, setSteps] = useState(STEPS);
   const [stepIndex, setStepIndex] = useState(0);
   /** array of possible values for current step */
   const [spells, setSpells] = useState([]);
-
   const [isLoading, setIsloading] = useState(false);
+
+  const getStep = () => steps[stepIndex];
+  const setStep = (step) => setSteps(steps.with(stepIndex, step));
 
   const makeStep = (shift) => {
     const newStepIndex = stepIndex + shift;
@@ -48,15 +56,48 @@ export default function Wizard() {
     }
   };
 
+  function setRandomValues() {
+    if (getStep().isMulti) {
+      const rendomItemsCount = Math.min(
+        RANDOM_MULTI_ITEMS_COUNT,
+        spells.length
+      );
+      const randomSpells = [
+        ...new Set(
+          [...Array(rendomItemsCount).keys()].map(() =>
+            getRandomElementFromArray(spells)
+          )
+        ),
+      ];
+
+      setStep({ ...getStep(), value: randomSpells, isRandom: true });
+    } else {
+      const randomSpell = getRandomElementFromArray(spells);
+      setStep({ ...getStep(), value: randomSpell, isRandom: true });
+    }
+  }
+
+  function isEmpty(value) {
+    return Object.keys(value ?? {}).length === 0;
+  }
+
+  const next = () => {
+    if (isEmpty(getStep().value)) {
+      setRandomValues();
+    }
+    makeStep(1);
+  };
+
+  const back = () => makeStep(-1);
+
   /**
    * Toggles selection: updates steps[stepIndex].value with selection/deselection in spell object
    * @param {*} spell
    */
-  const updateStep = (spell) => {
-    const currentStep = steps[stepIndex];
-    let value = currentStep.value;
+  const toggleStep = (spell) => {
+    let value = getStep().value;
 
-    if (currentStep.isMulti) {
+    if (getStep().isMulti) {
       const indexToDelete = value.findIndex((e) => e.id === spell.id);
 
       if (indexToDelete !== -1) {
@@ -65,9 +106,13 @@ export default function Wizard() {
         value.push(spell);
       }
     } else {
-      value = spell.id === steps[stepIndex].value?.id ? {} : spell;
+      value = spell.id === getStep().value?.id ? {} : spell;
     }
-    setSteps(steps.with(stepIndex, { ...currentStep, value }));
+    setStep({
+      ...getStep(),
+      value: value,
+      isRandom: isEmpty(value),
+    });
   };
 
   const fetchSpells = async function (stepCode) {
@@ -117,7 +162,7 @@ export default function Wizard() {
   };
 
   useEffect(() => {
-    const currentStep = steps[stepIndex];
+    const currentStep = getStep();
     if (currentStep.isSpellSelector) {
       fetchSpells(currentStep.code).then((r) => {
         setSpells(r);
@@ -138,14 +183,14 @@ export default function Wizard() {
             minHeight: "100vh",
           }}
         >
-          <Container maxWidth="lg" style={{paddingLeft: 0, paddingRight: 0, paddingBottom: '60px'}}>
-            {steps[stepIndex].isSpellSelector ? (
+          <Container maxWidth="lg" style={{ padding: 0 }}>
+            {getStep().isSpellSelector ? (
               spells?.length ? (
                 <SpellSelector
                   spells={spells}
-                  step={steps[stepIndex]}
-                  isMultiselector={steps[stepIndex].isMulti}
-                  updateStep={updateStep}
+                  step={getStep()}
+                  isMultiselector={getStep().isMulti}
+                  updateStep={toggleStep}
                 />
               ) : null
             ) : (
@@ -168,14 +213,14 @@ export default function Wizard() {
               stepsCount={stepsCount}
               stepIndex={stepIndex}
               isSelected={
-                steps[stepIndex].isSpellSelector &&
+                getStep().isSpellSelector &&
                 !(
-                  Object.keys(steps[stepIndex].value).length === 0 ||
-                  steps[stepIndex].value.length === 0
+                  Object.keys(getStep().value).length === 0 ||
+                  getStep().value.length === 0
                 )
               }
-              back={() => makeStep(-1)}
-              next={() => makeStep(1)}
+              back={back}
+              next={next}
             />
           </Box>
         </Box>
