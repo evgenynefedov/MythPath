@@ -8,12 +8,14 @@ import {
   ListItemText,
   ListSubheader,
   Typography,
-  Container
+  Container,
+  Badge,
 } from "@mui/material";
 import CasinoIcon from "@mui/icons-material/Casino";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import ResponsiveImage from "../ui/ResponsiveImage";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
+import React from "react";
 
 /**
  * Component to show entered story steps
@@ -25,31 +27,29 @@ export default function StoryParams({ steps, createHandler, language = "en" }) {
     return acc;
   }, {});
   return (
-    <Container sx={{ paddingBottom: '60px'}}>
+    <Container sx={{ paddingBottom: "60px" }}>
       <Typography variant="h1">Elements of your fairytail</Typography>
-      <List sx={{ width: "100%"}}>
+      <List sx={{ width: "100%" }}>
         {steps.map((step) => (
           <Box key={step.code}>
             <ListSubheader component="h2">
-              {stepConfig[step.code]}:
+              {stepConfig[step.code]}
             </ListSubheader>
-            {step.isMulti ? (
-              step.value.length > 0 ? 
-                <List key={`list-${step.code}`} sx={{ width: "100%"}} className="inner_list">
-                  {step.value.map((spell) => <StoryParamCard key={spell.name} spell={spell} />)}
-                </List>
-              : (
-                <RandomCard key={`card-${step.code}`} />
-              )
-              )
-               : (
-              step.value &&
-              (step.value.name ? (
-                <StoryParamCard spell={step.value} key={step.value.id} />
-              ) : (
-                <RandomCard key={`card-${step.code}`} />
-              ))
-            )}
+            {
+              <List
+                key={`list-${step.code}`}
+                sx={{ width: "100%" }}
+                className="inner_list"
+              >
+                {(step.isMulti ? step.value : [step.value]).map((spell) => (
+                  <StoryParamCard
+                    key={spell.name}
+                    spell={spell}
+                    isRandom={step.isRandom}
+                  />
+                ))}
+              </List>
+            }
           </Box>
         ))}
       </List>
@@ -67,38 +67,24 @@ export default function StoryParams({ steps, createHandler, language = "en" }) {
   );
 }
 
-function StoryParamCard({ spell }) {
+function StoryParamCard({ spell, isRandom }) {
   return (
-      <ListItem alignItems="center">
-        <ListItemAvatar>
-          <Avatar variant="rounded"
-            sx={{ width: 56, height: 56, marginRight: 2 }}>
+    <ListItem alignItems="center">
+      <ListItemAvatar sx={{ marginRight: 2 }}>
+        <Badge invisible={!isRandom} badgeContent={<CasinoIcon />}>
+          <Avatar variant="rounded" sx={{ width: 56, height: 56 }}>
             <ResponsiveImage imgPath={spell.img} aspectRatio={1} />
           </Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={spell.name}
-          secondary={
-            <Typography variant="body3" noWrap>
-              {spell.description}
-            </Typography>
-          }
-        />
-      </ListItem>
-  );
-}
-
-function RandomCard() {
-  return (
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar
-          variant="rounded"
-          sx={{ width: 56, height: 56 }}>
-          <CasinoIcon />
-        </Avatar>
+        </Badge>
       </ListItemAvatar>
-      <ListItemText primary="Randomly selected" />
+      <ListItemText
+        primary={spell.name}
+        secondary={
+          <Typography variant="body3" noWrap>
+            {spell.description}
+          </Typography>
+        }
+      />
     </ListItem>
   );
 }
