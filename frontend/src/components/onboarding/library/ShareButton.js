@@ -16,12 +16,6 @@ export default function ShareBUtton({ taleId, isPublic, updateLibraries }) {
       });
   };
 
-  // return (
-  //   <button onClick={ButtonHanler}>
-  //     {isPublic ? "Make unpublic" : "Make public"}
-  //   </button>
-  // );
-
   return (
     <FormControlLabel
       control={
