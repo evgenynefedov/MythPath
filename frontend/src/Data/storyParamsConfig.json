@@ -7,7 +7,12 @@
       "fieldsToImages": ["img", "name"],
       "text": {
         "title": {
-          "en": "World"
+          "en": "World",
+          "ru": "Мир"
+        },
+        "description": {
+          "en": "Choose the world for your story",
+          "ru": "Выберите мир для вашей истории"
         }
       }
     },
@@ -18,7 +23,12 @@
       "fieldsToImages": ["img", "name"],
       "text": {
         "title": {
-          "en": "Main character"
+          "en": "Main Character",
+          "ru": "Главный персонаж"
+        },
+        "description": {
+          "en": "Choose the main character of your story",
+          "ru": "Выберите главного персонажа вашей истории"
         }
       }
     },
@@ -29,7 +39,12 @@
       "fieldsToImages": ["img", "name"],
       "text": {
         "title": {
-          "en": "Additional characters"
+          "en": "Additional Characters",
+          "ru": "Дополнительные персонажи"
+        },
+        "description": {
+          "en": "Choose additional characters for your story",
+          "ru": "Выберите дополнительных персонажей для вашей истории"
         }
       }
     },
@@ -40,7 +55,12 @@
       "fieldsToImages": ["img", "name"],
       "text": {
         "title": {
-          "en": "Locations"
+          "en": "Locations",
+          "ru": "Локации"
+        },
+        "description": {
+          "en": "Choose locations for your story",
+          "ru": "Выберите локации для вашей истории"
         }
       }
     }
