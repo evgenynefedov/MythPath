@@ -7,7 +7,8 @@ import Onboarding from "./components/onboarding/Onboarding";
 import Wizard from "./components/wizard/Wizard";
 import TaleLoader from "./components/tale-loader/TaleLoader";
 import TaleViewer from "./components/tale-viewer/TaleViewer";
-import MainMenu from "./components/common/MainMenu"
+import MainMenu from "./components/common/MainMenu";
+import Settings from "./components/common/Settings";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -33,6 +34,7 @@ function App() {
               <Route path="/" element={<Onboarding changeTheme={changeTheme} themes={themeNames} selected={themeName}/>} />
               <Route path="/wizard" element={<Wizard />} />
               <Route path="/tale-loader" element={<TaleLoader />} />
+              <Route path="/settings" element={<Settings />} />
             </Route>
             <Route path="/tale-viewer/:taleId" element={<TaleViewer />} />
           </Routes>

@@ -22,7 +22,7 @@ export default function MainMenu() {
                     <span>Create new tale</span>
                 </Link>
             </div>
-            <Link to="/wizard">
+            <Link to="/settings">
                 <svg>
                     <use href={`${Icons}#settings`}/>
                 </svg>
