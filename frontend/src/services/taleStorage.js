@@ -1,32 +1,32 @@
 /**
- * Tale storage layer (in V2 async wrapper for localStorage with multiple stories)
+ * Tale storage layer V3 (uses Amplify GraphQL)
  * @module taleStorage
  */
+import { Amplify, API, graphqlOperation } from "aws-amplify";
+import awsconfig from "../aws-exports";
+import { createTales } from "../graphql/mutations";
+import { getTales, listTales } from "../graphql/queries";
+import { getUserUUID } from "../Utils/getUserUUID";
 
-import { strToHash } from "../Utils/strToHash";
-
-const TALE_STORAGE_KEY = "tales";
+Amplify.configure(awsconfig);
 
 /**
  * Save tales object to storage
- * @param {*} tale Tale object to save
+ * @param {Object} tale Tale to save
+ * @param {string} userUUID, quaels getUserUUID() by default
  * @returns {Number} Tale id
  */
-export async function saveTale(tale) {
-  let tales = JSON.parse(localStorage.getItem(TALE_STORAGE_KEY)) || [];
+export async function saveTale(tale, userUUID = getUserUUID()) {
+  const taleObject = {
+    userUUID: userUUID,
+    tale: JSON.stringify(tale),
+  };
 
-  const taleId = strToHash(JSON.stringify(tale));
-  const indexByTaleId = tales.findIndex((t) => t.id === taleId);
+  const result = await API.graphql(
+    graphqlOperation(createTales, { input: taleObject })
+  );
 
-  const taleObject = { id: taleId, tale: tale };
-
-  indexByTaleId === -1
-    ? tales.push(taleObject)
-    : (tales[indexByTaleId] = taleObject);
-
-  localStorage.setItem(TALE_STORAGE_KEY, JSON.stringify(tales));
-
-  return taleId;
+  return result?.data.createTales.id;
 }
 
 /**
@@ -37,33 +37,29 @@ export async function saveTale(tale) {
 export async function getTaleById(taleId) {
   if (!taleId) return null;
 
-  let tales = JSON.parse(localStorage.getItem(TALE_STORAGE_KEY)) || [];
+  const result = await API.graphql(graphqlOperation(getTales, { id: taleId }));
 
-  const indexByTaleId = tales.findIndex((t) => t.id == taleId);
-  let tale = indexByTaleId !== -1 ? tales[indexByTaleId] : null;
-  return tale;
-}
-
-/**
- * Delete tale object from storage
- * @param {Number} TaleId
- */
-export async function deleteTaleById(taleId) {
-  if (!taleId) return;
-
-  let tales = JSON.parse(localStorage.getItem(TALE_STORAGE_KEY)) || [];
-
-  const indexByTaleId = tales.findIndex((t) => t.id == taleId);
-  if (indexByTaleId !== -1) {
-    tales.splice(indexByTaleId, 1);
-    localStorage.setItem(TALE_STORAGE_KEY, JSON.stringify(tales));
+  let taleObject = result?.data.getTales;
+  if (taleObject) {
+    taleObject.tale = JSON.parse(taleObject.tale);
   }
+
+  return taleObject;
 }
 
 /**
  * Get tales array with tale objects from storage
+ * @param {string} userUUID, quaels getUserUUID() by default
  * @returns {*} array with tale objects
  */
-export async function getTales() {
-  return JSON.parse(localStorage.getItem(TALE_STORAGE_KEY)) || [];
+export async function getListTales(userUUID = getUserUUID()) {
+  const filter = userUUID ? { filter: { userUUID: { eq: userUUID } } } : {};
+  const result = await API.graphql(graphqlOperation(listTales, filter));
+
+  let list = result?.data.listTales.items;
+  if (list) {
+    list = list.map((i) => ({ ...i, tale: JSON.parse(i.tale) }));
+  }
+
+  return list;
 }
