@@ -33,15 +33,15 @@ export default function StoryParams({ steps, createHandler, language = "en" }) {
         {steps.map((step) => (
           <Box key={step.code}>
             <ListSubheader component="h2">
-              {stepConfig[step.code]}{" "}
+              {stepConfig[step.code]}
             </ListSubheader>
-            {step.isMulti ? (
+            {
               <List
                 key={`list-${step.code}`}
                 sx={{ width: "100%" }}
                 className="inner_list"
               >
-                {step.value.map((spell) => (
+                {(step.isMulti ? step.value : [step.value]).map((spell) => (
                   <StoryParamCard
                     key={spell.name}
                     spell={spell}
@@ -49,15 +49,7 @@ export default function StoryParams({ steps, createHandler, language = "en" }) {
                   />
                 ))}
               </List>
-            ) : (
-              step.value && (
-                <StoryParamCard
-                  key={step.value.id}
-                  isRandom={step.isRandom}
-                  spell={step.value}
-                />
-              )
-            )}
+            }
           </Box>
         ))}
       </List>
