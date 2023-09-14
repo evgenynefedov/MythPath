@@ -2,4 +2,5 @@ type Tales @model @auth(rules: [{ allow: public }]) {
   id: ID!
   userUUID: String
   tale: String!
+  isPublic: Boolean
 }

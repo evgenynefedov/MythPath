@@ -7,6 +7,7 @@ export const getTales = /* GraphQL */ `
       id
       userUUID
       tale
+      isPublic
       createdAt
       updatedAt
       __typename
@@ -24,6 +25,7 @@ export const listTales = /* GraphQL */ `
         id
         userUUID
         tale
+        isPublic
         createdAt
         updatedAt
         __typename
