@@ -2,6 +2,7 @@ import * as React from "react";
 import { Box, Container, LinearProgress, Typography } from "@mui/material";
 import "./TaleLoader.css";
 import getRandomElementFromArray from "../../Utils/getRandomElementFromArray";
+import { useState, useEffect } from "react";
 
 export default function TaleLoader() {
   const quotes = [
@@ -13,12 +14,26 @@ export default function TaleLoader() {
     "In the time it's taking to load, I could have rescued the princess myself.",
     "Loading... Because even fairy godmothers need a coffee break.",
     "If this loading time were a witch, it'd be a wicked one.",
-    "This loading bar is like Cinderella's carriage—it only lasts until midnight.",
+    "This loading bar is like Cinderella's carriage — it only lasts until midnight.",
     "In the time it's taking, I could have kissed a frog and built a castle.",
     "Rapunzel, let down your loading bar!",
     "Waiting for this fairy tale feels like I'm stuck in the 'Tower of Endless Loading.'",
     "Once upon a time, in a land filled with loading screens, our hero waited.",
+    "I'm not saying this loading screen is slow, but I've aged enough to have a mid-life crisis since it started.",
+    "Why did the loading screen cross the road? To get to the other buffering side.",
+    "I've seen snails with turbochargers move faster than this loading bar.",
+    "I've heard that if you stare at a loading screen long enough, you'll see a fairy cry.",
   ];
+
+  let [randomQuote, setRandomQuote] = useState(
+    getRandomElementFromArray(quotes)
+  );
+
+  useEffect(() => {
+    setInterval(() => {
+      setRandomQuote(getRandomElementFromArray(quotes));
+    }, 8000);
+  });
 
   return (
     <Box
@@ -31,8 +46,8 @@ export default function TaleLoader() {
       }}
     >
       <Container maxWidth="sm">
-        <Typography variant="h3" fontFamily="Kranky">
-          {getRandomElementFromArray(quotes)}
+        <Typography variant="h1" fontFamily="Kranky">
+          {randomQuote}
         </Typography>
         <Box
           sx={{
