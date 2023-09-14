@@ -11,15 +11,13 @@ import MainMenu from "./components/common/MainMenu";
 import Settings from "./components/common/Settings";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PinkTheme from "./themes/PinkTheme"
-// import GreenTheme from "./themes/GreenTheme"
+
+import { getSelectedTheme, getThemebyName } from "./services/settingsStorage"
 
 function App() {
-	let [theme, setTheme] = useState(PinkTheme)
-  let [themeName, setThemeName] = useState("Little princess")
-	function changeTheme(theme, themeName) {
-		setTheme(theme)
-    setThemeName(themeName)
+	let [theme, setTheme] = useState(getSelectedTheme())
+	function changeTheme(themeName) {
+		setTheme(getThemebyName(themeName))
 	}
   return (
     <>
@@ -31,7 +29,7 @@ function App() {
               <Route path="/" element={<Onboarding />} />
               <Route path="/wizard" element={<Wizard />} />
               <Route path="/tale-loader" element={<TaleLoader />} />
-              <Route path="/settings" element={<Settings changeTheme={changeTheme} selectedThemeName={themeName} />} />
+              <Route path="/settings" element={<Settings changeTheme={changeTheme} />} />
             </Route>
             <Route path="/tale-viewer/:taleId" element={<TaleViewer />} />
           </Routes>

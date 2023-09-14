@@ -1,16 +1,15 @@
 import { useState } from "react"
 import { Box, Select, MenuItem } from "@mui/material"
 
-import PinkTheme from "./../../themes/PinkTheme"
-import GreenTheme from "./../../themes/GreenTheme"
+import { getSelectedThemeName, getThemeNames, saveThemeSelection } from "./../../services/settingsStorage"
 
-export default function ThemeSelector({selectedThemeName, changeTheme}) {
-    const themesToSelect = {"Little princess": PinkTheme, "Summer forest": GreenTheme}
-	const themeNames = Object.keys(themesToSelect)
-	let [themeName, setThemeName] = useState(selectedThemeName)
+export default function ThemeSelector({changeTheme}) {
+    const themeNames = getThemeNames()
+    let [themeName, setThemeName] = useState(getSelectedThemeName())
     function handleChange(event) {
         setThemeName(event.target.value)
-        changeTheme(themesToSelect[event.target.value], event.target.value)
+        saveThemeSelection(event.target.value)
+        changeTheme(event.target.value)
     }
     return(
         <Box className="settings_control">
@@ -23,7 +22,7 @@ export default function ThemeSelector({selectedThemeName, changeTheme}) {
                 onChange={handleChange}
                 className="theme_select"
                 >
-                {themeNames.map((theme) => <MenuItem key={theme} value={theme}>{theme}</MenuItem>)}
+                {themeNames.map((name) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
             </Select>
         </Box>
     )
