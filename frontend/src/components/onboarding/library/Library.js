@@ -1,22 +1,16 @@
-import React, { useEffect } from "react";
-import * as taleStorage from "../../../services/taleStorage";
+import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import LibraryItem from "./LibraryItem";
 import Grid from "@mui/material/Grid";
 
-export default function Library() {
-  const [tales, setTales] = React.useState([]);
-
-  useEffect(() => {
-    taleStorage.getListTales(null).then((t) => setTales(t));
-  }, []);
-
-  useEffect(() => {
-    console.log(tales);
-  }, [tales]);
-
+export default function Library({
+  title,
+  tales,
+  updateLibraries,
+  withControls,
+}) {
   return (
     tales.length > 0 && (
       <Box
@@ -28,7 +22,7 @@ export default function Library() {
       >
         <Container maxWidth="md">
           <Typography variant="h2" my={1}>
-            Your library
+            {title}
           </Typography>
           <Box
             sx={{
@@ -39,9 +33,13 @@ export default function Library() {
               {tales.map((i) => (
                 <LibraryItem
                   key={i.id}
-                  id={i.id}
+                  taleId={i.id}
                   cover={i.tale.cover ? i.tale.cover : i.tale.pages[0].img}
                   title={i.tale.title}
+                  userUUID={i.userUUID}
+                  isPublic={i.isPublic}
+                  updateLibraries={updateLibraries}
+                  withControls={withControls}
                 />
               ))}
             </Grid>
