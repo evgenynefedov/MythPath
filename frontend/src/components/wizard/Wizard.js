@@ -213,11 +213,7 @@ export default function Wizard() {
               stepsCount={stepsCount}
               stepIndex={stepIndex}
               isSelected={
-                getStep().isSpellSelector &&
-                !(
-                  Object.keys(getStep().value).length === 0 ||
-                  getStep().value.length === 0
-                )
+                getStep().isSpellSelector && !isEmpty(getStep().value)
               }
               back={back}
               next={next}
