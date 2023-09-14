@@ -1,26 +1,17 @@
 import * as taleStorage from "../../../services/taleStorage";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import { useState } from "react";
 
-export default function ShareBUtton({ taleId, isPublic, updateLibraries }) {
-  const [checked, setChecked] = useState(isPublic);
-
-  const handleChange = (e) => {
-    setChecked(e.target.checked);
-
-    taleStorage
-      .updateTale({ id: taleId, isPublic: isPublic ? false : true })
-      .then(() => {
-        updateLibraries();
-      });
+export default function ShareButton({ taleId, isPublic, updateLibraries }) {
+  const handleChange = () => {
+    taleStorage.updateTale({ id: taleId, isPublic: !isPublic }).then(() => {
+      updateLibraries();
+    });
   };
 
   return (
     <FormControlLabel
-      control={
-        <Switch checked={checked} onChange={handleChange} defaultChecked />
-      }
+      control={<Switch checked={isPublic} onChange={handleChange} />}
       label="Public"
     />
   );

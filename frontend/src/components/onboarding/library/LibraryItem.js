@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import { CONSTANTS } from "../../../constants";
 import { getUserUUID } from "../../../Utils/getUserUUID";
 import DeleteButton from "./DeleteButton";
-import ShareBUtton from "./ShareButton";
+import ShareButton from "./ShareButton";
 
 export default function LibraryItem({
   taleId,
@@ -36,7 +36,7 @@ export default function LibraryItem({
         {userUUID === getUserUUID() && withControls && (
           <>
             <DeleteButton taleId={taleId} updateLibraries={updateLibraries} />
-            <ShareBUtton
+            <ShareButton
               taleId={taleId}
               isPublic={isPublic}
               updateLibraries={updateLibraries}
