@@ -1,18 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 import { CONSTANTS } from "./../constants"
-// import FlowerTtf from './../fonts/Flower.ttf'
-// import RoyalTtf from './../fonts/RoyalJelly.ttf'
-
-// const flower = {
-//   fontFamily: 'Flower',
-//   fontStyle: 'normal',
-//   src: `url(${FlowerTtf})`
-// }
-// const royal = {
-//   fontFamily: 'Royal',
-//   fontStyle: 'normal',
-//   src: `url(${RoyalTtf})`
-// }
 
 const COLORS = {
   borderGradient: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
@@ -36,6 +23,11 @@ const COLORS = {
   buttonBorder: '#ba6',
 }
 const desktopWidth = '800px'
+const cursor = "url('/cursors/magic-wand.svg'), auto"
+const buttonHover = {
+  transform: 'translateY(-3px)',
+  boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)'
+}
 
 export default createTheme({
   palette: {
@@ -114,6 +106,11 @@ export default createTheme({
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
           border: `1px solid ${COLORS.buttonBorder}`,
           fontSize: '1.5em',
+          cursor: cursor,
+          ':hover': buttonHover,
+        },
+        '.swiper-wrapper': { 
+          paddingTop: 5, 
         },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
           background: COLORS.buttonGradient,
@@ -121,13 +118,12 @@ export default createTheme({
           borderRadius: 10,
           color: COLORS.secondaryText,
         },
-        '.spell_wand': {
-          color: COLORS.icon,
-          width: 30,
-          height: 30,
-          padding: 9,
-          borderBottomLeftRadius: 30,
-          backgroundColor: 'rgba(255,255,255,0.8)',
+        '.swiper-slide': {
+          transition: '.3s ease',
+          ':hover': {
+            transform: 'translateY(-8px)',
+            transition: '.3s ease',
+          },
         },
         '.selected_spell': {
           position: 'absolute',
@@ -154,6 +150,8 @@ export default createTheme({
           background: COLORS.backgroundGradientTransparent,
           borderRadius: 5,
           padding: 3, 
+          cursor: cursor,
+          ':hover': buttonHover,
         },
         '.inner_list': {
           [`@media (min-width:${desktopWidth})`]: {
@@ -185,6 +183,9 @@ export default createTheme({
           background: COLORS.headerText,
           backgroundClip: 'text',
           color: 'transparent',
+          cursor: cursor,
+          transition: '.5s ease',
+          ':hover': buttonHover,
         },
         text: {
           background: COLORS.headerText,
@@ -264,8 +265,14 @@ export default createTheme({
       styleOverrides: {
         root: {
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
           border: `3px solid ${COLORS.buttonBorder}`, 
+          position: 'relative',
+          cursor: cursor,
+          [`@media (min-width:${desktopWidth})`]: {
+            ':hover': {
+              boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+            }, 
+          }
         }
       }
     },
@@ -301,7 +308,6 @@ export default createTheme({
       background: COLORS.headerText, 
       backgroundClip: 'text',
       color: 'transparent',
-      marginTop: 10,
       fontFamily: 'Fairytale',
       lineHeight: 1,
     },
