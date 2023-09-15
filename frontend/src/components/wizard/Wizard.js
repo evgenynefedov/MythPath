@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as libraryStorage from "./../../services/libraryStorage";
+import { getLibraryData } from "./../../services/libraryStorage";
 import { textGenerator } from "./../../services/textGenerator";
 import * as taleStorage from "./../../services/taleStorage";
 import { useNavigate } from "react-router-dom";
@@ -118,25 +118,25 @@ export default function Wizard() {
   const fetchSpells = async function (stepCode) {
     const getWorldId = () => steps[0]?.value?.id;
     const getCharacterId = () => steps[1]?.value?.id;
+
     const sortBySelectedWorld = (spells) =>
-      spells.toSorted(
-        // works because (true - false) === -1
+      spells.sort(
         (a, b) => (b.world_id === getWorldId()) - (a.world_id === getWorldId())
       );
+
+    let items = await getLibraryData(stepCode, "en");
+
     switch (stepCode) {
-      case "world":
-        return await libraryStorage.getWorlds();
       case "main_character":
-        return sortBySelectedWorld(await libraryStorage.getCharacters("en"));
+        return sortBySelectedWorld(items);
       case "additional_characters":
         return sortBySelectedWorld(
-          (await libraryStorage.getCharacters("en")).filter(
-            (character) => character.id !== getCharacterId()
-          )
+          items.filter((character) => character.id !== getCharacterId())
         );
       case "locations":
-        return await libraryStorage.getLocations("en", getWorldId());
+        return items.filter((item) => item.world_id === getWorldId());
       default:
+        return items;
     }
   };
 
