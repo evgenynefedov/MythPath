@@ -1,112 +1,134 @@
 [
     {
-        "id": 1,
-        "name": "Dobby",
+        "id": 101, 
+        "name": "Inferno",
+        "description": "The Fire kitten, is an adventurous feline with blazing fur and an insatiable curiosity, known for its boundless energy and unwavering loyalty.",
         "traits": [
-            "Loyal",
-            "Courageous",
-            "Selfless"
+            "Fiery Energy", 
+            "Loyalty",
+            "Fearless Curiosity"
         ],
-        "description": "A kind-hearted house-elf known for his loyalty and willingness to help others, often in unconventional ways.",
-        "catchphrase": "Dobby is a free elf!"
+        "catchphrase": "Where there's fire, there's fun!"
     },
     {
-        "id": 2,
-        "name": "Grogu",
+        "id": 102, 
+        "name": "Crystal",
+        "description": "The Ice kitten, possesses an enchanting frosty coat and a serene demeanor, bringing a sense of cool tranquility to its surroundings.",
         "traits": [
-            "Curious",
-            "Adorable",
-            "Force-sensitive"
+            "Serenity",
+            "Cool Resilience",
+            "Gentle Charm"
         ],
-        "description": "A young and enigmatic Force-sensitive alien of Yoda's species, known for his cuteness and strong connection to the Force.",
-        "catchphrase": "Cooing sounds"
+        "catchphrase": "Every moment is as cool as ice!"
     },
     {
-        "id": 3,
-        "name": "Lara Croft",
+        "id": 103, 
+        "name": "Gaia",
+        "description": "The Earth kitten with verdant green fur, embodies the lush vibrancy of nature, exuding a serene and grounding presence deeply connected to the natural world.",
         "traits": [
-            "Adventurous",
-            "Skilled",
-            "Independent"
+            "Grounded Connection",
+            "Nurturing Presence",
+            "Resilience"
         ],
-        "description": "An archaeologist and adventurer, known for her daring exploits and skills.",
-        "catchphrase": "Adventure is worthwhile in itself."
+        "catchphrase": "Every pawstep nurtures the world."
     },
     {
-        "id": 4,
-        "name": "Spock",
+        "id": 104, 
+        "name": "Zephyr", 
+        "description": "The Air kitten with pristine white wings, moves with grace and freedom, embodying the spirit of the wind as it soars through the skies.",
         "traits": [
-            "Logical",
-            "Rational",
-            "Dedicated"
+            "Freedom of Spirit",
+            "Playful Lightness",
+            "Gentle Breeze"
         ],
-        "description": "A Vulcan officer with exceptional logic and dedication aboard the USS Enterprise.",
-        "catchphrase": "Live long and prosper."
+        "catchphrase": "The sky is our playground!"
     },
     {
-        "id": 5,
-        "name": "The Cheshire Cat",
+        "id": 201, 
+        "name": "Odin", 
+        "description": "The chief god in Norse mythology, recognized for his wisdom and distinctive one-eyed appearance.",
         "traits": [
-            "Mysterious",
-            "Enigmatic",
-            "Playful"
+            "Wisdom",
+            "Wanderlust",
+            "Leadership"
         ],
-        "description": "A mysterious and enigmatic cat with the ability to appear and disappear at will, known for its wide grin and cryptic advice.",
-        "catchphrase": "We're all mad here."
+        "catchphrase": "Seek knowledge, and the path to wisdom shall reveal itself."
     },
     {
-        "id": 6,
-        "name": "Thor",
+        "id": 202, 
+        "name": "Thor", 
+        "description": "The mighty Norse god of thunder, known for his incredible strength and his magical hammer, Mjölnir.",
         "traits": [
-            "Mighty",
-            "Honorable",
-            "Protective"
+            "Strength",
+            "Protector",
+            "Bravery"
         ],
-        "description": "A powerful Asgardian god of thunder, defender of realms and wielder of Mjolnir.",
-        "catchphrase": "I am Thor, the God of Thunder!"
+        "catchphrase": "By Mjölnir's might, I shall protect!"
     },
     {
-        "id": 7,
-        "name": "Tin Woodman",
+        "id": 203, 
+        "name": "Loki", 
+        "description": "A cunning and mischievous trickster known for his shapeshifting abilities and his tendency to cause both chaos and occasional aid to the gods.",
         "traits": [
-            "Kind-hearted",
-            "Loyal",
-            "Empathetic"
+            "Trickster Nature",
+            "Complex Morality",
+            "Resourcefulness"
         ],
-        "description": "A gentle and compassionate woodsman who was transformed into a tin man, seeking a heart and searching for a way to feel emotions again.",
-        "catchphrase": "Hearts will never be practical until they are made unbreakable."
+        "catchphrase": "Crafty chaos, at your service!"
     },
     {
-        "id": 8,
-        "name": "Baymax",
+        "id": 204, 
+        "name": "Brynhildr", 
+        "description": "A valkyrie known for her exceptional courage and her role in selecting fallen warriors to be taken to Valhalla by the gods.",
         "traits": [
-            "Caring",
-            "Loyal",
-            "Compassionate"
+            "Courage",
+            "Independence",
+            "Compassion"
         ],
-        "description": "An inflatable healthcare companion turned hero, dedicated to helping others.",
-        "catchphrase": "Hello, I am Baymax, your personal healthcare companion."
+        "catchphrase": "Brave hearts, rise to the eternal halls!"
     },
     {
-        "id": 9,
-        "name": "Aslan",
+        "id": 301, 
+        "name": "Russell's teapot", 
+        "description": "A thought experiment illustrating the idea that the responsibility for providing evidence lies with the one making a claim, particularly when the claim cannot be easily proven or disproven.",
         "traits": [
-            "Wise",
-            "Noble",
-            "Courageous"
+            "Invisibility",
+            "Unfalsifiability",
+            "Burden of Proof"
         ],
-        "description": "A majestic lion who guides and supports the children in the magical world of Narnia.",
-        "catchphrase": "Courage, dear heart."
+        "catchphrase": "Extraordinary claims require extraordinary evidence."
     },
     {
-        "id": 10,
-        "name": "Twilight Sparkle",
+        "id": 302, 
+        "name": "Stellara Serpent", 
+        "description": "An ethereal cosmic creature, invisible to the human eye, which is believed to gracefully coil around distant stars, embodying the mystical beauty of the universe.",
         "traits": [
-            "Intelligent",
-            "Loyal",
-            "Curious"
+            "Translucent Radiance",
+            "Cosmic Serenity",
+            "Unseen Majesty"
         ],
-        "description": "A diligent unicorn with a love for learning and friendship, who becomes a princess and helps maintain harmony in Equestria.",
-        "catchphrase": "Friendship is magic!"
+        "catchphrase": "The celestial secrets coiled in starlight."
+    },
+    {
+        "id": 303, 
+        "name": "Etherian Whisper", 
+        "description": "An elusive and mystical being, barely perceptible, whose whispers hold the ethereal wisdom of unseen realms.",
+        "traits": [
+            "Invisibility",
+            "Subtle Whispers",
+            "Ethereal Wisdom"
+        ],
+        "catchphrase": "Listen closely to the whispers of the unseen."
+    },
+    {
+        "id": 304, 
+        "name": "Chaos Sprite", 
+        "description": "An invisible and mischievous entity known for its subtle disruptions of order, embodying the capricious nature of unseen forces.",
+        "traits": [
+            "Invisibility",
+            "Subtle Disruptions",
+            "Capricious Nature"
+        ],
+        "catchphrase": "Embrace the unexpected dance of chaos."
     }
 ]

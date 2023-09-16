@@ -1,152 +1,67 @@
 [
-    {
-        "id": 1,
-        "name": "Hogwarts School of Witchcraft and Wizardry",
-        "description": "A magical school where young witches and wizards receive their education in the art of magic."
-    },
-    {
-        "id": 2,
-        "name": "Diagon Alley",
-        "description": "A hidden shopping district in London for all magical supplies, including wands and potions ingredients."
-    },
-    {
-        "id": 3,
-        "name": "Forbidden Forest",
-        "description": "A dangerous forest near Hogwarts, inhabited by various magical creatures and mysteries."
-    },
-    {
-        "id": 4,
-        "name": "Tatooine",
-        "description": "A desert planet and the home of Anakin Skywalker, later known as Darth Vader."
-    },
-    {
-        "id": 5,
-        "name": "Coruscant",
-        "description": "The bustling capital of the galaxy, with its towering skyscrapers and the heart of galactic politics."
-    },
-    {
-        "id": 6,
-        "name": "Endor",
-        "description": "The forest moon of Endor, known for the Battle of Endor and the Ewok inhabitants."
-    },
-    {
-        "id": 7,
-        "name": "Lost City of Atlantis",
-        "description": "An ancient and mythical underwater city, said to hold advanced technology and secrets."
-    },
-    {
-        "id": 8,
-        "name": "Valley of the Kings",
-        "description": "A historic burial site in Egypt, filled with elaborate tombs of pharaohs."
-    },
-    {
-        "id": 9,
-        "name": "Croft Manor",
-        "description": "The ancestral home of Lara Croft, filled with artifacts and mysteries."
-    },
-    {
-        "id": 10,
-        "name": "Vulcan",
-        "description": "The homeworld of the Vulcan species, known for their logical and highly intellectual culture."
-    },
-    {
-        "id": 11,
-        "name": "Klingon Homeworld",
-        "description": "The homeworld of the Klingon Empire, a warrior culture with a strict code of honor."
-    },
-    {
-        "id": 12,
-        "name": "Bajoran Wormhole",
-        "description": "A stable wormhole near Bajor, leading to the distant Gamma Quadrant."
-    },
-    {
-        "id": 13,
-        "name": "The Mad Hatter's Tea Party",
-        "description": "A whimsical and chaotic tea party hosted by the Mad Hatter and attended by colorful characters."
-    },
-    {
-        "id": 14,
-        "name": "Cheshire Cat's Forest",
-        "description": "A mysterious forest inhabited by the enigmatic and disappearing Cheshire Cat."
-    },
-    {
-        "id": 15,
-        "name": "Queen of Hearts' Castle",
-        "description": "The extravagant palace of the tyrannical Queen of Hearts, known for her love of beheadings."
-    },
-    {
-        "id": 16,
-        "name": "Stark Tower",
-        "description": "The high-tech headquarters of Tony Stark (Iron Man) and a hub for superhero activities."
-    },
-    {
-        "id": 17,
-        "name": "Asgard",
-        "description": "The realm of the Norse gods, including Thor, Loki, and Odin."
-    },
-    {
-        "id": 18,
-        "name": "Xavier's School for Gifted Youngsters",
-        "description": "A school for mutants, run by Professor Charles Xavier (Professor X) and a safe haven for mutants with special abilities."
-    },
-    {
-        "id": 19,
-        "name": "Emerald City",
-        "description": "The vibrant and colorful capital of the Land of Oz, ruled by the Wizard."
-    },
-    {
-        "id": 20,
-        "name": "Yellow Brick Road",
-        "description": "The iconic pathway that leads to the Emerald City, guiding travelers on their adventures."
-    },
-    {
-        "id": 21,
-        "name": "Wicked Witch's Castle",
-        "description": "The eerie castle of the Wicked Witch of the West, a place of danger and magic."
-    },
-    {
-        "id": 22,
-        "name": "San Fransokyo Institute of Technology",
-        "description": "The prestigious university where Hiro Hamada and his friends attend and innovate."
-    },
-    {
-        "id": 23,
-        "name": "Lucky Cat Café",
-        "description": "A cozy café where Hiro and his friends often gather to relax and socialize."
-    },
-    {
-        "id": 24,
-        "name": "Krei Tech Industries",
-        "description": "A cutting-edge technology company that plays a significant role in the world of Big Hero 6."
-    },
-    {
-        "id": 25,
-        "name": "Cair Paravel",
-        "description": "The royal castle of Narnia, where the Pevensie children rule as kings and queens."
-    },
-    {
-        "id": 26,
-        "name": "The White Witch's Castle",
-        "description": "The fortress of the White Witch, a powerful and evil ruler of Narnia."
-    },
-    {
-        "id": 27,
-        "name": "Talking Beavers' Dam",
-        "description": "A dam built by the friendly and talking beavers in Narnia."
-    },
-    {
-        "id": 28,
-        "name": "Ponyville",
-        "description": "A charming town in Equestria, where the main characters of My Little Pony reside."
-    },
-    {
-        "id": 29,
-        "name": "Canterlot",
-        "description": "The regal capital city of Equestria, home to Princess Celestia and Princess Luna."
-    },
-    {
-        "id": 30,
-        "name": "Everfree Forest",
-        "description": "A mysterious and untamed wilderness in Equestria, home to many magical creatures."
-    }
+  {
+    "id": 101,
+    "name": "Magma Meadows",
+    "description": "A fiery cradle where this adventurous Fire kittens first ignite their boundless spirit."
+  },
+  {
+    "id": 102,
+    "name": "Icy Glow Glade",
+    "description": "A realm adorned with shimmering ice formations and the enchanting dance of the Northern Lights."
+  },
+  {
+    "id": 103,
+    "name": "Floral Haven",
+    "description": "A stunningly beautiful blooming meadow in PawfectLand, bursts with vibrant colors and life, embodying the essence of the natural world's vitality."
+  },
+  {
+    "id": 104,
+    "name": "Sorcerer's Skykeep",
+    "description": "A magical castle nestled among the clouds in PawfectLand, evokes a sense of wonder with its enchanting architecture and breathtaking vistas."
+  },
+  {
+    "id": 105,
+    "name": "The Mystic Woodlands",
+    "description": "A magical forest in PawfectLand, is a realm where ancient trees whisper secrets, and luminescent flora casts an otherworldly glow, captivating all who enter."
+  },
+  {
+    "id": 201,
+    "name": "Bifröst",
+    "description": "The Rainbow Bridge, is a radiant and ethereal bridge made of light and fire that connects the realm of the gods, Asgard, with the realm of humans, Midgard."
+  },
+  {
+    "id": 202,
+    "name": "Yggdrasil",
+    "description": "A massive, mythical ash tree that serves as the center of the cosmos, connecting the nine realms of existence in Scandinavian mythology."
+  },
+  {
+    "id": 203,
+    "name": "Jotunheim",
+    "description": "A vast and harsh realm inhabited by powerful giants (Jotnar) and characterized by rugged, mountainous terrain, often associated with the forces of nature and contrasted with the divine realms of the gods."
+  },
+  {
+    "id": 204,
+    "name": "Svartalfheim",
+    "description": "A mysterious subterranean realm inhabited by the Dark Elves, renowned for their masterful craftsmanship and enchanted creations, hidden beneath the earth's surface."
+  },
+  {
+    "id": 301,
+    "name": "Celestial Nexus",
+    "description": "A cosmic crossroads deep within the universe where galaxies converge, creating a breathtaking spectacle of interstellar beauty."
+  },
+  {
+    "id": 302,
+    "name": "Nebula's Veil",
+    "description": "A vast expanse filled with intricate nebulae and gaseous formations, painting the cosmos with vibrant hues and providing a celestial canvas for the birth of new stars."
+  },
+  {
+    "id": 303,
+    "name": "Stellar Wisp Fields",
+    "description": "Fields of shimmering stardust that twinkle like fireflies in the cosmic night, where travelers can experience the enchanting dance of celestial particles."
+  },
+  {
+    "id": 304,
+    "name": "Event Horizon Sanctuary",
+    "description": "A mysterious realm near the edge of a black hole's event horizon, where the laws of physics bend and time itself becomes a labyrinth of possibilities, shrouded in cosmic enigma."
+  }
 ]
