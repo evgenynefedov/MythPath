@@ -67,7 +67,8 @@ export default createTheme({
           height: "100vh",
         },
         'body a': {
-          textDecoration: 'none'
+          textDecoration: 'none',
+          cursor: cursor,
         },
         '.menu': {
           display: 'flex',
@@ -120,6 +121,7 @@ export default createTheme({
         },
         '.swiper-slide': {
           transition: '.3s ease',
+          cursor: cursor,
           ':hover': {
             transform: 'translateY(-8px)',
             transition: '.3s ease',
@@ -175,6 +177,10 @@ export default createTheme({
         '.theme_select': {
           marginLeft: 16,
         },
+        '.library_controls': {
+          display: 'flex',
+          justifyContent: 'space-between'
+        }
       }
     },
     MuiButton: {
@@ -186,6 +192,10 @@ export default createTheme({
           cursor: cursor,
           transition: '.5s ease',
           ':hover': buttonHover,
+          'svg': {
+            width: 30,
+            height: 30,
+          }
         },
         text: {
           background: COLORS.headerText,
@@ -267,12 +277,6 @@ export default createTheme({
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
           border: `3px solid ${COLORS.buttonBorder}`, 
           position: 'relative',
-          cursor: cursor,
-          [`@media (min-width:${desktopWidth})`]: {
-            ':hover': {
-              boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
-            }, 
-          }
         }
       }
     },
@@ -289,6 +293,20 @@ export default createTheme({
           backgroundColor: COLORS.backgroundDefault,
         }
       }
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          cursor: cursor,
+        },
+      }  
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        thumb: {
+          cursor: cursor,
+        },
+      }  
     },
     MuiSvgIcon: {
       styleOverrides: {
@@ -317,6 +335,7 @@ export default createTheme({
       background: COLORS.headerText, 
       backgroundClip: 'text',
       color: 'transparent',
+      marginBottom: 10,
     },
     h3: {
       fontSize: '1.5rem',

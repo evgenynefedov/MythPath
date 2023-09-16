@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
 import { useSwipeable } from "react-swipeable";
-import Icons from './../../themes/sprite.svg'
+import Icons from "./../../themes/sprite.svg";
 // import { textGenerator } from "../../services/textGenerator";
 // import storyTemplate from "../../Data/fantasy_story_template.json";
 // import { splitStoryIntoPages } from "../../Utils/splitIntoPages";
