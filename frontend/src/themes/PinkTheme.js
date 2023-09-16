@@ -145,6 +145,10 @@ export default createTheme({
           background: COLORS.backgroundGradientTransparent,
           borderRadius: 5,
         },
+        '.tale_container': {
+            height: '100vh', 
+            backgroundColor: COLORS.backgroundDefault,
+        },
         '.close' : {
           color: COLORS.buttonColor,
           width: 30,
