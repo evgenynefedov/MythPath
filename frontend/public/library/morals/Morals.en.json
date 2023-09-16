@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Friendship",
+    "description": "The power of friendship"
+  },
+  {
+    "id": 2,
+    "name": "Honesty",
+    "description": "Honesty is the best policy"
+  },
+  {
+    "id": 3,
+    "name": "Self-Truth",
+    "description": "Be true to yourself"
+  },
+  {
+    "id": 4,
+    "name": "Hard Work",
+    "description": "Hard work pays off"
+  }
+]

@@ -2,6 +2,7 @@
   "steps": [
     {
       "code": "world",
+      "libraryPath": "worlds/Worlds",
       "isMulti": false,
       "fieldsToGPT": ["name", "description"],
       "fieldsToImages": ["img", "name"],
@@ -18,6 +19,7 @@
     },
     {
       "code": "main_character",
+      "libraryPath": "characters/Characters",
       "isMulti": false,
       "fieldsToGPT": ["name", "description", "traits"],
       "fieldsToImages": ["img", "name"],
@@ -34,6 +36,7 @@
     },
     {
       "code": "additional_characters",
+      "libraryPath": "characters/Characters",
       "isMulti": true,
       "fieldsToGPT": ["name", "description"],
       "fieldsToImages": ["img", "name"],
@@ -50,6 +53,7 @@
     },
     {
       "code": "locations",
+      "libraryPath": "locations/Locations",
       "isMulti": true,
       "fieldsToGPT": ["name", "description"],
       "fieldsToImages": ["img", "name"],
@@ -61,6 +65,40 @@
         "description": {
           "en": "Choose locations for your story",
           "ru": "Выберите локации для вашей истории"
+        }
+      }
+    },
+    {
+      "code": "moral",
+      "libraryPath": "morals/Morals",
+      "isMulti": true,
+      "fieldsToGPT": ["description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Moral",
+          "ru": "Мораль"
+        },
+        "description": {
+          "en": "Choose a moral",
+          "ru": "Выберите мораль"
+        }
+      }
+    },
+    {
+      "code": "goal",
+      "libraryPath": "goals/Goals",
+      "isMulti": true,
+      "fieldsToGPT": ["description"],
+      "fieldsToImages": ["img", "name"],
+      "text": {
+        "title": {
+          "en": "Goal",
+          "ru": "Цель"
+        },
+        "description": {
+          "en": "Choose a goal",
+          "ru": "Выберите цель"
         }
       }
     }

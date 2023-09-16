@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Kingdom Savior",
+    "description": "Save the kingdom"
+  },
+  {
+    "id": 2,
+    "name": "Artifact Hunter",
+    "description": "Find the lost artifact"
+  },
+  {
+    "id": 3,
+    "name": "Family Detective",
+    "description": "Uncover the family secret"
+  },
+  {
+    "id": 4,
+    "name": "Ruins Explorer",
+    "description": "Solve the mystery of the ancient ruins"
+  }
+]
