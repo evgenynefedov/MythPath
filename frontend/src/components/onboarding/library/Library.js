@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import LibraryItem from "./LibraryItem";
 import Grid from "@mui/material/Grid";
 
@@ -13,23 +12,11 @@ export default function Library({
 }) {
   return (
     tales.length > 0 && (
-      <Box
-        sx={{
-          mt: 2,
-          pt: 1,
-          pb: 5,
-        }}
-      >
-        <Container maxWidth="md">
-          <Typography variant="h2" my={1}>
-            {title}
-          </Typography>
-          <Box
-            sx={{
-              p: 2,
-            }}
-          >
-            <Grid container spacing={2}>
+      <Container>
+        <Typography variant="h2" my={1}>
+          {title}
+        </Typography>
+        <Grid container spacing={2}>
               {tales.map((i) => (
                 <LibraryItem
                   key={i.id}
@@ -42,10 +29,8 @@ export default function Library({
                   withControls={withControls}
                 />
               ))}
-            </Grid>
-          </Box>
-        </Container>
-      </Box>
+        </Grid>
+      </Container>
     )
   );
 }

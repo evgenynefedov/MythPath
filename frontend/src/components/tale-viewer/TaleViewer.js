@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
 import { useSwipeable } from "react-swipeable";
-import Icons from './../../themes/sprite.svg'
+import Icons from "./../../themes/sprite.svg";
 // import { textGenerator } from "../../services/textGenerator";
 // import storyTemplate from "../../Data/fantasy_story_template.json";
 // import { splitStoryIntoPages } from "../../Utils/splitIntoPages";
@@ -37,8 +37,8 @@ export default function TaleViewer() {
     onSwipedRight: () => handlePrevious(),
   });
   return (
-    <Paper elevation={3} style={{ height: "100vh" }}>
-      <Box {...handlers} className="tale_container">
+    // <Paper elevation={3} style={{minHeight: '100vh'}}>
+      <Box {...handlers} className="tale_container" style={{minHeight: 'calc(100vh - 50px)'}}>
         {story.pages && story?.pages?.length !== 0 && 
           <>
             <TalePage page={story.pages[currentPage]} tittle={story.title} />
@@ -60,6 +60,6 @@ export default function TaleViewer() {
               </svg>
         </Link>
       </Box>
-    </Paper>
+    // </Paper>
   );
 }

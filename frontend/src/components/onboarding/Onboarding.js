@@ -6,7 +6,7 @@ import Library from "./library/Library";
 import * as taleStorage from "../../services/taleStorage";
 import { getUserUUID } from "../../Utils/getUserUUID";
 
-export default function Onboarding({ themes, changeTheme, selected }) {
+export default function Onboarding() {
   const [myLibrary, setMyLibrary] = React.useState([]);
   const [sharedLibrary, setsharedLibrary] = React.useState([]);
 
@@ -22,10 +22,6 @@ export default function Onboarding({ themes, changeTheme, selected }) {
   useEffect(() => {
     updateLibraries();
   }, []);
-
-  function handleChange(event) {
-    changeTheme(event.target.value);
-  }
   return (
     <Container>
       <Container>
@@ -48,7 +44,7 @@ export default function Onboarding({ themes, changeTheme, selected }) {
         withControls={true}
       />
 
-      <Container maxWidth="md">
+      <Container>
         <Typography variant="body1" textAlign="center" mt={2}>
           Is there anything more enchanting than a captivating fairytale? We
           believe that every child deserves a story tailored just for them, and

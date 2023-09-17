@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  CardActions,
   CardContent,
   Typography,
 } from "@mui/material";
@@ -18,28 +17,21 @@ import ResponsiveImage from "../ui/ResponsiveImage";
  */
 export default function SpellCard({ spell, select, selected }) {
   return (
-    <Card sx={{ maxWidth: 300, overflow: "hidden" }} elevation={3}>
-      <Box sx={{ position: "relative", height: 200 }} onClick={select}>
+    <Card sx={{ maxWidth: 300, overflow: "hidden" }} elevation={3} onClick={select} className="clickable_card">
+      <Box sx={{ position: "relative", height: 200 }} >
         <ResponsiveImage imgPath={spell.img} aspectRatio={300 / 200} />
-        <CardActions
-          sx={{ position: "absolute", top: 0, right: 0, padding: 0 }}
-        >
-          <svg className="spell_wand">
-            <use href={`${Icons}#click`} />
-          </svg>
-        </CardActions>
-        {selected && (
-          <Box className="selected_spell">
-            <svg className="spell_wand">
-              <use href={`${Icons}#stars`} />
-            </svg>
-          </Box>
-        )}
       </Box>
       <CardContent>
         <Typography variant="h2">{spell.name}</Typography>
         <Typography variant="body1">{spell.description}</Typography>
       </CardContent>
+      {selected && (
+        <Box className="selected_spell">
+          <svg>
+            <use href={`${Icons}#stars`} />
+          </svg>
+        </Box>
+      )}
     </Card>
   );
 }
