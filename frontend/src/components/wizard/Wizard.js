@@ -41,6 +41,8 @@ export default function Wizard() {
   const [spells, setSpells] = useState([]);
   const [isLoading, setIsloading] = useState(false);
 
+  const [customSpells, setCustomSpells] = useState(STEPS.map(() => []));
+
   const getStep = () => steps[stepIndex];
   const setStep = (step) => setSteps(steps.with(stepIndex, step));
 
@@ -51,7 +53,6 @@ export default function Wizard() {
       setStepIndex(newStepIndex);
       setSpells([]);
     } else if (stepIndex === stepsCount - 1) {
-      //TO DO: make preprocessing "steps" before invokation of "generateTale"
       generateTale(steps.filter((step) => step.isSpellSelector));
     }
   };
@@ -89,6 +90,25 @@ export default function Wizard() {
   };
 
   const back = () => makeStep(-1);
+
+  /**
+   * Update state CustomSpells: add new, or update existing by id
+   * @param {Object} CustomSpell in format {id, name, description, img}
+   */
+  const updateCustomSpells = (customSpell) => {
+    let updatedCustomSpells = [...customSpells];
+
+    const indexToUpdate = updatedCustomSpells[stepIndex].findIndex(
+      (s) => s.id === customSpell.id
+    );
+
+    if (indexToUpdate === -1) {
+      updatedCustomSpells[stepIndex].unshift(customSpell);
+    } else {
+      updatedCustomSpells[stepIndex][indexToUpdate] = customSpell;
+    }
+    setCustomSpells(updatedCustomSpells);
+  };
 
   /**
    * Toggles selection: updates steps[stepIndex].value with selection/deselection in spell object
@@ -188,9 +208,11 @@ export default function Wizard() {
               spells?.length ? (
                 <SpellSelector
                   spells={spells}
+                  customSpells={customSpells[stepIndex]}
                   step={getStep()}
                   isMultiselector={getStep().isMulti}
                   updateStep={toggleStep}
+                  updateCustomSpells={updateCustomSpells}
                 />
               ) : null
             ) : (

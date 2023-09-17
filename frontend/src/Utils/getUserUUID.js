@@ -27,7 +27,7 @@ export function getUserUUID() {
  * Generate UUIDs (Universally Unique IDentifier), also known as GUIDs (Globally Unique IDentifier), according to RFC 4122, are identifiers designed to provide certain uniqueness guarantees
  * @returns UUID
  */
-function uuidv4() {
+export function uuidv4() {
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
     (
       c ^

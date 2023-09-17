@@ -1,9 +1,4 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import Icons from "./../../themes/sprite.svg";
 import ResponsiveImage from "../ui/ResponsiveImage";
 
@@ -17,8 +12,13 @@ import ResponsiveImage from "../ui/ResponsiveImage";
  */
 export default function SpellCard({ spell, select, selected }) {
   return (
-    <Card sx={{ maxWidth: 300, overflow: "hidden" }} elevation={3} onClick={select} className="clickable_card">
-      <Box sx={{ position: "relative", height: 200 }} >
+    <Card
+      sx={{ width: 300, overflow: "hidden" }}
+      elevation={3}
+      onClick={select}
+      className="clickable_card"
+    >
+      <Box sx={{ position: "relative", height: 200 }}>
         <ResponsiveImage imgPath={spell.img} aspectRatio={300 / 200} />
       </Box>
       <CardContent>
