@@ -1,152 +1,67 @@
 [
 	{
-		"world_id": 1,
-		"id": 1,
-		"img": "/Locations/1.jpg"
+		"world_id": 100,
+		"id": 101,
+		"img": "/Locations/101.jpg"
 	},
 	{
-		"world_id": 1,
-		"id": 2,
-		"img": "/Locations/2.jpg"
+		"world_id": 100,
+		"id": 102,
+		"img": "/Locations/102.jpg"
 	},
 	{
-		"world_id": 1,
-		"id": 3,
-		"img": "/Locations/3.jpg"
+		"world_id": 100,
+		"id": 103,
+		"img": "/Locations/103.jpg"
 	},
 	{
-		"world_id": 2,
-		"id": 4,
-		"img": "/Locations/4.jpg"
+		"world_id": 100,
+		"id": 104,
+		"img": "/Locations/104.jpg"
 	},
 	{
-		"world_id": 2,
-		"id": 5,
-		"img": "/Locations/5.jpg"
+		"world_id": 100,
+		"id": 105,
+		"img": "/Locations/105.jpg"
 	},
 	{
-		"world_id": 2,
-		"id": 6,
-		"img": "/Locations/6.jpg"
+		"world_id": 200,
+		"id": 201,
+		"img": "/Locations/201.jpg"
 	},
 	{
-		"world_id": 3,
-		"id": 7,
-		"img": "/Locations/7.jpg"
+		"world_id": 200,
+		"id": 202,
+		"img": "/Locations/202.jpg"
 	},
 	{
-		"world_id": 3,
-		"id": 8,
-		"img": "/Locations/8.jpg"
+		"world_id": 200,
+		"id": 203,
+		"img": "/Locations/203.jpg"
 	},
 	{
-		"world_id": 3,
-		"id": 9,
-		"img": "/Locations/9.jpg"
+		"world_id": 200,
+		"id": 204,
+		"img": "/Locations/204.jpg"
 	},
 	{
-		"world_id": 4,
-		"id": 10,
-		"img": "/Locations/10.jpg"
+		"world_id": 300,
+		"id": 301,
+		"img": "/Locations/301.jpg"
 	},
 	{
-		"world_id": 4,
-		"id": 11,
-		"img": "/Locations/11.jpg"
+		"world_id": 300,
+		"id": 302,
+		"img": "/Locations/302.jpg"
 	},
 	{
-		"world_id": 4,
-		"id": 12,
-		"img": "/Locations/12.jpg"
+		"world_id": 300,
+		"id": 303,
+		"img": "/Locations/303.jpg"
 	},
 	{
-		"world_id": 5,
-		"id": 13,
-		"img": "/Locations/13.jpg"
-	},
-	{
-		"world_id": 5,
-		"id": 14,
-		"img": "/Locations/14.jpg"
-	},
-	{
-		"world_id": 5,
-		"id": 15,
-		"img": "/Locations/15.jpg"
-	},
-	{
-		"world_id": 6,
-		"id": 16,
-		"img": "/Locations/16.jpg"
-	},
-	{
-		"world_id": 6,
-		"id": 17,
-		"img": "/Locations/17.jpg"
-	},
-	{
-		"world_id": 6,
-		"id": 18,
-		"img": "/Locations/18.jpg"
-	},
-	{
-		"world_id": 7,
-		"id": 19,
-		"img": "/Locations/19.jpg"
-	},
-	{
-		"world_id": 7,
-		"id": 20,
-		"img": "/Locations/20.jpg"
-	},
-	{
-		"world_id": 7,
-		"id": 21,
-		"img": "/Locations/21.jpg"
-	},
-	{
-		"world_id": 8,
-		"id": 22,
-		"img": "/Locations/22.jpg"
-	},
-	{
-		"world_id": 8,
-		"id": 23,
-		"img": "/Locations/23.jpg"
-	},
-	{
-		"world_id": 8,
-		"id": 24,
-		"img": "/Locations/24.jpg"
-	},
-	{
-		"world_id": 9,
-		"id": 25,
-		"img": "/Locations/25.jpg"
-	},
-	{
-		"world_id": 9,
-		"id": 26,
-		"img": "/Locations/26.jpg"
-	},
-	{
-		"world_id": 9,
-		"id": 27,
-		"img": "/Locations/27.jpg"
-	},
-	{
-		"world_id": 10,
-		"id": 28,
-		"img": "/Locations/28.jpg"
-	},
-	{
-		"world_id": 10,
-		"id": 29,
-		"img": "/Locations/29.jpg"
-	},
-	{
-		"world_id": 10,
-		"id": 30,
-		"img": "/Locations/30.jpg"
+		"world_id": 300,
+		"id": 304,
+		"img": "/Locations/304.jpg"
 	}
 ]
