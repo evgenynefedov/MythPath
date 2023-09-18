@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { CONSTANTS } from "../../constants";
+import { Fab } from "@mui/material";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 
-const CloudinaryUploader = () => {
+export default function CloudinaryUploader({ handleImageUploader }) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://widget.cloudinary.com/v2.0/global/all.js";
@@ -25,6 +27,7 @@ const CloudinaryUploader = () => {
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log("File successfully uploaded:", result.info.secure_url);
+          handleImageUploader(result.info);
         }
       }
     );
@@ -32,10 +35,8 @@ const CloudinaryUploader = () => {
   };
 
   return (
-    <div>
-      <button onClick={showWidget}>Upload Image</button>
-    </div>
+    <Fab onClick={showWidget} aria-label="add">
+      <AddPhotoAlternateIcon />
+    </Fab>
   );
-};
-
-export default CloudinaryUploader;
+}

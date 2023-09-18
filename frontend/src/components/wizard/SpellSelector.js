@@ -1,14 +1,19 @@
-import { Box, Chip, Stack, Typography, Container } from "@mui/material";
+import { Box, Chip, Stack, Typography, Container, Button } from "@mui/material";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Carousel from "../ui/Carousel";
 import SpellCard from "./SpellCard";
+import SpellCardCustom from "./SpellCardCustom";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
+import { useRef, useState } from "react";
 
 export default function SpellSelector({
   spells,
+  customSpells,
   step,
   updateStep,
   isMultiselector,
   language = "en",
+  updateCustomSpells,
 }) {
   const currentStepConfig = StoryParamsConfig.steps.find(
     (s) => s.code === step.code
@@ -29,6 +34,17 @@ export default function SpellSelector({
         {currentStepConfig?.text?.description[language]}
       </Typography>
       <Carousel>
+        {customSpells.map((cSpell) => (
+          <SpellCard
+            key={cSpell.id}
+            spell={cSpell}
+            select={() => selectHandler(cSpell)}
+            selected={isSelected(cSpell.id)}
+          />
+        ))}
+
+        <SpellCardCustom updateCustomSpells={updateCustomSpells} />
+
         {spells.map((spell) => (
           <SpellCard
             key={spell.id}
