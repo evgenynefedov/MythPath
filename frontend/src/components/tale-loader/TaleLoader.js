@@ -5,7 +5,7 @@ import getRandomElementFromArray from "../../Utils/getRandomElementFromArray";
 import { useState, useEffect } from "react";
 
 export default function TaleLoader() {
-  const quotes = [
+  const QUOTES = [
     "The loading screen is the real villain in this story.",
     "If I had a magic wand, I'd use it to speed up this loading time.",
     "This loading time is longer than most fairy tale marriages.",
@@ -25,14 +25,18 @@ export default function TaleLoader() {
     "I've heard that if you stare at a loading screen long enough, you'll see a fairy cry.",
   ];
 
+  const RELOAD_TIME = 8000;
+
   let [randomQuote, setRandomQuote] = useState(
-    getRandomElementFromArray(quotes)
+    getRandomElementFromArray(QUOTES)
   );
 
   useEffect(() => {
-    setInterval(() => {
-      setRandomQuote(getRandomElementFromArray(quotes));
-    }, 8000);
+    const interval = setInterval(() => {
+      setRandomQuote(getRandomElementFromArray(QUOTES));
+    }, RELOAD_TIME);
+
+    return () => clearInterval(interval);
   });
 
   return (
