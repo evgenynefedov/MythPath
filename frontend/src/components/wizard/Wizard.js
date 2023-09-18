@@ -3,7 +3,7 @@ import { getLibraryData } from "./../../services/libraryStorage";
 import { textGenerator } from "./../../services/textGenerator";
 import * as taleStorage from "./../../services/taleStorage";
 import { useNavigate } from "react-router-dom";
-import { Container, Box, Snackbar, Button } from "@mui/material";
+import { Container, Box, Snackbar } from "@mui/material";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 import TaleLoader from "../tale-loader/TaleLoader";
@@ -12,7 +12,6 @@ import responseToTale from "../../services/responseToTale";
 import StoryParams from "./StoryParams";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 import getRandomElementFromArray from "../../Utils/getRandomElementFromArray";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Casino from "@mui/icons-material/Casino";
 import SnackbarAction from "../ui/SnackbarAction";
 
@@ -109,7 +108,9 @@ export default function Wizard() {
 
   function next() {
     if (isEmpty(getStep().value)) {
-      setRandomValues();
+      if (getStep().isSpellSelector) {
+        setRandomValues();
+      }
     } else {
       hideSnackbar();
     }

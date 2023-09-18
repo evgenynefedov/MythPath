@@ -12,13 +12,13 @@ import Settings from "./components/common/Settings";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { getSelectedTheme, getThemebyName } from "./services/settingsStorage"
+import { getSelectedTheme, getThemebyName } from "./services/settingsStorage";
 
 function App() {
-	let [theme, setTheme] = useState(getSelectedTheme())
-	function changeTheme(themeName) {
-		setTheme(getThemebyName(themeName))
-	}
+  let [theme, setTheme] = useState(getSelectedTheme());
+  function changeTheme(themeName) {
+    setTheme(getThemebyName(themeName));
+  }
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -29,7 +29,10 @@ function App() {
               <Route path="/" element={<Onboarding />} />
               <Route path="/wizard" element={<Wizard />} />
               <Route path="/tale-loader" element={<TaleLoader />} />
-              <Route path="/settings" element={<Settings changeTheme={changeTheme} />} />
+              <Route
+                path="/settings"
+                element={<Settings changeTheme={changeTheme} />}
+              />
             </Route>
             <Route path="/tale-viewer/:taleId" element={<TaleViewer />} />
           </Routes>
