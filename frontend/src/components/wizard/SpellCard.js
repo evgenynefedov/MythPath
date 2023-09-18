@@ -25,13 +25,7 @@ export default function SpellCard({ spell, select, selected }) {
         <Typography variant="h2">{spell.name}</Typography>
         <Typography variant="body1">{spell.description}</Typography>
       </CardContent>
-      {selected && (
-        <Box className="selected_spell">
-          <svg>
-            <use href={`${Icons}#stars`} />
-          </svg>
-        </Box>
-      )}
+      {selected && <Box className="selected_spell"></Box>}
     </Card>
   );
 }

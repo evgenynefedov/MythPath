@@ -10,3 +10,19 @@
 	font-family: 'Fairytale';
 	src: url('./Faiytale.ttf');
 }
+@font-face {
+	font-family: 'Jungle';
+	src: url('./Jungle.ttf');
+}
+@font-face {
+	font-family: 'Wood';
+	src: url('./Wood.ttf');
+}
+@font-face {
+	font-family: 'Scary';
+	src: url('./Scary.otf');
+}
+@font-face {
+	font-family: 'Spooky';
+	src: url('./Spooky.otf');
+}
