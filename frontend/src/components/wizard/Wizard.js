@@ -3,7 +3,7 @@ import { getLibraryData } from "./../../services/libraryStorage";
 import { textGenerator } from "./../../services/textGenerator";
 import * as taleStorage from "./../../services/taleStorage";
 import { useNavigate } from "react-router-dom";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Snackbar, IconButton, Button } from "@mui/material";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 import TaleLoader from "../tale-loader/TaleLoader";
@@ -12,6 +12,9 @@ import responseToTale from "../../services/responseToTale";
 import StoryParams from "./StoryParams";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 import getRandomElementFromArray from "../../Utils/getRandomElementFromArray";
+import CloseIcon from "@mui/icons-material/Close";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Casino from "@mui/icons-material/Casino";
 
 const STEPS = [
   ...StoryParamsConfig.steps.map((step) => ({
@@ -40,6 +43,40 @@ export default function Wizard() {
   /** array of possible values for current step */
   const [spells, setSpells] = useState([]);
   const [isLoading, setIsloading] = useState(false);
+
+  function SnackbarAction({ moreAction }) {
+    return (
+      <>
+        {moreAction}
+        <IconButton
+          size="small"
+          aria-label="close"
+          color="inherit"
+          onClick={hideSnackbar}
+        >
+          <CloseIcon fontSize="small" />
+        </IconButton>
+      </>
+    );
+  }
+
+  const [snackbarProps, setSnackbarProps] = useState({
+    open: false,
+    message: "",
+    action: <SnackbarAction />,
+  });
+
+  function hideSnackbar() {
+    setSnackbarProps({ ...snackbarProps, open: false });
+  }
+
+  function showSnackbar(message, moreAction) {
+    setSnackbarProps({
+      open: true,
+      message: message,
+      action: <SnackbarAction moreAction={moreAction} />,
+    });
+  }
 
   const getStep = () => steps[stepIndex];
   const setStep = (step) => setSteps(steps.with(stepIndex, step));
@@ -75,20 +112,29 @@ export default function Wizard() {
       const randomSpell = getRandomElementFromArray(spells);
       setStep({ ...getStep(), value: randomSpell, isRandom: true });
     }
+    showSnackbar(
+      `${getStep().text.title.en} was choosen by magic`,
+      <Casino fontSize="small" />
+    );
   }
 
   function isEmpty(value) {
     return Object.keys(value ?? {}).length === 0;
   }
 
-  const next = () => {
+  function next() {
     if (isEmpty(getStep().value)) {
       setRandomValues();
+    } else {
+      hideSnackbar();
     }
     makeStep(1);
-  };
+  }
 
-  const back = () => makeStep(-1);
+  function back() {
+    hideSnackbar();
+    makeStep(-1);
+  }
 
   /**
    * Toggles selection: updates steps[stepIndex].value with selection/deselection in spell object
@@ -104,9 +150,21 @@ export default function Wizard() {
         value.splice(indexToDelete, 1);
       } else {
         value.push(spell);
+        showSnackbar(
+          `You have chosen some ${getStep().text.title.en}, you can add more`
+        );
       }
     } else {
       value = spell.id === getStep().value?.id ? {} : spell;
+      if (!isEmpty(value)) {
+        showSnackbar(
+          `You have chosen ${getStep().text.title.en}`,
+          <Button size="small" onClick={next} variant="outlined">
+            Next
+            <KeyboardArrowRight />
+          </Button>
+        );
+      }
     }
     setStep({
       ...getStep(),
@@ -199,6 +257,10 @@ export default function Wizard() {
                 createHandler={() => makeStep(1)}
               />
             )}
+            <Snackbar
+              anchorOrigin={{ vertical: "top", horizontal: "left" }}
+              {...snackbarProps}
+            />
           </Container>
           <Box
             sx={{
