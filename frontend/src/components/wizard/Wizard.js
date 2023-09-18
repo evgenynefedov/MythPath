@@ -3,7 +3,7 @@ import { getLibraryData } from "./../../services/libraryStorage";
 import { textGenerator } from "./../../services/textGenerator";
 import * as taleStorage from "./../../services/taleStorage";
 import { useNavigate } from "react-router-dom";
-import { Container, Box, Snackbar, IconButton, Button } from "@mui/material";
+import { Container, Box, Snackbar, Button } from "@mui/material";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 import TaleLoader from "../tale-loader/TaleLoader";
@@ -12,9 +12,9 @@ import responseToTale from "../../services/responseToTale";
 import StoryParams from "./StoryParams";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 import getRandomElementFromArray from "../../Utils/getRandomElementFromArray";
-import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Casino from "@mui/icons-material/Casino";
+import SnackbarAction from "../ui/SnackbarAction";
 
 const STEPS = [
   ...StoryParamsConfig.steps.map((step) => ({
@@ -34,6 +34,11 @@ const STEPS = [
  */
 const RANDOM_MULTI_ITEMS_COUNT = 2;
 
+/**
+ * Duration (ms) to autohide snackbar
+ */
+const AUTO_HIDE_DURATION = 3000;
+
 export default function Wizard() {
   const navigate = useNavigate();
   const stepsCount = STEPS.length;
@@ -43,38 +48,16 @@ export default function Wizard() {
   /** array of possible values for current step */
   const [spells, setSpells] = useState([]);
   const [isLoading, setIsloading] = useState(false);
-
-  function SnackbarAction({ moreAction }) {
-    return (
-      <>
-        {moreAction}
-        <IconButton
-          size="small"
-          aria-label="close"
-          color="inherit"
-          onClick={hideSnackbar}
-        >
-          <CloseIcon fontSize="small" />
-        </IconButton>
-      </>
-    );
-  }
-
-  const [snackbarProps, setSnackbarProps] = useState({
-    open: false,
-    message: "",
-    action: <SnackbarAction />,
-  });
+  const [snackbarProps, setSnackbarProps] = useState({});
 
   function hideSnackbar() {
-    setSnackbarProps({ ...snackbarProps, open: false });
+    setSnackbarProps({});
   }
-
-  function showSnackbar(message, moreAction) {
+  function showSnackbar(message, action) {
     setSnackbarProps({
       open: true,
       message: message,
-      action: <SnackbarAction moreAction={moreAction} />,
+      action: <SnackbarAction hideSnackbar={hideSnackbar} action={action} />,
     });
   }
 
@@ -113,8 +96,10 @@ export default function Wizard() {
       setStep({ ...getStep(), value: randomSpell, isRandom: true });
     }
     showSnackbar(
-      `${getStep().text.title.en} was choosen by magic`,
-      <Casino fontSize="small" />
+      <>
+        {`${getStep().text.title.en} was choosen by magic `}
+        <Casino fontSize="small" />
+      </>
     );
   }
 
@@ -259,6 +244,8 @@ export default function Wizard() {
             )}
             <Snackbar
               anchorOrigin={{ vertical: "top", horizontal: "left" }}
+              autoHideDuration={AUTO_HIDE_DURATION}
+              onClose={hideSnackbar}
               {...snackbarProps}
             />
           </Container>
