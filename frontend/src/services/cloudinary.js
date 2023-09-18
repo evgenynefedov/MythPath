@@ -15,6 +15,6 @@ export const getCloudinaryImage = (imgPath) =>
     {
       cloudName: CONSTANTS.cloudinaryCloudName,
     }
-  )
-    .quality("auto")
-    .format("auto");
+  ).quality("auto");
+// doesn't work on Chrome emulation of mobile
+//    .format("auto")

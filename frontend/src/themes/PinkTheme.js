@@ -129,9 +129,6 @@ export default createTheme({
         '.menu .menu_item__create::before': {
           maskImage: 'url(sprite.svg#feather-view)',
         },
-        '.menu .menu_item__settings::before': {
-          maskImage: 'url(sprite.svg#heartSettings-view)',
-        },
         '.swiper-wrapper': { 
           paddingTop: 8, 
         },
@@ -192,14 +189,6 @@ export default createTheme({
               marginRight: 6,
             }
           }, 
-        },
-        '.settings_control': {
-          padding: 10,
-          marginTop: 10,
-          [`@media (min-width:${desktopWidth})`]: {
-            background: COLORS.backgroundSecondaryGradient, 
-            backgroundColor: 'transparent',
-          },
         },
         '.theme_select': {
           marginLeft: 16,
@@ -338,6 +327,13 @@ export default createTheme({
           cursor: cursor,
         },
       }  
+    },
+    MuiSelect: {
+      styleOverrides: {
+        outlined: {
+          padding: 10,
+        }
+      }
     },
     MuiSvgIcon: {
       styleOverrides: {

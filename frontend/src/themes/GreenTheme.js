@@ -129,9 +129,6 @@ export default createTheme({
         '.menu .menu_item__create::before': {
           maskImage: 'url(sprite.svg#book-view)',
         },
-        '.menu .menu_item__settings::before': {
-          maskImage: 'url(sprite.svg#crown-view)',
-        },
         '.swiper-wrapper': { 
           paddingTop: 8, 
         },
@@ -194,12 +191,6 @@ export default createTheme({
           }, 
         },
         '.settings_control': {
-          padding: 10,
-          marginTop: 10,
-          [`@media (min-width:${desktopWidth})`]: {
-            background: COLORS.backgroundSecondaryGradient, 
-            backgroundColor: 'transparent',
-          },
         },
         '.theme_select': {
           marginLeft: 16,
@@ -338,6 +329,20 @@ export default createTheme({
           cursor: cursor,
         },
       }  
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 25,
+        }
+      }
+    },
+    MuiSelect: {
+      styleOverrides: {
+        outlined: {
+          padding: 10,
+        }
+      }
     },
     MuiSvgIcon: {
       styleOverrides: {

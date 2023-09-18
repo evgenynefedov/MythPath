@@ -1,8 +1,9 @@
 import * as React from "react";
 import { Paper } from "@mui/material";
 import { Outlet, Link } from "react-router-dom";
+import ThemeSelector from "./ThemeSelector";
 
-export default function MainMenu() {
+export default function MainMenu({changeTheme}) {
   return (
     <>
         <Paper className="menu">
@@ -14,9 +15,10 @@ export default function MainMenu() {
                     <span>Create new tale</span>
                 </Link>
             </div>
-            <Link to="/settings" className="menu_item menu_item__settings">
+            {/* <Link to="/settings" className="menu_item menu_item__settings">
                 <span>Settings</span>
-            </Link>
+            </Link> */}
+            <ThemeSelector changeTheme={changeTheme}/>
         </Paper>
         <>
             <Outlet />

@@ -13,7 +13,6 @@ export default function ThemeSelector({changeTheme}) {
     }
     return(
         <Box className="settings_control">
-            <span>Choose your theme</span>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
