@@ -142,13 +142,7 @@ export default function Wizard() {
     } else {
       value = spell.id === getStep().value?.id ? {} : spell;
       if (!isEmpty(value)) {
-        showSnackbar(
-          `You have chosen ${getStep().text.title.en}`,
-          <Button size="small" onClick={next} variant="outlined">
-            Next
-            <KeyboardArrowRight />
-          </Button>
-        );
+        showSnackbar(`You have chosen ${getStep().text.title.en}`);
       }
     }
     setStep({
