@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { CONSTANTS } from "../../constants";
+import { Fab } from "@mui/material";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 
 export default function CloudinaryUploader({ handleImageUploader }) {
   useEffect(() => {
@@ -33,8 +35,8 @@ export default function CloudinaryUploader({ handleImageUploader }) {
   };
 
   return (
-    <div>
-      <button onClick={showWidget}>Upload Image</button>
-    </div>
+    <Fab onClick={showWidget} aria-label="add">
+      <AddPhotoAlternateIcon />
+    </Fab>
   );
 }
