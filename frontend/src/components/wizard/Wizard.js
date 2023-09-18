@@ -109,7 +109,7 @@ export default function Wizard() {
   }
 
   function next() {
-    if (isEmpty(getStep().value)) {
+    if (stepIndex !== stepsCount - 1 && isEmpty(getStep().value)) {
       setRandomValues();
     } else {
       hideSnackbar();
