@@ -14,7 +14,7 @@ import { uuidv4 } from "../../Utils/getUserUUID";
 import CloudinaryUploader from "../common/CloudinaryUploader";
 
 export default function SpellCardCustom({ updateCustomSpells }) {
-  const [formValues, setFormValues] = useState({
+  const DEFAULT_FORM_VALUES = {
     spellName: {
       value: "",
       required: true,
@@ -34,7 +34,9 @@ export default function SpellCardCustom({ updateCustomSpells }) {
       errorMessage: "",
     },
     submitDisabled: true,
-  });
+  };
+
+  const [formValues, setFormValues] = useState(DEFAULT_FORM_VALUES);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,13 +56,16 @@ export default function SpellCardCustom({ updateCustomSpells }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const customSpell = {
       id: e.currentTarget.getAttribute("spell-id"),
       name: formValues.spellName.value,
       description: formValues.spellDescription.value,
       img: formValues.spellImage.value,
     };
+
     updateCustomSpells(customSpell);
+    setFormValues(DEFAULT_FORM_VALUES);
   };
 
   const handleImageUploader = (imgInfo) => {
@@ -78,6 +83,10 @@ export default function SpellCardCustom({ updateCustomSpells }) {
       className="clickable_card"
     >
       <Box sx={{ position: "relative", height: 200, backgroundColor: "gray" }}>
+        <ResponsiveImage
+          imgPath={formValues.spellImage.value}
+          aspectRatio={300 / 200}
+        />
         {formValues.spellImage.value ? (
           <Box>{formValues.spellImage.value}</Box>
         ) : (

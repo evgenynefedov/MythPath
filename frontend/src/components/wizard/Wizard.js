@@ -107,7 +107,9 @@ export default function Wizard() {
     } else {
       updatedCustomSpells[stepIndex][indexToUpdate] = customSpell;
     }
+
     setCustomSpells(updatedCustomSpells);
+    toggleStep(customSpell);
   };
 
   /**

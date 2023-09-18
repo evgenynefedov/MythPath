@@ -15,14 +15,6 @@ export default function SpellSelector({
   language = "en",
   updateCustomSpells,
 }) {
-  const [newCardMode, setNewCardMode] = useState(true);
-
-  const toggleNewCardMode = () => {
-    setNewCardMode((previous) => (previous ? false : true));
-
-    console.log(newCardMode);
-  };
-
   const currentStepConfig = StoryParamsConfig.steps.find(
     (s) => s.code === step.code
   );
@@ -41,19 +33,7 @@ export default function SpellSelector({
       <Typography variant="h1" gutterBottom style={{ textAlign: "center" }}>
         {currentStepConfig?.text?.description[language]}
       </Typography>
-      <Button
-        variant="contained"
-        onClick={toggleNewCardMode}
-        startIcon={<AddCircleIcon />}
-      >
-        Add
-      </Button>
       <Carousel>
-        <>
-          {newCardMode && (
-            <SpellCardCustom updateCustomSpells={updateCustomSpells} />
-          )}
-        </>
         {customSpells.map((cSpell) => (
           <SpellCard
             key={cSpell.id}
@@ -62,6 +42,8 @@ export default function SpellSelector({
             selected={isSelected(cSpell.id)}
           />
         ))}
+
+        <SpellCardCustom updateCustomSpells={updateCustomSpells} />
 
         {spells.map((spell) => (
           <SpellCard
