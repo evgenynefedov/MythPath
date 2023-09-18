@@ -138,7 +138,8 @@ export default function Wizard() {
   };
 
   const fetchSpells = async function (stepCode) {
-    const getWorldId = () => steps[0]?.value?.id;
+    const getWorldId = () =>
+      steps[0]?.value?.isCustom ? null : steps[0]?.value?.id;
     const getCharacterId = () => steps[1]?.value?.id;
 
     const sortBySelectedWorld = (spells) =>
@@ -156,7 +157,9 @@ export default function Wizard() {
           items.filter((character) => character.id !== getCharacterId())
         );
       case "locations":
-        return items.filter((item) => item.world_id === getWorldId());
+        return getWorldId()
+          ? items.filter((item) => item.world_id === getWorldId())
+          : items;
       default:
         return items;
     }

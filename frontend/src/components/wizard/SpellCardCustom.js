@@ -2,7 +2,6 @@ import {
   Box,
   Card,
   CardContent,
-  Typography,
   Stack,
   TextField,
   Button,
@@ -46,9 +45,13 @@ export default function SpellCardCustom({ updateCustomSpells }) {
     changedFormValues[name].error =
       formValues[name].required && value.length === 0;
     changedFormValues.submitDisabled = false;
+
     Object.keys(changedFormValues).forEach((i) => {
       changedFormValues.submitDisabled =
-        changedFormValues.submitDisabled || changedFormValues[i].error;
+        changedFormValues.submitDisabled ||
+        changedFormValues[i].error ||
+        (changedFormValues[i].required &&
+          changedFormValues[i].value.length === 0);
     });
 
     setFormValues(changedFormValues);
@@ -62,6 +65,7 @@ export default function SpellCardCustom({ updateCustomSpells }) {
       name: formValues.spellName.value,
       description: formValues.spellDescription.value,
       img: formValues.spellImage.value,
+      isCustom: true,
     };
 
     updateCustomSpells(customSpell);
@@ -70,8 +74,6 @@ export default function SpellCardCustom({ updateCustomSpells }) {
 
   const handleImageUploader = (imgInfo) => {
     let changedFormValues = { ...formValues };
-    console.log(imgInfo);
-
     changedFormValues.spellImage.value = imgInfo.path;
     setFormValues(changedFormValues);
   };
@@ -82,16 +84,24 @@ export default function SpellCardCustom({ updateCustomSpells }) {
       elevation={3}
       className="clickable_card"
     >
-      <Box sx={{ position: "relative", height: 200, backgroundColor: "gray" }}>
+      <Box sx={{ position: "relative", height: 200 }}>
         <ResponsiveImage
           imgPath={formValues.spellImage.value}
           aspectRatio={300 / 200}
         />
-        {formValues.spellImage.value ? (
-          <Box>{formValues.spellImage.value}</Box>
-        ) : (
+        <Box
+          sx={{
+            position: "absolute",
+            display: "flex",
+            height: 200,
+            width: "100%",
+            top: 0,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <CloudinaryUploader handleImageUploader={handleImageUploader} />
-        )}
+        </Box>
       </Box>
       <CardContent>
         <Stack
@@ -135,15 +145,16 @@ export default function SpellCardCustom({ updateCustomSpells }) {
             }
           />
 
-          <Button
-            disabled={formValues.submitDisabled}
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Save
-          </Button>
+          {!formValues.submitDisabled && (
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Save
+            </Button>
+          )}
         </Stack>
       </CardContent>
       {false && (
