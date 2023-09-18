@@ -22,7 +22,7 @@ const getCloudinaryPath = (imgPath, isLibrary) =>
  */
 export const getCloudinaryImage = (
   imgPath,
-  isLibrary = imgPath.startsWith("/")
+  isLibrary = imgPath?.startsWith("/")
 ) =>
   new CloudinaryImage(getCloudinaryPath(imgPath, isLibrary), {
     cloudName: CONSTANTS.cloudinaryCloudName,
