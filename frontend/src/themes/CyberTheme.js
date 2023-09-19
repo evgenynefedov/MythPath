@@ -14,32 +14,48 @@ const COLORS = {
   primaryText: '#4ba04b',
   secondaryText: '#21aa27',
   secondaryMain: '#fdd835',
-  backgroundDefault: 'black',
-  backgroundPaper: 'black',
+  backgroundDefault: '#000',
+  backgroundPaper: '#000',
   textPrimary: '#7f9a80',
   textSecondary: '#69b427',
   buttonColor: '#21aa27',
-  buttonTextShadow: '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3fe600, 0 0 40px #5fe600, 0 0 50px #7fe600, 0 0 60px #74e600, 0 0 70px #7be600',
+  buttonTextShadow: '0 0 10px #fff, 0 0 20px #3fe600',
   headerTextShadow: '0 0 10px #f5e991, 0 0 30px #21aa27, 0 0 40px #21aa27',
   buttonBorder: '#21aa27',
 }
 const desktopWidth = '800px'
 const cursor = "url('/cursors/robot.svg'), auto"
-const clipCorner = 'polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 70%)'
+const clipCorner = {
+  buhton: 'polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 70%)',
+  card: 'polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 90%)'
+}
 const clips = [
   '',
-  'polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%)',
-  'polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%)',
-  'polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%)',
-  'polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0)',
-  'polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0)',
-  'polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%)',
-  'polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%)'
+  'polygon(0 2%, 100% 2%, 100% 5%, 0 5%)',
+  'polygon(0 78%, 100% 78%, 100% 100%, 0 100%)',
+  'polygon(0 54%, 100% 54%, 100% 44%, 0 44%)',
+  'polygon(0 0, 0 0, 0 0, 0 0)',
+  'polygon(0 60%, 100% 60%, 100% 40%, 0 40%)',
+  'polygon(0 85%, 100% 85%, 100% 40%, 0 40%)',
+  'polygon(0 63%, 100% 63%, 100% 80%, 0 80%)',
+  'polygon(0 10%, 100% 10%, 100% 0, 0 0)'
 ]
-const shimmy = 5
 const hovers = {
   buttonHover: {
-    boxShadow: '0 0 10px white, 0 0 20px #5adac6, 0 0 30px #5adac6',
+    '::after': {
+      display: 'block',
+      animation: 'glitch 2s infinite'
+    }
+  },
+  buttonAfter: {
+    content: '""',
+    position: 'absolute',
+    display: 'none',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: COLORS.backgroundDefault,
   },
   cardHover: {
     boxShadow: '0 0 10px white, 0 0 20px #21aa27, 0 0 30px #21aa27', 
@@ -113,12 +129,7 @@ export default createTheme({
           border: `3px solid ${COLORS.buttonBorder}`,
           position: 'relative',
           boxSizing: 'border-box',
-          ':hover': {
-            '::after': {
-              display: 'block',
-              animation: 'glitch 2s infinite'
-            }
-          },
+          ':hover': hovers.buttonHover,
           '::before': {
             content: '""',
             display:'block',
@@ -131,16 +142,7 @@ export default createTheme({
               marginRight: 5,
             }
           },
-          '::after': {
-            content: '""',
-            position: 'absolute',
-            display: 'none',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'black',
-          },
+          '::after': hovers.buttonAfter,
           'span::after': {
             content: '"_"',
           }
@@ -157,13 +159,28 @@ export default createTheme({
           paddingTop: 8, 
         },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
-          background: COLORS.buttonGradient,
+          background: COLORS.backgroundDefault,
           padding: 10,
-          borderRadius: 10,
-          color: COLORS.secondaryText,
+          borderRadius: 0,
+          border: `3px solid ${COLORS.buttonBorder}`,
+          color: COLORS.primaryText,
+          cursor: cursor,
         },
         '.swiper-slide': {
           cursor: cursor,
+          padding: 3,
+          '::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 'calc((100% - 306px) / 2)',
+            width: 'calc(100% - 6px)',
+            height: '100%',
+            maxWidth: 306,
+            backgroundColor: COLORS.buttonColor,
+            clipPath: clipCorner.card,
+            zIndex: -1,
+          },
         },
         '.selected_spell': {
           position: 'absolute',
@@ -181,10 +198,7 @@ export default createTheme({
             height: 150,
             width: 150,
             backgroundColor: COLORS.buttonColor,
-            backgroundSize: '150px 150px',
-            backgroundRepeat: 'no-repeat',
-            backgroundImage: COLORS.backgroundGradientTransparent,
-            maskImage: 'url(sprite.svg#bats-view)',
+            maskImage: 'url(sprite.svg#matrix-view)',
           }
         },
         '.tale_container': {
@@ -195,11 +209,12 @@ export default createTheme({
           color: COLORS.buttonColor,
           width: 30,
           height: 30,
-          background: COLORS.buttonGradient,
-          borderRadius: 5,
+          borderRadius: 0,
           padding: 3, 
           cursor: cursor,
+          border: `2px solid ${COLORS.buttonBorder}`,
           ':hover': hovers.buttonHover,
+          '::after': hovers.buttonAfter,
         },
         '.inner_list': {
           [`@media (min-width:${desktopWidth})`]: {
@@ -218,15 +233,17 @@ export default createTheme({
         },
         '@keyframes glitch': {
           '0%': {
+            opacity: 1,
+            transform: 'translateZ(0)',
             clipPath: clips[1]
           },
           '2%, 8%': {
             clipPath: clips[2],
-            transform: `translate(calc(${shimmy} * -1%), 0)`,
+            transform: `translate(-5px)`,
           },
           '6%': {
             clipPath: clips[2],
-            transform: `translate(calc(${shimmy} * 1%), 0)`
+            transform: `translate(5px)`
           },
           '9%': {
             clipPath: clips[2],
@@ -234,46 +251,67 @@ export default createTheme({
           },
           '10%': {
             clipPath: clips[3],
-            transform: `translate(calc(${shimmy}) * 1%), 0)`
+            transform: `translate3d(5px, 0, 0)`
           },
           '13%': {
             clipPath: clips[3],
-            transform: 'translate(0, 0)'
+            transform: 'translateZ(0)'
           },
-          '14%, 21%': {
+          '13.1%': {
             clipPath: clips[4],
-            transform: `translate(calc(${shimmy} * 1%), 0)`
+            transform: 'translate3d(5px, 0, 0)'
+          },
+          '15%': {
+            clipPath: clips[5],
+            transform: `translate3d(5px, 0, 0)`
+          },
+          '20%': {
+            clipPath: clips[5],
+            transform: `translate3d(-5px, 0, 0)`
+          },
+          '20.1%': {
+            clipPath: clips[4],
+            transform: `translate3d(5px, 0, 0)`
           },
           '25%': {
-            clipPath: clips[5],
-            transform: `translate(calc(${shimmy} * 1%), 0)`
+            clipPath: clips[6],
+            transform: `translate3d(5px, 0, 0)`
           },
           '30%': {
-            clipPath: clips[5],
-            transform: `translate(calc(${shimmy} * -1%), 0)`
-          },
-          '35%, 45%': {
             clipPath: clips[6],
-            transform: `translate(calc(${shimmy} * -1%))`
+            transform: `translate3d(-5px, 0, 0)`
+          },
+          '30.1%': {
+            clipPath: clips[4],
+          },
+          '35%': {
+            clipPath: clips[7],
+            transform: `translate(-5px)`
           },
           '40%': {
-            clipPath: clips[6],
-            transform: `translate(calc(${shimmy} * 1%))`
+            clipPath: clips[7],
+            transform: 'translate(5px)'
           },
           '50%': {
-            clipPath: clips[6],
-            transform: 'translate(0, 0)'
+            clipPath: clips[7],
+            transform: 'translate(0, 0)',
           },
           '55%': {
-            clipPath: clips[7],
-            transform: `translate(calc(${shimmy} * 1%), 0)`
+            clipPath: clips[8],
+            transform: 'translate3d(5px, 0, 0)',
           },
           '60%': {
-            clipPath: clips[7],
-            transform: 'translate(0, 0)'
+            clipPath: clips[8],
+            transform: 'translateZ(0)',
+            opacity: 1,
           },
-          '31%, 61%, 100%': {
-            clipPath: clips[4]
+          '60.1%': {
+            clipPath: clips[4],
+            opacity: 1,
+          },
+          'to': {
+            clipPath: clips[4],
+            opacity: 1,
           }
         }
       }
@@ -282,11 +320,15 @@ export default createTheme({
       styleOverrides: {
         root: {
           cursor: cursor,
-          transition: '.5s ease',
+          borderRadius: 0,
           'svg': {
             width: 20,
             height: 20,
-          }
+          },
+          ':hover': {
+            background: 'transparent',
+          },
+          '::after': hovers.buttonAfter,
         },
         text: {
           ':hover': {
@@ -296,28 +338,18 @@ export default createTheme({
         contained: {
           color: COLORS.buttonColor,
           padding: '10px 25px',
-          textShadow: COLORS.buttonTextShadow,
           boxShadow: '0 0 10px green',
-          background: COLORS.buttonGradient,
-          clipPath: clipCorner,
-          '::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            clipPath: 'polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0)',
-            zIndex: -1,
-          },
+          border: `3px solid ${COLORS.buttonBorder}`,
+          background: 'transparent',
           ':hover': hovers.buttonHover,
+          '::after': hovers.buttonAfter,
         },
         outlined: {
-          borderRadius: '39% 61% 34% 66% / 52% 45% 55% 48%',
+          borderRadius: 0,
           padding: '0 10px',
           margin: '0 10px',
           color: COLORS.outlinedText,
-          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
+          border: `3px solid ${COLORS.buttonBorder}`,
           boxShadow: '0 0 10px green',
         },
         endIcon: {
@@ -344,10 +376,6 @@ export default createTheme({
     MuiListSubheader: {
       styleOverrides: {
         root: {
-          background: COLORS.backgroundSecondaryGradient,
-          margin: '5px 0',
-          borderRadius: 10,
-          maxWidth: 350,
           color: COLORS.primaryText,
           fontSize: '1.5rem',
           fontWeight: 400,
@@ -360,19 +388,51 @@ export default createTheme({
           paddingTop: 8,
           paddingBottom: 8,
           border: `1px solid ${COLORS.buttonBorder}`,
-          borderRadius: 5,
+          borderRadius: 0,
           marginBottom: 4,
           backgroundColor: COLORS.backgroundDefault,
         }
+      }
+    },
+    MuiGrid: {
+      styleOverrides: {
+        item: {
+          position: 'relative',
+          minWidth: 306,
+          '::before': {
+            content: '""',
+            position: 'absolute',
+            top: 12,
+            left: 12,
+            width: 308,
+            height: 'calc(100% - 8px)',
+            backgroundColor: COLORS.buttonColor,
+            clipPath: clipCorner.card,
+            zIndex: -2,
+          },
+        },
+        
       }
     },
     MuiCard: {
       styleOverrides: {
         root: {
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          boxShadow: '0 0 10px white, 0 0 20px #21aa27',
+          borderRadius: 0,
           position: 'relative',
-          ':hover': hovers.cardHover
+          clipPath: clipCorner.card,
+          width: 300,
+          'a': {
+            ':hover': hovers.buttonHover,
+            '::after': hovers.buttonAfter,
+          }
+        }
+      },
+      MuiCardContent: {
+        styleOverrides: {
+          root: {
+            backgroundColor: COLORS.backgroundDefault,
+          }
         }
       }
     },
@@ -385,7 +445,7 @@ export default createTheme({
           padding: 16,
           position: 'relative',
           border: `3px solid ${COLORS.buttonBorder}`,
-          borderRadius: 5,
+          borderRadius: 0,
           backgroundColor: COLORS.backgroundDefault,
         }
       }
@@ -424,7 +484,10 @@ export default createTheme({
   },
   typography: {
     h1: {
-      fontSize: '3rem',
+      fontSize: '1.5rem',
+      [`@media (min-width:${desktopWidth})`]: {
+        fontSize: '2rem', 
+      },
       fontWeight: 400,
       fontFamily: 'Computo',
       lineHeight: 1,
@@ -441,8 +504,6 @@ export default createTheme({
       fontWeight: 400,
       background: COLORS.backgroundGradientTransparent, 
       color: COLORS.buttonColor,
-      textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-      borderRadius: 5,
       padding: 5,
       textAlign: 'center',
     },
@@ -455,8 +516,7 @@ export default createTheme({
     body2: {
       '::first-letter': {
         color: COLORS.secondaryText,
-        fontFamily: 'Scary',
-        textShadow: COLORS.headerTextShadow,
+        fontFamily: 'Cyber',
       }
     },
     body3: {

@@ -26,7 +26,14 @@ REACT_APP_CLOUDINARY_API_KEY  = hereIsSomeOtherApiKey
     "https://res.cloudinary.com/dyigwqfyo/image/upload/v1693918007/MythPath/Library",
   cloudinaryBackgroundLink:
     "https://res.cloudinary.com/dyigwqfyo/image/upload/v1693918007/MythPath/backgrounds",
-  testMode: true,
+  testMode: process.env.REACT_APP_TEST_MODE === "false" ? false : true,
   cloudinaryBasePath: "MythPath/Library",
   cloudinaryCloudName: "dyigwqfyo",
+  openAI: {
+    maxTokens: process.env.REACT_APP_OPENAI_MAX_TOKENS
+      ? process.env.REACT_APP_OPENAI_MAX_TOKENS
+      : 1500,
+  },
 };
+
+console.log("testMode: ", CONSTANTS.testMode);
