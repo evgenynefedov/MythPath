@@ -2,44 +2,54 @@ import { createTheme } from "@mui/material/styles";
 import { CONSTANTS } from "./../constants"
 
 const COLORS = {
-  name: 'green',
-  borderGradient: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
-  headerText: `url(${CONSTANTS.cloudinaryBackgroundLink}/woodVertTexture) #ab9f76`,
-  buttonGradient: `url(${CONSTANTS.cloudinaryBackgroundLink}/woodHorTexture) #ab9f76`,
-  backgroundGradientTransparent: 'linear-gradient(to bottom, rgb(170 153 85 / 90%), rgb(255 238 170 / 90%))',
-  backgroundSecondaryGradient: 'linear-gradient(to right, #d9edbd 50%, transparent)',
-  backgroundPrimaryGradient: 'linear-gradient(to bottom, rgb(239 254 224 / 80%), rgb(169 185 169 / 60%))',
-  icon: '#5e460b',
-  outlinedText: '#614d0c',
+  name: 'cyber',
+  buttonGradient: `linear-gradient(#d286ce, #ed22d1)`,
+  buttonShadow: '0 0 10px white, 0 0 30px #d286ce, 0 0 40px #d286ce',
+  backgroundGradientTransparent: 'linear-gradient(to bottom, rgb(0 0 0 / 90%), rgb(0 0 0 / 90%))',
+  backgroundSecondaryGradient: 'linear-gradient(to right, #2e0262 50%, transparent)',
+  backgroundPrimaryGradient: 'linear-gradient(to bottom, rgb(0 0 0 / 80%), rgb(0 0 0 / 60%))',
+  icon: '#12741a',
+  outlinedText: '#0f8c32',
   primaryMain: '#71c067',
   primaryText: '#4ba04b',
-  secondaryText: '#fff8e1',
+  secondaryText: '#21aa27',
   secondaryMain: '#fdd835',
-  backgroundDefault: '#d9edbd',
-  backgroundPaper: '#e9fddd',
-  textPrimary: '#044e07',
-  textSecondary: 'rgba(133,65,133,0.5)',
-  divider: 'rgba(140,95,177,0.12)',
-  buttonColor: '#5e460b',
-  buttonBorder: '#ba6',
+  backgroundDefault: 'black',
+  backgroundPaper: 'black',
+  textPrimary: '#7f9a80',
+  textSecondary: '#69b427',
+  buttonColor: '#21aa27',
+  buttonTextShadow: '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3fe600, 0 0 40px #5fe600, 0 0 50px #7fe600, 0 0 60px #74e600, 0 0 70px #7be600',
+  headerTextShadow: '0 0 10px #f5e991, 0 0 30px #21aa27, 0 0 40px #21aa27',
+  buttonBorder: '#21aa27',
 }
 const desktopWidth = '800px'
-const cursor = "url('/cursors/wood-stick.svg'), auto"
+const cursor = "url('/cursors/robot.svg'), auto"
+const clipCorner = 'polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 70%)'
+const clips = [
+  '',
+  'polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%)',
+  'polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%)',
+  'polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%)',
+  'polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0)',
+  'polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0)',
+  'polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%)',
+  'polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%)'
+]
+const shimmy = 5
 const hovers = {
   buttonHover: {
-    transform: 'translateY(-3px)',
-    background: COLORS.buttonGradient,
-    boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3), 0 10px 20px rgba(0, 0, 0, 0.2)'
+    boxShadow: '0 0 10px white, 0 0 20px #5adac6, 0 0 30px #5adac6',
   },
   cardHover: {
-    transform: 'translateY(-8px)', 
+    boxShadow: '0 0 10px white, 0 0 20px #21aa27, 0 0 30px #21aa27', 
   }
 }
 
 
 export default createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
       main: COLORS.primaryMain,
       contrastText: COLORS.primaryText,
@@ -56,7 +66,6 @@ export default createTheme({
       primary: COLORS.textPrimary,
       secondary: COLORS.textSecondary,
     },
-    divider: COLORS.divider,
   },
   components: {
     MuiCssBaseline: {
@@ -97,16 +106,19 @@ export default createTheme({
         '.menu .menu_item': {
           display: 'flex',
           alignItems: 'center',
-          background: COLORS.buttonGradient,
           color: COLORS.buttonColor,
-          borderRadius: 25,
           padding: '5px 10px',
-          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
-          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          border: `1px solid ${COLORS.buttonBorder}`,
           fontSize: '1.5em',
           cursor: cursor,
-          ':hover': hovers.buttonHover,
+          border: `3px solid ${COLORS.buttonBorder}`,
+          position: 'relative',
+          boxSizing: 'border-box',
+          ':hover': {
+            '::after': {
+              display: 'block',
+              animation: 'glitch 2s infinite'
+            }
+          },
           '::before': {
             content: '""',
             display:'block',
@@ -118,13 +130,28 @@ export default createTheme({
             [`@media (min-width:${desktopWidth})`]: {
               marginRight: 5,
             }
+          },
+          '::after': {
+            content: '""',
+            position: 'absolute',
+            display: 'none',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'black',
+          },
+          'span::after': {
+            content: '"_"',
           }
         },
-        '.menu .menu_item__home::before': {
-          maskImage: 'url(sprite.svg#mushroom-view)',
+        '.menu .menu_item__home': {
+          '::before': {
+            maskImage: 'url(sprite.svg#rabbit-view)',
+          }
         },
         '.menu .menu_item__create::before': {
-          maskImage: 'url(sprite.svg#book-view)',
+          maskImage: 'url(sprite.svg#mouse-view)',
         },
         '.swiper-wrapper': { 
           paddingTop: 8, 
@@ -136,9 +163,7 @@ export default createTheme({
           color: COLORS.secondaryText,
         },
         '.swiper-slide': {
-          transition: '.3s ease',
           cursor: cursor,
-          ':hover': hovers.cardHover,
         },
         '.selected_spell': {
           position: 'absolute',
@@ -159,7 +184,7 @@ export default createTheme({
             backgroundSize: '150px 150px',
             backgroundRepeat: 'no-repeat',
             backgroundImage: COLORS.backgroundGradientTransparent,
-            maskImage: 'url(sprite.svg#logs-view)',
+            maskImage: 'url(sprite.svg#bats-view)',
           }
         },
         '.tale_container': {
@@ -187,23 +212,75 @@ export default createTheme({
             }
           }, 
         },
-        '.settings_control': {
-        },
-        '.theme_select': {
-          marginLeft: 16,
-        },
         '.library_controls': {
           display: 'flex',
           justifyContent: 'space-between'
+        },
+        '@keyframes glitch': {
+          '0%': {
+            clipPath: clips[1]
+          },
+          '2%, 8%': {
+            clipPath: clips[2],
+            transform: `translate(calc(${shimmy} * -1%), 0)`,
+          },
+          '6%': {
+            clipPath: clips[2],
+            transform: `translate(calc(${shimmy} * 1%), 0)`
+          },
+          '9%': {
+            clipPath: clips[2],
+            transform: 'translate(0, 0)'
+          },
+          '10%': {
+            clipPath: clips[3],
+            transform: `translate(calc(${shimmy}) * 1%), 0)`
+          },
+          '13%': {
+            clipPath: clips[3],
+            transform: 'translate(0, 0)'
+          },
+          '14%, 21%': {
+            clipPath: clips[4],
+            transform: `translate(calc(${shimmy} * 1%), 0)`
+          },
+          '25%': {
+            clipPath: clips[5],
+            transform: `translate(calc(${shimmy} * 1%), 0)`
+          },
+          '30%': {
+            clipPath: clips[5],
+            transform: `translate(calc(${shimmy} * -1%), 0)`
+          },
+          '35%, 45%': {
+            clipPath: clips[6],
+            transform: `translate(calc(${shimmy} * -1%))`
+          },
+          '40%': {
+            clipPath: clips[6],
+            transform: `translate(calc(${shimmy} * 1%))`
+          },
+          '50%': {
+            clipPath: clips[6],
+            transform: 'translate(0, 0)'
+          },
+          '55%': {
+            clipPath: clips[7],
+            transform: `translate(calc(${shimmy} * 1%), 0)`
+          },
+          '60%': {
+            clipPath: clips[7],
+            transform: 'translate(0, 0)'
+          },
+          '31%, 61%, 100%': {
+            clipPath: clips[4]
+          }
         }
       }
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          background: COLORS.headerText,
-          backgroundClip: 'text',
-          color: 'transparent',
           cursor: cursor,
           transition: '.5s ease',
           'svg': {
@@ -212,31 +289,36 @@ export default createTheme({
           }
         },
         text: {
-          background: COLORS.headerText,
-          backgroundClip: 'text',
-          color: 'transparent',
           ':hover': {
             color: COLORS.primaryText,
           }
         },
         contained: {
           color: COLORS.buttonColor,
-          borderRadius: 25,
           padding: '10px 25px',
-          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
-          border: `1px solid ${COLORS.buttonBorder}`,
+          textShadow: COLORS.buttonTextShadow,
+          boxShadow: '0 0 10px green',
           background: COLORS.buttonGradient,
+          clipPath: clipCorner,
+          '::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            clipPath: 'polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0)',
+            zIndex: -1,
+          },
           ':hover': hovers.buttonHover,
         },
         outlined: {
-          border: `1px solid ${COLORS.buttonBorder}`,
-          borderRadius: 5,
+          borderRadius: '39% 61% 34% 66% / 52% 45% 55% 48%',
           padding: '0 10px',
           margin: '0 10px',
           color: COLORS.outlinedText,
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
+          boxShadow: '0 0 10px green',
         },
         endIcon: {
           width: 25,
@@ -248,6 +330,7 @@ export default createTheme({
       styleOverrides: {
         root: {
           backgroundColor: 'transparent',
+          marginBottom: 50
         }
       }
     },
@@ -283,19 +366,13 @@ export default createTheme({
         }
       }
     },
-    MuiGrid: {
-      styleOverrides: {
-        item: {
-          ':hover': hovers.cardHover
-        }
-      }
-    },
     MuiCard: {
       styleOverrides: {
         root: {
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          border: `3px solid ${COLORS.buttonBorder}`, 
+          boxShadow: '0 0 10px white, 0 0 20px #21aa27',
           position: 'relative',
+          ':hover': hovers.cardHover
         }
       }
     },
@@ -327,26 +404,12 @@ export default createTheme({
         },
       }  
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          borderRadius: 25,
-        }
-      }
-    },
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          left: 16,
-        },
-      }   
-    },
     MuiSelect: {
-      styleOverrides: {
-        outlined: {
-          padding: 10,
+        styleOverrides: {
+          outlined: {
+            padding: 10,
+          }
         }
-      }
     },
     MuiSvgIcon: {
       styleOverrides: {
@@ -363,21 +426,15 @@ export default createTheme({
     h1: {
       fontSize: '3rem',
       fontWeight: 400,
-      background: COLORS.headerText, 
-      textShadow: '3px 4px 5px #0000002e',
-      backgroundClip: 'text',
-      color: 'transparent',
-      fontFamily: 'Jungle',
+      fontFamily: 'Computo',
       lineHeight: 1,
+      color: COLORS.secondaryText,
     },
     h2: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      background: COLORS.headerText, 
-      backgroundClip: 'text',
-      color: 'transparent',
-      marginBottom: 10,
-      textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
+      color: COLORS.buttonColor,
+      textShadow: COLORS.buttonTextShadow,
     },
     h3: {
       fontSize: '1.5rem',
@@ -397,8 +454,9 @@ export default createTheme({
     },
     body2: {
       '::first-letter': {
-        color: COLORS.icon,
-        fontFamily: 'Wood',
+        color: COLORS.secondaryText,
+        fontFamily: 'Scary',
+        textShadow: COLORS.headerTextShadow,
       }
     },
     body3: {

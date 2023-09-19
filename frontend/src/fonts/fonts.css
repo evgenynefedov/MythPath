@@ -20,9 +20,13 @@
 }
 @font-face {
 	font-family: 'Scary';
-	src: url('./Scary.otf');
+	src: url('./Scary.ttf');
 }
 @font-face {
 	font-family: 'Spooky';
-	src: url('./Spooky.otf');
+	src: url('./Spooky.ttf');
+}
+@font-face {
+	font-family: 'Computo';
+	src: url('./Computo.ttf');
 }

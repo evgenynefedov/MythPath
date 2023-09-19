@@ -4,13 +4,12 @@ import { CONSTANTS } from "./../constants"
 const COLORS = {
   name: 'witch',
   borderGradient: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
-  headerText: `url(${CONSTANTS.cloudinaryBackgroundLink}/woodVertTexture) #ab9f76`,
   buttonGradient: `linear-gradient(90deg, #007011, #354906, #26631a, #2a7707)`,
   backgroundGradientTransparent: 'linear-gradient(to bottom, rgb(3 115 13 / 90%), rgb(131 253 137 / 90%))',
   backgroundSecondaryGradient: 'linear-gradient(to right, #2e0262 50%, transparent)',
   backgroundPrimaryGradient: 'linear-gradient(to bottom, rgb(36 10 58 / 80%), rgb(1 31 9 / 60%))',
-  icon: '#5e460b',
-  outlinedText: '#614d0c',
+  icon: '#12741a',
+  outlinedText: '#0f8c32',
   primaryMain: '#71c067',
   primaryText: '#4ba04b',
   secondaryText: '#182d19',
@@ -18,7 +17,7 @@ const COLORS = {
   backgroundDefault: '#2e0262',
   backgroundPaper: '#1b0239',
   textPrimary: '#7f9a80',
-  textSecondary: 'rgba(133,65,133,0.5)',
+  textSecondary: '#69b427',
   divider: 'rgba(140,95,177,0.12)',
   buttonColor: '#dcfaa8',
   buttonTextShadow: '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3fe600, 0 0 40px #5fe600, 0 0 50px #7fe600, 0 0 60px #74e600, 0 0 70px #7be600',
@@ -196,9 +195,6 @@ export default createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          background: COLORS.headerText,
-          backgroundClip: 'text',
-          color: 'transparent',
           cursor: cursor,
           transition: '.5s ease',
           'svg': {
@@ -207,9 +203,6 @@ export default createTheme({
           }
         },
         text: {
-          background: COLORS.headerText,
-          backgroundClip: 'text',
-          color: 'transparent',
           ':hover': {
             color: COLORS.primaryText,
           }
