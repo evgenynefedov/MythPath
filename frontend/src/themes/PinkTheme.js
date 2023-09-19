@@ -2,12 +2,14 @@ import { createTheme } from "@mui/material/styles";
 import { CONSTANTS } from "./../constants"
 
 const COLORS = {
+  name: 'pink',
   borderGradient: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
   headerText: 'radial-gradient(ellipse farthest-corner at right bottom, #e1c63c 0%, #bca26d 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
   buttonGradient: 'linear-gradient(to bottom, #a95, #fea)',
   backgroundGradientTransparent: 'linear-gradient(to bottom, rgb(170 153 85 / 90%), rgb(255 238 170 / 90%))',
   backgroundSecondaryGradient: 'linear-gradient(to right, #fee0ec 50%, transparent)',
   backgroundPrimaryGradient: 'linear-gradient(to bottom, rgba(254, 224, 236, 0.8), rgba(253, 231, 239, 0.6))',
+  borderRepeatingGradient: 'repeating-linear-gradient( -45deg, #ece2ae, #b69552 5px, rgb(197 168 108 / 80%) 6px, rgb(169 146 62 / 80%) 10px) 25',
   icon: '#cfb681',
   outlinedText: '#614d0c',
   primaryMain: '#F187D2',
@@ -24,9 +26,15 @@ const COLORS = {
 }
 const desktopWidth = '800px'
 const cursor = "url('/cursors/magic-wand.svg'), auto"
-const buttonHover = {
-  transform: 'translateY(-3px)',
-  boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)'
+const hovers = {
+  buttonHover: {
+    transform: 'translateY(-3px)',
+    boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3), 0 10px 20px rgba(0, 0, 0, 0.2)',
+    background: COLORS.buttonGradient,
+  },
+  cardHover: {
+    transform: 'translateY(-8px)', 
+  }
 }
 
 export default createTheme({
@@ -57,9 +65,9 @@ export default createTheme({
           '@fontFace': ['Flower', 'Royal'],
         },
         body: {
-          backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/pinkMobile)`,
+          backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/${COLORS.name}Mobile)`,
           '@media (orientation: landscape)': {
-            backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/pinkDesktop)`,
+            backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/${COLORS.name}Desktop)`,
           },
           backgroundAttachment: 'fixed',
           backgroundRepeat: "no-repeat",
@@ -89,13 +97,6 @@ export default createTheme({
             display: 'inline',
           }
         },
-        '.menu svg': {
-          width: 40,
-          height: 40,
-          [`@media (min-width:${desktopWidth})`]: {
-            marginRight: 10,
-          }
-        },
         '.menu .menu_item': {
           display: 'flex',
           alignItems: 'center',
@@ -108,10 +109,28 @@ export default createTheme({
           border: `1px solid ${COLORS.buttonBorder}`,
           fontSize: '1.5em',
           cursor: cursor,
-          ':hover': buttonHover,
+          ':hover': hovers.buttonHover,
+          '::before': {
+            content: '""',
+            display:'block',
+            height: 30,
+            width: 30,
+            backgroundColor: COLORS.buttonColor,
+            backgroundSize: '30px 30px',
+            backgroundRepeat: 'no-repeat',
+            [`@media (min-width:${desktopWidth})`]: {
+              marginRight: 5,
+            }
+          }
+        },
+        '.menu .menu_item__home::before': {
+          maskImage: 'url(sprite.svg#castle-view)',
+        },
+        '.menu .menu_item__create::before': {
+          maskImage: 'url(sprite.svg#feather-view)',
         },
         '.swiper-wrapper': { 
-          paddingTop: 5, 
+          paddingTop: 8, 
         },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
           background: COLORS.buttonGradient,
@@ -122,10 +141,7 @@ export default createTheme({
         '.swiper-slide': {
           transition: '.3s ease',
           cursor: cursor,
-          ':hover': {
-            transform: 'translateY(-8px)',
-            transition: '.3s ease',
-          },
+          ':hover': hovers.cardHover,
         },
         '.selected_spell': {
           position: 'absolute',
@@ -137,13 +153,17 @@ export default createTheme({
           height: '100%',
           left: 0,
           top: 0,
-        },
-        '.selected_spell svg': {
-          width: 150,
-          height: 150,
-          color: COLORS.buttonColor,
-          background: COLORS.backgroundGradientTransparent,
-          borderRadius: 5,
+          '::before': {
+            content: '""',
+            display:'block',
+            height: 150,
+            width: 150,
+            backgroundColor: COLORS.buttonColor,
+            backgroundSize: '150px 150px',
+            backgroundRepeat: 'no-repeat',
+            backgroundImage: COLORS.backgroundGradientTransparent,
+            maskImage: 'url(sprite.svg#stars-view)',
+          }
         },
         '.tale_container': {
             height: '100vh', 
@@ -157,7 +177,7 @@ export default createTheme({
           borderRadius: 5,
           padding: 3, 
           cursor: cursor,
-          ':hover': buttonHover,
+          ':hover': hovers.buttonHover,
         },
         '.inner_list': {
           [`@media (min-width:${desktopWidth})`]: {
@@ -169,14 +189,6 @@ export default createTheme({
               marginRight: 6,
             }
           }, 
-        },
-        '.settings_control': {
-          padding: 10,
-          marginTop: 10,
-          [`@media (min-width:${desktopWidth})`]: {
-            background: COLORS.backgroundSecondaryGradient, 
-            backgroundColor: 'transparent',
-          },
         },
         '.theme_select': {
           marginLeft: 16,
@@ -195,16 +207,16 @@ export default createTheme({
           color: 'transparent',
           cursor: cursor,
           transition: '.5s ease',
-          ':hover': buttonHover,
           'svg': {
-            width: 30,
-            height: 30,
+            width: 20,
+            height: 20,
           }
         },
         text: {
           background: COLORS.headerText,
           backgroundClip: 'text',
           color: 'transparent',
+          ':hover': hovers.cardHover,
         },
         contained: {
           color: COLORS.buttonColor,
@@ -214,6 +226,7 @@ export default createTheme({
           boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
           border: `1px solid ${COLORS.buttonBorder}`,
           background: COLORS.buttonGradient,
+          ':hover': hovers.buttonHover,
         },
         outlined: {
           border: `1px solid ${COLORS.buttonBorder}`,
@@ -234,13 +247,15 @@ export default createTheme({
       styleOverrides: {
         root: {
           backgroundColor: 'transparent',
+          paddingBottom: 10,
         },
-        '& .tale_page__img' : {
-          border: '10px solid',
-          borderImageSource: COLORS.borderGradient,
-          borderImageSlice: 1,
-          borderImageRepeat: 'round',
-        },
+      }
+    },
+    MuiGrid: {
+      styleOverrides: {
+        item: {
+          ':hover': hovers.cardHover
+        }
       }
     },
     MuiList: {
@@ -279,7 +294,8 @@ export default createTheme({
       styleOverrides: {
         root: {
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          border: `3px solid ${COLORS.buttonBorder}`, 
+          border: `8px solid ${COLORS.buttonBorder}`, 
+          borderImage: COLORS.borderRepeatingGradient,
           position: 'relative',
         }
       }
@@ -311,6 +327,13 @@ export default createTheme({
           cursor: cursor,
         },
       }  
+    },
+    MuiSelect: {
+      styleOverrides: {
+        outlined: {
+          padding: 10,
+        }
+      }
     },
     MuiSvgIcon: {
       styleOverrides: {
@@ -350,6 +373,12 @@ export default createTheme({
       borderRadius: 5,
       padding: 5,
       textAlign: 'center',
+    },
+    h4: {
+      fontSize: '1.2rem',
+      fontWeight: 400,
+      color: COLORS.primaryText,
+      marginBottom: 10,
     },
     body2: {
       '::first-letter': {

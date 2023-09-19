@@ -37,7 +37,7 @@ export default function NavBar({
           <Button
             size="large"
             onClick={next}
-            variant={isSelected ? "outlined" : null}
+            variant={isSelected ? "outlined" : "text"}
           >
             {stepIndex === stepsCount - 1
               ? "Create"
@@ -52,7 +52,7 @@ export default function NavBar({
           </Button>
         }
         backButton={
-          <Button size="large" onClick={back} disabled={stepIndex === 0}>
+          <Button size="large" onClick={back} disabled={stepIndex === 0} variant="text">
             {stepIndex !== 0 &&
               <>
                 {theme.direction === "rtl" ? (

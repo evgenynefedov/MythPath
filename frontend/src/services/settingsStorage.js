@@ -1,9 +1,11 @@
 import PinkTheme from "./../themes/PinkTheme"
 import GreenTheme from "./../themes/GreenTheme"
+import WitchTheme from "./../themes/WitchTheme"
 
 const themesToSelect = [
-    {name: "Little princess", theme: PinkTheme}, 
-    {name: "Summer forest", theme: GreenTheme}
+    {name: "Little Princess", theme: PinkTheme}, 
+    {name: "Summer Forest", theme: GreenTheme},
+    {name: "Dark magic", theme: WitchTheme}
 ]
 
 const SETTINGS_KEY = "mythPathSettings";

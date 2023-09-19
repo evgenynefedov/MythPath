@@ -25,14 +25,10 @@ function App() {
         <CssBaseline />
         <Router>
           <Routes>
-            <Route element={<MainMenu />}>
+            <Route element={<MainMenu changeTheme={changeTheme}/>}>
               <Route path="/" element={<Onboarding />} />
               <Route path="/wizard" element={<Wizard />} />
               <Route path="/tale-loader" element={<TaleLoader />} />
-              <Route
-                path="/settings"
-                element={<Settings changeTheme={changeTheme} />}
-              />
             </Route>
             <Route path="/tale-viewer/:taleId" element={<TaleViewer />} />
           </Routes>

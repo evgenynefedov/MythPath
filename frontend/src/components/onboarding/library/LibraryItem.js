@@ -16,7 +16,7 @@ export default function LibraryItem({
 }) {
   return (
     <Grid item xs={12} sm={6} md={4} sx={{ p: 0, m: 0 }}>
-    <Card sx={{ maxWidth: 300, overflow: "hidden" }} elevation={3}>
+    <Card sx={{ maxWidth: 300, overflow: "hidden", height: "100%" }} elevation={3}>
       <Link to={`/tale-viewer/${taleId}`} style={{ position: "relative", height: 200, display: "block" }}>
         <ResponsiveImage 
           imgPath={
@@ -28,7 +28,7 @@ export default function LibraryItem({
          
       </Link>
       <CardContent>
-          <Typography variant="h2">
+          <Typography variant="h4">
            {title}
           </Typography>
         { userUUID === getUserUUID() && withControls && (
