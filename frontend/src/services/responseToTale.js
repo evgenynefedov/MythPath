@@ -1,23 +1,41 @@
 import getRandomElementFromArray from "../Utils/getRandomElementFromArray";
 import filterImages from "./filterImages";
 
+const refillRemainingImages = (filteredImages) => {
+  return filteredImages
+    .filter(({ code }) => code !== "world")
+    .flatMap(({ value }) => (Array.isArray(value) ? value : [value]));
+};
+
 const responseToTale = (steps, story) => {
   const filteredImages = filterImages(steps);
+  console.log("only pictures", filteredImages);
+
+  let remainingImages = refillRemainingImages(filteredImages);
+
+  const getUniqueRandomImage = () => {
+    if (remainingImages.length === 0) {
+      remainingImages = refillRemainingImages(filteredImages);
+    }
+
+    const randomImage = getRandomElementFromArray(remainingImages);
+    remainingImages = remainingImages.filter(
+      (imgObj) => imgObj !== randomImage
+    );
+
+    return randomImage;
+  };
+
+  const { title, pages } = story;
+  const worldImage =
+    filteredImages.find(({ code }) => code === "world")?.value?.img || "";
+
   return {
-    title: story.title,
-    cover:
-      filteredImages.find((imgObj) => imgObj.code === "world")?.value?.img ||
-      "",
-    pages: story.pages.map((pageText) => ({
+    title,
+    cover: worldImage,
+    pages: pages.map((pageText) => ({
       text: pageText,
-      img:
-        getRandomElementFromArray(
-          filteredImages
-            .filter((imgObj) => imgObj.code !== "world")
-            .flatMap((imgObj) =>
-              Array.isArray(imgObj.value) ? imgObj.value : [imgObj.value]
-            )
-        )?.img || "",
+      img: getUniqueRandomImage()?.img || "",
     })),
   };
 };
