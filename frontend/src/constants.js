@@ -24,6 +24,8 @@ REACT_APP_CLOUDINARY_API_KEY  = hereIsSomeOtherApiKey
   },
   cloudinaryBaseLink:
     "https://res.cloudinary.com/dyigwqfyo/image/upload/v1693918007/MythPath/Library",
+  cloudinaryUploadBaseLink:
+    "https://res.cloudinary.com/dyigwqfyo/image/upload/",
   cloudinaryBackgroundLink:
     "https://res.cloudinary.com/dyigwqfyo/image/upload/v1693918007/MythPath/backgrounds",
   testMode: process.env.REACT_APP_TEST_MODE === "false" ? false : true,
