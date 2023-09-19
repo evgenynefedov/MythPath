@@ -34,3 +34,11 @@
 	font-family: 'Cyber';
 	src: url('./Cyber.ttf');
 }
+@font-face {
+	font-family: 'Fluffy';
+	src: url('./Fluffy.ttf');
+}
+@font-face {
+	font-family: 'Catpaw';
+	src: url('./Catpaw.ttf');
+}

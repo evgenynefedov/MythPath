@@ -43,8 +43,10 @@ const clips = [
 const hovers = {
   buttonHover: {
     '::after': {
-      display: 'block',
-      animation: 'glitch 2s infinite'
+      [`@media (min-width:${desktopWidth})`]: {
+        display: 'block',
+        animation: 'glitch 2s infinite'
+      }
     }
   },
   buttonAfter: {
