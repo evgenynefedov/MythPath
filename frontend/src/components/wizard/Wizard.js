@@ -3,7 +3,7 @@ import { getLibraryData } from "./../../services/libraryStorage";
 import { textGenerator } from "./../../services/textGenerator";
 import * as taleStorage from "./../../services/taleStorage";
 import { useNavigate } from "react-router-dom";
-import { Container, Box, Snackbar, Button } from "@mui/material";
+import { Container, Box, Snackbar } from "@mui/material";
 import NavBar from "./NavBar";
 import SpellSelector from "./SpellSelector";
 import TaleLoader from "../tale-loader/TaleLoader";
@@ -12,7 +12,6 @@ import responseToTale from "../../services/responseToTale";
 import StoryParams from "./StoryParams";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 import getRandomElementFromArray from "../../Utils/getRandomElementFromArray";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import Casino from "@mui/icons-material/Casino";
 import SnackbarAction from "../ui/SnackbarAction";
 
@@ -109,8 +108,10 @@ export default function Wizard() {
   }
 
   function next() {
-    if (stepIndex !== stepsCount - 1 && isEmpty(getStep().value)) {
-      setRandomValues();
+    if (isEmpty(getStep().value)) {
+      if (getStep().isSpellSelector) {
+        setRandomValues();
+      }
     } else {
       hideSnackbar();
     }
@@ -164,13 +165,7 @@ export default function Wizard() {
     } else {
       value = spell.id === getStep().value?.id ? {} : spell;
       if (!isEmpty(value)) {
-        showSnackbar(
-          `You have chosen ${getStep().text.title.en}`,
-          <Button size="small" onClick={next} variant="outlined">
-            Next
-            <KeyboardArrowRight />
-          </Button>
-        );
+        showSnackbar(`You have chosen ${getStep().text.title.en}`);
       }
     }
     setStep({
@@ -273,6 +268,10 @@ export default function Wizard() {
               anchorOrigin={{ vertical: "top", horizontal: "left" }}
               autoHideDuration={AUTO_HIDE_DURATION}
               onClose={hideSnackbar}
+              ClickAwayListenerProps={{
+                touchEvent: false,
+                mouseEvent: false,
+              }}
               {...snackbarProps}
             />
           </Container>
