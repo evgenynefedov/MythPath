@@ -268,6 +268,10 @@ export default function Wizard() {
               anchorOrigin={{ vertical: "top", horizontal: "left" }}
               autoHideDuration={AUTO_HIDE_DURATION}
               onClose={hideSnackbar}
+              ClickAwayListenerProps={{
+                touchEvent: false,
+                mouseEvent: false,
+              }}
               {...snackbarProps}
             />
           </Container>
