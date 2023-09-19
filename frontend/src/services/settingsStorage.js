@@ -1,11 +1,13 @@
 import PinkTheme from "./../themes/PinkTheme"
 import GreenTheme from "./../themes/GreenTheme"
 import WitchTheme from "./../themes/WitchTheme"
+import CyberTheme from "./../themes/CyberTheme"
 
 const themesToSelect = [
     {name: "Little Princess", theme: PinkTheme}, 
     {name: "Summer Forest", theme: GreenTheme},
-    {name: "Dark magic", theme: WitchTheme}
+    {name: "Dark magic", theme: WitchTheme},
+    {name: "The Hacker", theme: CyberTheme}
 ]
 
 const SETTINGS_KEY = "mythPathSettings";

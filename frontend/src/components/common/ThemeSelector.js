@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Box, Select, MenuItem } from "@mui/material"
+import { Box, Select, MenuItem, InputLabel, FormControl } from "@mui/material"
 
 import { getSelectedThemeName, getThemeNames, saveThemeSelection } from "./../../services/settingsStorage"
 
@@ -13,16 +13,19 @@ export default function ThemeSelector({changeTheme}) {
     }
     return(
         <Box className="settings_control">
-            <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={themeName}
-                label="Age"
-                onChange={handleChange}
-                className="theme_select"
-                >
-                {themeNames.map((name) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
-            </Select>
+            <FormControl>
+                <InputLabel id="simple-select-label">Theme</InputLabel>
+                <Select
+                    labelId="simple-select-label"
+                    id="demo-simple-select"
+                    value={themeName}
+                    label="Theme"
+                    onChange={handleChange}
+                    className="theme_select"
+                    >
+                    {themeNames.map((name) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
+                </Select>
+            </FormControl>
         </Box>
     )
 }

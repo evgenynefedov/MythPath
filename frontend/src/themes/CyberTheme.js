@@ -2,44 +2,70 @@ import { createTheme } from "@mui/material/styles";
 import { CONSTANTS } from "./../constants"
 
 const COLORS = {
-  name: 'green',
-  borderGradient: 'radial-gradient(ellipse farthest-corner at right bottom, #fbdd4a 0%, #fdd788 13%, #cfb681 44%, #cfb372 56%, #a69c84 80%)',
-  headerText: `url(${CONSTANTS.cloudinaryBackgroundLink}/woodVertTexture) #ab9f76`,
-  buttonGradient: `url(${CONSTANTS.cloudinaryBackgroundLink}/woodHorTexture) #ab9f76`,
-  backgroundGradientTransparent: 'linear-gradient(to bottom, rgb(170 153 85 / 90%), rgb(255 238 170 / 90%))',
-  backgroundSecondaryGradient: 'linear-gradient(to right, #d9edbd 50%, transparent)',
-  backgroundPrimaryGradient: 'linear-gradient(to bottom, rgb(239 254 224 / 80%), rgb(169 185 169 / 60%))',
-  icon: '#5e460b',
-  outlinedText: '#614d0c',
+  name: 'cyber',
+  buttonGradient: `linear-gradient(#d286ce, #ed22d1)`,
+  buttonShadow: '0 0 10px white, 0 0 30px #d286ce, 0 0 40px #d286ce',
+  backgroundGradientTransparent: 'linear-gradient(to bottom, rgb(0 0 0 / 90%), rgb(0 0 0 / 90%))',
+  backgroundSecondaryGradient: 'linear-gradient(to right, #2e0262 50%, transparent)',
+  backgroundPrimaryGradient: 'linear-gradient(to bottom, rgb(0 0 0 / 80%), rgb(0 0 0 / 60%))',
+  icon: '#12741a',
+  outlinedText: '#0f8c32',
   primaryMain: '#71c067',
   primaryText: '#4ba04b',
-  secondaryText: '#fff8e1',
+  secondaryText: '#21aa27',
   secondaryMain: '#fdd835',
-  backgroundDefault: '#d9edbd',
-  backgroundPaper: '#e9fddd',
-  textPrimary: '#044e07',
-  textSecondary: 'rgba(133,65,133,0.5)',
-  divider: 'rgba(140,95,177,0.12)',
-  buttonColor: '#5e460b',
-  buttonBorder: '#ba6',
+  backgroundDefault: '#000',
+  backgroundPaper: '#000',
+  textPrimary: '#7f9a80',
+  textSecondary: '#69b427',
+  buttonColor: '#21aa27',
+  buttonTextShadow: '0 0 10px #fff, 0 0 20px #3fe600',
+  headerTextShadow: '0 0 10px #f5e991, 0 0 30px #21aa27, 0 0 40px #21aa27',
+  buttonBorder: '#21aa27',
 }
 const desktopWidth = '800px'
-const cursor = "url('/cursors/wood-stick.svg'), auto"
+const cursor = "url('/cursors/robot.svg'), auto"
+const clipCorner = {
+  buhton: 'polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 70%)',
+  card: 'polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 90%)'
+}
+const clips = [
+  '',
+  'polygon(0 2%, 100% 2%, 100% 5%, 0 5%)',
+  'polygon(0 78%, 100% 78%, 100% 100%, 0 100%)',
+  'polygon(0 54%, 100% 54%, 100% 44%, 0 44%)',
+  'polygon(0 0, 0 0, 0 0, 0 0)',
+  'polygon(0 60%, 100% 60%, 100% 40%, 0 40%)',
+  'polygon(0 85%, 100% 85%, 100% 40%, 0 40%)',
+  'polygon(0 63%, 100% 63%, 100% 80%, 0 80%)',
+  'polygon(0 10%, 100% 10%, 100% 0, 0 0)'
+]
 const hovers = {
   buttonHover: {
-    transform: 'translateY(-3px)',
-    background: COLORS.buttonGradient,
-    boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3), 0 10px 20px rgba(0, 0, 0, 0.2)'
+    '::after': {
+      display: 'block',
+      animation: 'glitch 2s infinite'
+    }
+  },
+  buttonAfter: {
+    content: '""',
+    position: 'absolute',
+    display: 'none',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: COLORS.backgroundDefault,
   },
   cardHover: {
-    transform: 'translateY(-8px)', 
+    boxShadow: '0 0 10px white, 0 0 20px #21aa27, 0 0 30px #21aa27', 
   }
 }
 
 
 export default createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
       main: COLORS.primaryMain,
       contrastText: COLORS.primaryText,
@@ -56,7 +82,6 @@ export default createTheme({
       primary: COLORS.textPrimary,
       secondary: COLORS.textSecondary,
     },
-    divider: COLORS.divider,
   },
   components: {
     MuiCssBaseline: {
@@ -97,15 +122,13 @@ export default createTheme({
         '.menu .menu_item': {
           display: 'flex',
           alignItems: 'center',
-          background: COLORS.buttonGradient,
           color: COLORS.buttonColor,
-          borderRadius: 25,
           padding: '5px 10px',
-          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
-          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          border: `1px solid ${COLORS.buttonBorder}`,
           fontSize: '1.5em',
           cursor: cursor,
+          border: `3px solid ${COLORS.buttonBorder}`,
+          position: 'relative',
+          boxSizing: 'border-box',
           ':hover': hovers.buttonHover,
           '::before': {
             content: '""',
@@ -118,27 +141,46 @@ export default createTheme({
             [`@media (min-width:${desktopWidth})`]: {
               marginRight: 5,
             }
+          },
+          '::after': hovers.buttonAfter,
+          'span::after': {
+            content: '"_"',
           }
         },
-        '.menu .menu_item__home::before': {
-          maskImage: 'url(sprite.svg#mushroom-view)',
+        '.menu .menu_item__home': {
+          '::before': {
+            maskImage: 'url(sprite.svg#rabbit-view)',
+          }
         },
         '.menu .menu_item__create::before': {
-          maskImage: 'url(sprite.svg#book-view)',
+          maskImage: 'url(sprite.svg#mouse-view)',
         },
         '.swiper-wrapper': { 
           paddingTop: 8, 
         },
         '.swiper-button-next::after, .swiper-button-prev::after' : {
-          background: COLORS.buttonGradient,
+          background: COLORS.backgroundDefault,
           padding: 10,
-          borderRadius: 10,
-          color: COLORS.secondaryText,
+          borderRadius: 0,
+          border: `3px solid ${COLORS.buttonBorder}`,
+          color: COLORS.primaryText,
+          cursor: cursor,
         },
         '.swiper-slide': {
-          transition: '.3s ease',
           cursor: cursor,
-          ':hover': hovers.cardHover,
+          padding: 3,
+          '::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 'calc((100% - 306px) / 2)',
+            width: 'calc(100% - 6px)',
+            height: '100%',
+            maxWidth: 306,
+            backgroundColor: COLORS.buttonColor,
+            clipPath: clipCorner.card,
+            zIndex: -1,
+          },
         },
         '.selected_spell': {
           position: 'absolute',
@@ -156,10 +198,7 @@ export default createTheme({
             height: 150,
             width: 150,
             backgroundColor: COLORS.buttonColor,
-            backgroundSize: '150px 150px',
-            backgroundRepeat: 'no-repeat',
-            backgroundImage: COLORS.backgroundGradientTransparent,
-            maskImage: 'url(sprite.svg#logs-view)',
+            maskImage: 'url(sprite.svg#matrix-view)',
           }
         },
         '.tale_container': {
@@ -170,11 +209,12 @@ export default createTheme({
           color: COLORS.buttonColor,
           width: 30,
           height: 30,
-          background: COLORS.buttonGradient,
-          borderRadius: 5,
+          borderRadius: 0,
           padding: 3, 
           cursor: cursor,
+          border: `2px solid ${COLORS.buttonBorder}`,
           ':hover': hovers.buttonHover,
+          '::after': hovers.buttonAfter,
         },
         '.inner_list': {
           [`@media (min-width:${desktopWidth})`]: {
@@ -187,56 +227,130 @@ export default createTheme({
             }
           }, 
         },
-        '.settings_control': {
-        },
-        '.theme_select': {
-          marginLeft: 16,
-        },
         '.library_controls': {
           display: 'flex',
           justifyContent: 'space-between'
+        },
+        '@keyframes glitch': {
+          '0%': {
+            opacity: 1,
+            transform: 'translateZ(0)',
+            clipPath: clips[1]
+          },
+          '2%, 8%': {
+            clipPath: clips[2],
+            transform: `translate(-5px)`,
+          },
+          '6%': {
+            clipPath: clips[2],
+            transform: `translate(5px)`
+          },
+          '9%': {
+            clipPath: clips[2],
+            transform: 'translate(0, 0)'
+          },
+          '10%': {
+            clipPath: clips[3],
+            transform: `translate3d(5px, 0, 0)`
+          },
+          '13%': {
+            clipPath: clips[3],
+            transform: 'translateZ(0)'
+          },
+          '13.1%': {
+            clipPath: clips[4],
+            transform: 'translate3d(5px, 0, 0)'
+          },
+          '15%': {
+            clipPath: clips[5],
+            transform: `translate3d(5px, 0, 0)`
+          },
+          '20%': {
+            clipPath: clips[5],
+            transform: `translate3d(-5px, 0, 0)`
+          },
+          '20.1%': {
+            clipPath: clips[4],
+            transform: `translate3d(5px, 0, 0)`
+          },
+          '25%': {
+            clipPath: clips[6],
+            transform: `translate3d(5px, 0, 0)`
+          },
+          '30%': {
+            clipPath: clips[6],
+            transform: `translate3d(-5px, 0, 0)`
+          },
+          '30.1%': {
+            clipPath: clips[4],
+          },
+          '35%': {
+            clipPath: clips[7],
+            transform: `translate(-5px)`
+          },
+          '40%': {
+            clipPath: clips[7],
+            transform: 'translate(5px)'
+          },
+          '50%': {
+            clipPath: clips[7],
+            transform: 'translate(0, 0)',
+          },
+          '55%': {
+            clipPath: clips[8],
+            transform: 'translate3d(5px, 0, 0)',
+          },
+          '60%': {
+            clipPath: clips[8],
+            transform: 'translateZ(0)',
+            opacity: 1,
+          },
+          '60.1%': {
+            clipPath: clips[4],
+            opacity: 1,
+          },
+          'to': {
+            clipPath: clips[4],
+            opacity: 1,
+          }
         }
       }
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          background: COLORS.headerText,
-          backgroundClip: 'text',
-          color: 'transparent',
           cursor: cursor,
-          transition: '.5s ease',
+          borderRadius: 0,
           'svg': {
             width: 20,
             height: 20,
-          }
+          },
+          ':hover': {
+            background: 'transparent',
+          },
+          '::after': hovers.buttonAfter,
         },
         text: {
-          background: COLORS.headerText,
-          backgroundClip: 'text',
-          color: 'transparent',
           ':hover': {
             color: COLORS.primaryText,
           }
         },
         contained: {
           color: COLORS.buttonColor,
-          borderRadius: 25,
           padding: '10px 25px',
-          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
-          border: `1px solid ${COLORS.buttonBorder}`,
-          background: COLORS.buttonGradient,
+          boxShadow: '0 0 10px green',
+          border: `3px solid ${COLORS.buttonBorder}`,
+          background: 'transparent',
           ':hover': hovers.buttonHover,
+          '::after': hovers.buttonAfter,
         },
         outlined: {
-          border: `1px solid ${COLORS.buttonBorder}`,
-          borderRadius: 5,
+          borderRadius: 0,
           padding: '0 10px',
           margin: '0 10px',
           color: COLORS.outlinedText,
-          textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          boxShadow: 'inset 0px 1px 0px rgba(255,255,255,1), 0px 1px 3px rgba(0,0,0,0.3)',
+          border: `3px solid ${COLORS.buttonBorder}`,
+          boxShadow: '0 0 10px green',
         },
         endIcon: {
           width: 25,
@@ -248,6 +362,7 @@ export default createTheme({
       styleOverrides: {
         root: {
           backgroundColor: 'transparent',
+          marginBottom: 50
         }
       }
     },
@@ -261,10 +376,6 @@ export default createTheme({
     MuiListSubheader: {
       styleOverrides: {
         root: {
-          background: COLORS.backgroundSecondaryGradient,
-          margin: '5px 0',
-          borderRadius: 10,
-          maxWidth: 350,
           color: COLORS.primaryText,
           fontSize: '1.5rem',
           fontWeight: 400,
@@ -277,7 +388,7 @@ export default createTheme({
           paddingTop: 8,
           paddingBottom: 8,
           border: `1px solid ${COLORS.buttonBorder}`,
-          borderRadius: 5,
+          borderRadius: 0,
           marginBottom: 4,
           backgroundColor: COLORS.backgroundDefault,
         }
@@ -286,16 +397,42 @@ export default createTheme({
     MuiGrid: {
       styleOverrides: {
         item: {
-          ':hover': hovers.cardHover
-        }
+          position: 'relative',
+          minWidth: 306,
+          '::before': {
+            content: '""',
+            position: 'absolute',
+            top: 12,
+            left: 12,
+            width: 308,
+            height: 'calc(100% - 8px)',
+            backgroundColor: COLORS.buttonColor,
+            clipPath: clipCorner.card,
+            zIndex: -2,
+          },
+        },
+        
       }
     },
     MuiCard: {
       styleOverrides: {
         root: {
           textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-          border: `3px solid ${COLORS.buttonBorder}`, 
+          borderRadius: 0,
           position: 'relative',
+          clipPath: clipCorner.card,
+          width: 300,
+          'a': {
+            ':hover': hovers.buttonHover,
+            '::after': hovers.buttonAfter,
+          }
+        }
+      },
+      MuiCardContent: {
+        styleOverrides: {
+          root: {
+            backgroundColor: COLORS.backgroundDefault,
+          }
         }
       }
     },
@@ -308,7 +445,7 @@ export default createTheme({
           padding: 16,
           position: 'relative',
           border: `3px solid ${COLORS.buttonBorder}`,
-          borderRadius: 5,
+          borderRadius: 0,
           backgroundColor: COLORS.backgroundDefault,
         }
       }
@@ -327,26 +464,12 @@ export default createTheme({
         },
       }  
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          borderRadius: 25,
-        }
-      }
-    },
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          left: 16,
-        },
-      }   
-    },
     MuiSelect: {
-      styleOverrides: {
-        outlined: {
-          padding: 10,
+        styleOverrides: {
+          outlined: {
+            padding: 10,
+          }
         }
-      }
     },
     MuiSvgIcon: {
       styleOverrides: {
@@ -361,31 +484,26 @@ export default createTheme({
   },
   typography: {
     h1: {
-      fontSize: '3rem',
+      fontSize: '1.5rem',
+      [`@media (min-width:${desktopWidth})`]: {
+        fontSize: '2rem', 
+      },
       fontWeight: 400,
-      background: COLORS.headerText, 
-      textShadow: '3px 4px 5px #0000002e',
-      backgroundClip: 'text',
-      color: 'transparent',
-      fontFamily: 'Jungle',
+      fontFamily: 'Computo',
       lineHeight: 1,
+      color: COLORS.secondaryText,
     },
     h2: {
       fontSize: '1.5rem',
       fontWeight: 400,
-      background: COLORS.headerText, 
-      backgroundClip: 'text',
-      color: 'transparent',
-      marginBottom: 10,
-      textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
+      color: COLORS.buttonColor,
+      textShadow: COLORS.buttonTextShadow,
     },
     h3: {
       fontSize: '1.5rem',
       fontWeight: 400,
       background: COLORS.backgroundGradientTransparent, 
       color: COLORS.buttonColor,
-      textShadow: '0px -1px 0px rgba(0,0,0,0.4)',
-      borderRadius: 5,
       padding: 5,
       textAlign: 'center',
     },
@@ -397,8 +515,8 @@ export default createTheme({
     },
     body2: {
       '::first-letter': {
-        color: COLORS.icon,
-        fontFamily: 'Wood',
+        color: COLORS.secondaryText,
+        fontFamily: 'Cyber',
       }
     },
     body3: {

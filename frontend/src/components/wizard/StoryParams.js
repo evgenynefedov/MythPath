@@ -12,7 +12,7 @@ import {
   Badge,
 } from "@mui/material";
 import CasinoIcon from "@mui/icons-material/Casino";
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import Icons from "./../../themes/sprite.svg";
 import ResponsiveImage from "../ui/ResponsiveImage";
 import StoryParamsConfig from "../../Data/storyParamsConfig.json";
 import React from "react";
@@ -57,7 +57,9 @@ export default function StoryParams({ steps, createHandler, language = "en" }) {
         <Button
           variant="contained"
           size="medium"
-          endIcon={<RocketLaunchIcon />}
+          endIcon={<svg>
+            <use href={`${Icons}#sparkles`} />
+          </svg>}
           onClick={createHandler}
         >
           Create Fairytale
