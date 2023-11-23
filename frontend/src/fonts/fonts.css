@@ -20,9 +20,25 @@
 }
 @font-face {
 	font-family: 'Scary';
-	src: url('./Scary.otf');
+	src: url('./Scary.ttf');
 }
 @font-face {
 	font-family: 'Spooky';
-	src: url('./Spooky.otf');
+	src: url('./Spooky.ttf');
+}
+@font-face {
+	font-family: 'Computo';
+	src: url('./Computo.ttf');
+}
+@font-face {
+	font-family: 'Cyber';
+	src: url('./Cyber.ttf');
+}
+@font-face {
+	font-family: 'Fluffy';
+	src: url('./Fluffy.ttf');
+}
+@font-face {
+	font-family: 'Catpaw';
+	src: url('./Catpaw.ttf');
 }

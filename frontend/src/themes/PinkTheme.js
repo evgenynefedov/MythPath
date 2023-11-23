@@ -61,9 +61,6 @@ export default createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        '@global': {
-          '@fontFace': ['Flower', 'Royal'],
-        },
         body: {
           backgroundImage: `${COLORS.backgroundPrimaryGradient}, url(${CONSTANTS.cloudinaryBackgroundLink}/${COLORS.name}Mobile)`,
           '@media (orientation: landscape)': {
@@ -313,6 +310,13 @@ export default createTheme({
           backgroundColor: COLORS.backgroundDefault,
         }
       }
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          left: 16,
+        },
+      }   
     },
     MuiFormControlLabel: {
       styleOverrides: {
